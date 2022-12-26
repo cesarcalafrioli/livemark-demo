@@ -1,0 +1,16 @@
+site:
+  title: Livemark demo César Calafrioli
+pages:
+  items:
+    - path: index
+      name: Introduction
+    - path: pages/data
+      name: Data
+    - path: pages/guide
+      name: Guide
+brand:
+  text: Livemark Demonstration brand
+rating:
+  type: start
+news:
+  text: It's test news
