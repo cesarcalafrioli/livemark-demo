@@ -1,16 +1,30 @@
 site:
-  title: Livemark demo César Calafrioli
+  title: César Calafrioli - GitHub
+  favicon: assets/github-logo.png
+counter:
+  type: plausible
+  code: cesarcalafrioli.github.io/livemark-demo/
 pages:
   items:
     - path: index
-      name: Introduction
+      name: Introdução
+    - path: pages/sobre
+      name: Sobre mim
+    - path: pages/repositorios
+      name: Meus repositórios
+    - path: pages/demonstracao
+      name: Demonstrações de código
     - path: pages/data
       name: Data
     - path: pages/guide
       name: Guide
+links:
+  items:
+    - name: Linkedin
+      path: https://www.linkedin.com/in/c%C3%A9sar-calafrioli-998387156/
 brand:
-  text: Livemark Demonstration brand
+  text: Menu
 rating:
   type: start
 news:
-  text: It's test news
+  text: Esta página ainda está em desenvolvimento.
