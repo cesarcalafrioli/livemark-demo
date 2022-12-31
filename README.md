@@ -1,5 +1,5 @@
 # livemark-demo
 
-Isto é uma demonstração do livemark
+Minha demonstração do livemark.
 
 cesarcalafrioli.github.io/livemark-demo/
