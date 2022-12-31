@@ -11,13 +11,19 @@ pages:
     - path: pages/sobre
       name: Sobre mim
     - path: pages/repositorios
-      name: Meus repositórios
-    - path: pages/demonstracao
-      name: Demonstrações de código
-    - path: pages/data
-      name: Data
-    - path: pages/guide
-      name: Guide
+      name: Repositorios
+    - path: pages/tutoriais
+      name: Tutoriais
+    - name: Demonstrações
+      items:
+        - path: pages/demonstracoes/codigo
+          name: Código
+        - path: pages/demonstracoes/jinja
+          name: Jinja
+        - path: pages/demonstracoes/data
+          name: Data
+        - path: pages/demonstracoes/guide
+          name: Guide
 links:
   items:
     - name: Linkedin

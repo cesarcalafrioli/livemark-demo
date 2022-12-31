@@ -95,6 +95,14 @@ A simple format to describe and package a single data resource such as a individ
 A simple format to describe and package a single data resource such as a individual table or file.
 ```
 
+## Logic
+
+Usando Jinja
+
+{% for car in frictionless.extract('data/cars.csv')[:5] %}
+- {{ car.brand }} {{ car.model }}: ${{ car.price }}
+{% endfor %}
+
 ## Conclusion
 
 Visite meu  <a href="https://github.com/cesarcalafrioli"> repositório </a>

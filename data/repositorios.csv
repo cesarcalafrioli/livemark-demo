@@ -1,0 +1,5 @@
+user,repo,branch,description
+cesarcalafrioli,livemark-demo,main,Minha demonstração do livemark.
+cesarcalafrioli,conversor-pdf,main,Ferramenta de conversão de arquivos pdf para o formato txt utilizando a ferramenta xpdf.
+cesarcalafrioli,text-to-speech,main,Ferramenta de conversão de texto para áudio por meio da API gtts.
+cesarcalafrioli,analise-covid-19,main,Desafio de projeto em Python sobre o uso do machine learning para prever a evolução do COVID-19 no Brasil.
