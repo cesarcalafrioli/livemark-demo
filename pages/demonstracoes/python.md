@@ -36,9 +36,9 @@ livemark run data-extract
 
 ```python task id=data-validate
 from pprint import pprint
-from frictionless import extract
+from frictionless import validate
 
-rows = validate('data/invalid.csv')
+report = validate('data/invalid.csv')
 pprint(report.flatten(["rowPosition", "fieldPosition", "code"]))
 ```
 

@@ -2270,7 +2270,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'pages/demonstracoes/python',
           'path': 'pages/demonstracoes/python',
           'relpath': 'python',
-          'text': "## Exemplo em python ## Descrever o arquivo As tasks servem para determinar funcionalidades. Para rodar uma task \u00c3\u00a9 necess\u00c3\u00a1rio inserir o seguinte trecho de c\u00c3\u00b3digo: ```python task id=data-describe from pprint import pprint from frictionless import describe resource = describe(\u0027data/invalid.csv\u0027) pprint(resource) ``` No bash ```bash script livemark run data-describe ```",
+          'text': "## Exemplo em python ## Descrever o arquivo As tasks servem para determinar funcionalidades. Para rodar uma task \u00c3\u00a9 necess\u00c3\u00a1rio inserir o seguinte trecho de c\u00c3\u00b3digo: ```python task id=data-describe from pprint import pprint from frictionless import describe resource = describe(\u0027data/invalid.csv\u0027) pprint(resource) ``` Executando o script acima no bash ```bash script livemark run data-describe ``` ## Extrair o arquivo ```python task id=data-extract from pprint import pprint from frictionless import extract rows = extract(\u0027data/invalid.csv\u0027) pprint(rows) ``` ```bash script livemark run data-extract ``` ## Validate ```python task id=data-validate from pprint import pprint from frictionless import validate report = validate(\u0027data/invalid.csv\u0027) pprint(report.flatten([\"rowPosition\", \"fieldPosition\", \"code\"])) ``` ```bash script livemark run data-validate ```",
       },
           'pages/demonstracoes/codigo': {
           'name': 'Codigo',

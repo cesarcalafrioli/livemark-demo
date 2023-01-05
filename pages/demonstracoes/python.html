@@ -1840,7 +1840,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
       <a href="https://github.com/cesarcalafrioli/livemark-demo/edit/main/pages/demonstracoes/python.md" target="_blank">Edit page </a> in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-    (2023-01-05 15:58)
+    (2023-01-05 17:15)
 </div>
 
 <h2>Exemplo em python</h2>
@@ -1881,18 +1881,31 @@ pprint(rows)
 </div></div><div><pre><code class="language-bash">livemark run data-extract
 </code></pre>
 
-<pre><code class="language-markup">[{'id': 1, 'name': 'english', 'field3': None, 'name2': None}, {'id': 1, 'name': 'english', 'field3': None, 'name2': None}, {'id': None, 'name': None, 'field3': None, 'name2': None}, {'id': 2, 'name': 'german', 'field3': 1, 'name2': 2}]</code></pre>
+<pre><code class="language-markup">'Data Extract'
+[{'id': 1, 'name': 'english', 'field3': None, 'name2': None},
+ {'id': 1, 'name': 'english', 'field3': None, 'name2': None},
+ {'id': None, 'name': None, 'field3': None, 'name2': None},
+ {'id': 2, 'name': 'german', 'field3': 1, 'name2': 2}]</code></pre>
 </div><h2>Validate</h2>
 <div data-id="data-validate"><div class="livemark-task"><pre><code class="language-bash">$ livemark run data-validate</code></pre>
 
 <pre><code class="language-python">from pprint import pprint
-from frictionless import extract
+from frictionless import validate
 
-rows = validate('data/invalid.csv')
+report = validate('data/invalid.csv')
 pprint(report.flatten(["rowPosition", "fieldPosition", "code"]))
 </code></pre>
 </div></div><div><pre><code class="language-bash">livemark run data-validate
 </code></pre>
+
+<pre><code class="language-markup">[[None, 3, 'blank-label'],
+ [None, 4, 'duplicate-label'],
+ [2, 3, 'missing-cell'],
+ [2, 4, 'missing-cell'],
+ [3, 3, 'missing-cell'],
+ [3, 4, 'missing-cell'],
+ [4, None, 'blank-row'],
+ [5, 5, 'extra-cell']]</code></pre>
 </div>
 
 <div id="livemark-signs">
@@ -2303,13 +2316,13 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'pages/demonstracoes/python',
           'path': 'pages/demonstracoes/python',
           'relpath': 'python',
-          'text': "## Exemplo em python ## Descrever o arquivo As tasks servem para determinar funcionalidades. Para rodar uma task \u00c3\u00a9 necess\u00c3\u00a1rio inserir o seguinte trecho de c\u00c3\u00b3digo: ```python task id=data-describe from pprint import pprint from frictionless import describe resource = describe(\u0027data/invalid.csv\u0027) pprint(resource) ``` Executando o script acima no bash ```bash script livemark run data-describe ``` ## Extrair o arquivo ```python task id=data-extract from pprint import pprint from frictionless import extract rows = extract(\u0027data/invalid.csv\u0027) pprint(rows) ``` ```bash script livemark run data-extract ``` ## Validate ```python task id=data-validate from pprint import pprint from frictionless import extract rows = validate(\u0027data/invalid.csv\u0027) pprint(report.flatten([\"rowPosition\", \"fieldPosition\", \"code\"])) ``` ```bash script livemark run data-validate ```",
+          'text': "## Exemplo em python ## Descrever o arquivo As tasks servem para determinar funcionalidades. Para rodar uma task \u00c3\u00a9 necess\u00c3\u00a1rio inserir o seguinte trecho de c\u00c3\u00b3digo: ```python task id=data-describe from pprint import pprint from frictionless import describe resource = describe(\u0027data/invalid.csv\u0027) pprint(resource) ``` Executando o script acima no bash ```bash script livemark run data-describe ``` ## Extrair o arquivo ```python task id=data-extract from pprint import pprint from frictionless import extract rows = extract(\u0027data/invalid.csv\u0027) pprint(rows) ``` ```bash script livemark run data-extract ``` ## Validate ```python task id=data-validate from pprint import pprint from frictionless import validate report = validate(\u0027data/invalid.csv\u0027) pprint(report.flatten([\"rowPosition\", \"fieldPosition\", \"code\"])) ``` ```bash script livemark run data-validate ```",
       },
           'pages/demonstracoes/codigo': {
           'name': 'Codigo',
           'path': 'pages/demonstracoes/codigo',
           'relpath': 'codigo',
-          'text': "# Codigo Para essa demonstra\u00c3\u00a7\u00c3\u00a3o foi utilizado o conjunto de dados fornecido pela Ag\u00c3\u00aancia Nacional de Avia\u00c3\u00a7\u00c3\u00a3o Civil ( ANAC ) referente a produtos aeron\u00c3\u00a1uticos certificados no Brasil. ## Tabelas ```yaml table data: data/produtos-aeronauticos-fabricantes.csv width: 100% #colocar essa informa\u00c3\u00a7\u00c3\u00a3o ap\u00c3\u00b3s #tratar os dados #columns: # - data: # - data: # ... #\u0027\u0027\u0027 order: - [5, \u0027desc\u0027] # 6a coluna filters: true dropdownmenu: true ``` ## Graficos ```yaml chart data: url: ../data/cars.csv mark: circle selection: brush: type: interval encoding: x: type: quantitative field: kmpl scale: domain: [12,25] y: type: quantitative field: price scale: domain: [100,900] color: condition: selection: brush field: type type: nominal value: grey size: type: quantitative field: bhp width: 500 height: 300 ``` ```json chart { \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\", \"description\": \"A simple pie chart with embedded data.\", \"data\": { \"values\": [ {\"fabricantes\": 1, \"value\": 4}, {\"fabricantes\": 2, \"value\": 6}, {\"fabricantes\": 3, \"value\": 10}, {\"fabricantes\": 4, \"value\": 3}, {\"fabricantes\": 5, \"value\": 7}, {\"fabricantes\": 6, \"value\": 8} ] }, \"mark\": \"arc\", \"encoding\": { \"theta\": {\"field\": \"value\", \"type\": \"quantitative\"}, \"color\": {\"field\": \"fabricantes\", \"type\": \"nominal\"} } } ``` ## Execucao de scripts ```python script for number in range(1, 6): print(f\u0027Hello World #{number}!\u0027) ``` ## Jinja Demonstracao 1 -------------- 0 1 2 3",
+          'text': "# Codigo Para essa demonstra\u00c3\u00a7\u00c3\u00a3o foi utilizado o conjunto de dados fornecido pela Ag\u00c3\u00aancia Nacional de Avia\u00c3\u00a7\u00c3\u00a3o Civil ( ANAC ) referente a produtos aeron\u00c3\u00a1uticos certificados no Brasil. ## Tabelas ```yaml table data: data/produtos-aeronauticos-fabricantes.csv width: 100% #colocar essa informa\u00c3\u00a7\u00c3\u00a3o ap\u00c3\u00b3s #tratar os dados #columns: # - data: # - data: # ... #\u0027\u0027\u0027 order: - [5, \u0027desc\u0027] # 6a coluna filters: true dropdownmenu: true ``` ## Graficos ```yaml chart data: url: ../data/cars.csv mark: circle selection: brush: type: interval encoding: x: type: quantitative field: kmpl scale: domain: [12,25] y: type: quantitative field: price scale: domain: [100,900] color: condition: selection: brush field: type type: nominal value: grey size: type: quantitative field: bhp width: 500 height: 300 ``` ```json chart { \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\", \"description\": \"A simple pie chart with embedded data.\", \"data\": { \"values\": [ {\"fabricantes\": 1, \"value\": 4}, {\"fabricantes\": 2, \"value\": 6}, {\"fabricantes\": 3, \"value\": 10}, {\"fabricantes\": 4, \"value\": 3}, {\"fabricantes\": 5, \"value\": 7}, {\"fabricantes\": 6, \"value\": 8} ] }, \"mark\": \"arc\", \"encoding\": { \"theta\": {\"field\": \"value\", \"type\": \"quantitative\"}, \"color\": {\"field\": \"fabricantes\", \"type\": \"nominal\"} } } ``` ## Execucao de scripts ```python script for number in range(1, 6): print(f\u0027Hello World #{number}!\u0027) ``` ## Jinja Demonstracao 1 -------------- {% for item in range(4) %} {{ item }} {% endfor %}",
       },
           'pages/demonstracoes/jinja': {
           'name': 'Jinja',

@@ -2266,7 +2266,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'pages/demonstracoes/python',
           'path': 'pages/demonstracoes/python',
           'relpath': 'python',
-          'text': "## Exemplo em python ```python task id=data-describe from pprint import pprint from frinctionless import describe resource = describe(\u0027..data/invalid.csv\u0027) pprint(resource) ```",
+          'text': "## Exemplo em python ## Descrever o arquivo As tasks servem para determinar funcionalidades. Para rodar uma task \u00c3\u00a9 necess\u00c3\u00a1rio inserir o seguinte trecho de c\u00c3\u00b3digo: ```python task id=data-describe from pprint import pprint from frictionless import describe resource = describe(\u0027data/invalid.csv\u0027) pprint(resource) ``` Executando o script acima no bash ```bash script livemark run data-describe ``` ## Extrair o arquivo ```python task id=data-extract from pprint import pprint from frictionless import extract rows = extract(\u0027data/invalid.csv\u0027) pprint(rows) ``` ```bash script livemark run data-extract ``` ## Validate ```python task id=data-validate from pprint import pprint from frictionless import validate report = validate(\u0027data/invalid.csv\u0027) pprint(report.flatten([\"rowPosition\", \"fieldPosition\", \"code\"])) ``` ```bash script livemark run data-validate ```",
       },
           'pages/demonstracoes/codigo': {
           'name': 'Codigo',
@@ -2290,7 +2290,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'pages/demonstracoes/guide',
           'path': 'pages/demonstracoes/guide',
           'relpath': 'guide',
-          'text': "## Guide ```python script name = \"Cesar Calafrioli\" print(\u0027Hello World. My name is {}\u0027.format(name)) ``` ``` Hello World ``` ```bash task id=test-link echo \u0027Test Link\u0027 ``` ```python task id=test-code print(\u0027Test Code\u0027) ``` ```python task id=example print(\u0027It is a task\u0027) ```",
+          'text': "## Guide ```python task id=hello-world name = \"Cesar Calafrioli\" print(\u0027Hello World. My name is {}\u0027.format(name)) ``` ```bash script livemark run hello-world ``` ```bash task id=test-link echo \u0027Test Link\u0027 ``` ```python task id=test-code print(\u0027Test Code\u0027) ``` ```python task id=example print(\u0027It is a task\u0027) ```",
       },
       };
   const searchIndex = lunr(function () {
