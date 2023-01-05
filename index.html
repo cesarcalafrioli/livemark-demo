@@ -1794,6 +1794,11 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
       </a>
             <ul class="secondary">
                 <li class="secondary ">
+          <a href="pages/demonstracoes/python.html" class="secondary">
+            python
+          </a>
+        </li>
+                <li class="secondary ">
           <a href="pages/demonstracoes/codigo.html" class="secondary">
             Código
           </a>
@@ -3620,13 +3625,19 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Repositorios',
           'path': 'pages/repositorios',
           'relpath': 'pages/repositorios',
-          'text': "# Repositorios {% for row in frictionless.extract(\u0027data/repositorios.csv\u0027) %} {{ row.repo }} {{ row.description or \u0027Descricao nao dispon\u00c3\u00advel\u0027 }} Github {{ row.stars }} {% endfor %}",
+          'text': "# Repositorios {% for row in frictionless.extract(\u0027data/repositorios.csv\u0027) %} {{ row.repo }} {{ row.description or \u0027Descricao nao dispon\u00c3\u00advel\u0027 }} Github {% endfor %}",
       },
           'pages/tutoriais': {
           'name': 'Tutoriais',
           'path': 'pages/tutoriais',
           'relpath': 'pages/tutoriais',
           'text': "# Tutoriais Meus tutoriais armazenados no github. {% for row in frictionless.extract(\u0027data/tutoriais.csv\u0027) %} {{ row.repo }} {{ row.description or \u0027Descricao nao dispon\u00c3\u00advel\u0027 }} Github {{ row.stars }} {% endfor %}",
+      },
+          'pages/demonstracoes/python': {
+          'name': 'pages/demonstracoes/python',
+          'path': 'pages/demonstracoes/python',
+          'relpath': 'pages/demonstracoes/python',
+          'text': "## Exemplo em python ```python task id=data-describe from pprint import pprint from frinctionless import describe resource = describe(\u0027..data/invalid.csv\u0027) pprint(resource) ```",
       },
           'pages/demonstracoes/codigo': {
           'name': 'Codigo',

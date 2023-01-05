@@ -1808,6 +1808,11 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
       </a>
             <ul class="secondary">
                 <li class="secondary ">
+          <a href="demonstracoes/python.html" class="secondary">
+            python
+          </a>
+        </li>
+                <li class="secondary ">
           <a href="demonstracoes/codigo.html" class="secondary">
             Código
           </a>
@@ -1865,8 +1870,8 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-signs">
   <div>
         <div class="next">
-      <a href="demonstracoes/codigo.html">
-        Codigo »
+      <a href="demonstracoes/python.html">
+        pages/demonstracoes/python »
       </a>
     </div>
             <div class="prev">
@@ -2266,11 +2271,17 @@ document.addEventListener("DOMContentLoaded", function () {
           'relpath': 'tutoriais',
           'text': "# Tutoriais Meus tutoriais armazenados no github. tutorial-ambiente-virtual-python Tutorial sobre como criar um ambiente virtual nos ambientes windows e linux. Github",
       },
+          'pages/demonstracoes/python': {
+          'name': 'pages/demonstracoes/python',
+          'path': 'pages/demonstracoes/python',
+          'relpath': 'demonstracoes/python',
+          'text': "## Exemplo em python ```python task id=data-describe from pprint import pprint from frinctionless import describe resource = describe(\u0027..data/invalid.csv\u0027) pprint(resource) ```",
+      },
           'pages/demonstracoes/codigo': {
           'name': 'Codigo',
           'path': 'pages/demonstracoes/codigo',
           'relpath': 'demonstracoes/codigo',
-          'text': "# Codigo Para essa demonstra\u00c3\u00a7\u00c3\u00a3o foi utilizado o conjunto de dados fornecido pela Ag\u00c3\u00aancia Nacional de Avia\u00c3\u00a7\u00c3\u00a3o Civil ( ANAC ) referente a produtos aeron\u00c3\u00a1uticos certificados no Brasil. ## Tabelas ```yaml table data: data/produtos-aeronauticos-fabricantes.csv width: 100% #colocar essa informa\u00c3\u00a7\u00c3\u00a3o ap\u00c3\u00b3s #tratar os dados #columns: # - data: # - data: # ... #\u0027\u0027\u0027 order: - [5, \u0027desc\u0027] # 6a coluna filters: true dropdownmenu: true ``` ## Graficos ```yaml chart data: url: ../data/cars.csv mark: circle selection: brush: type: interval encoding: x: type: quantitative field: kmpl scale: domain: [12,25] y: type: quantitative field: price scale: domain: [100,900] color: condition: selection: brush field: type type: nominal value: grey size: type: quantitative field: bhp width: 500 height: 300 ``` ```json chart { \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\", \"description\": \"A simple pie chart with embedded data.\", \"data\": { \"values\": [ {\"fabricantes\": 1, \"value\": 4}, {\"fabricantes\": 2, \"value\": 6}, {\"fabricantes\": 3, \"value\": 10}, {\"fabricantes\": 4, \"value\": 3}, {\"fabricantes\": 5, \"value\": 7}, {\"fabricantes\": 6, \"value\": 8} ] }, \"mark\": \"arc\", \"encoding\": { \"theta\": {\"field\": \"value\", \"type\": \"quantitative\"}, \"color\": {\"field\": \"fabricantes\", \"type\": \"nominal\"} } } ``` ## Execucao de scripts ```python script for number in range(1, 6): print(f\u0027Hello World #{number}!\u0027) ``` ## Jinja Demonstracao 1 -------------- 0 1 2 3",
+          'text': "# Codigo Para essa demonstra\u00c3\u00a7\u00c3\u00a3o foi utilizado o conjunto de dados fornecido pela Ag\u00c3\u00aancia Nacional de Avia\u00c3\u00a7\u00c3\u00a3o Civil ( ANAC ) referente a produtos aeron\u00c3\u00a1uticos certificados no Brasil. ## Tabelas ```yaml table data: data/produtos-aeronauticos-fabricantes.csv width: 100% #colocar essa informa\u00c3\u00a7\u00c3\u00a3o ap\u00c3\u00b3s #tratar os dados #columns: # - data: # - data: # ... #\u0027\u0027\u0027 order: - [5, \u0027desc\u0027] # 6a coluna filters: true dropdownmenu: true ``` ## Graficos ```yaml chart data: url: ../data/cars.csv mark: circle selection: brush: type: interval encoding: x: type: quantitative field: kmpl scale: domain: [12,25] y: type: quantitative field: price scale: domain: [100,900] color: condition: selection: brush field: type type: nominal value: grey size: type: quantitative field: bhp width: 500 height: 300 ``` ```json chart { \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\", \"description\": \"A simple pie chart with embedded data.\", \"data\": { \"values\": [ {\"fabricantes\": 1, \"value\": 4}, {\"fabricantes\": 2, \"value\": 6}, {\"fabricantes\": 3, \"value\": 10}, {\"fabricantes\": 4, \"value\": 3}, {\"fabricantes\": 5, \"value\": 7}, {\"fabricantes\": 6, \"value\": 8} ] }, \"mark\": \"arc\", \"encoding\": { \"theta\": {\"field\": \"value\", \"type\": \"quantitative\"}, \"color\": {\"field\": \"fabricantes\", \"type\": \"nominal\"} } } ``` ## Execucao de scripts ```python script for number in range(1, 6): print(f\u0027Hello World #{number}!\u0027) ``` ## Jinja Demonstracao 1 -------------- {% for item in range(4) %} {{ item }} {% endfor %}",
       },
           'pages/demonstracoes/jinja': {
           'name': 'Jinja',

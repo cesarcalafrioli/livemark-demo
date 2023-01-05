@@ -16,6 +16,8 @@ pages:
       name: Tutoriais
     - name: Demonstrações
       items:
+        - path: pages/demonstracoes/python
+          name: python
         - path: pages/demonstracoes/codigo
           name: Código
         - path: pages/demonstracoes/jinja
