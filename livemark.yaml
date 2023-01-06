@@ -16,7 +16,7 @@ pages:
       name: Tutoriais
     - name: Demonstrações
       items:
-        - path: pages/demonstracoes/python
+        - path: pages/demonstracoes/Python
           name: python
         - path: pages/demonstracoes/codigo
           name: Código
