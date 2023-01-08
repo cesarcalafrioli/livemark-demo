@@ -14,18 +14,35 @@ pages:
       name: Repositorios
     - path: pages/tutoriais
       name: Tutoriais
-    - name: Demonstrações
+    - name: Demo - Python
       items:
-        - path: pages/demonstracoes/Python
-          name: python
-        - path: pages/demonstracoes/codigo
-          name: Código
-        - path: pages/demonstracoes/jinja
+        - path: pages/demonstracoes/python/python_geral
+          name: Python - Exemplos gerais
+    - name: Demo - Frictionless
+      items:
+        - path: pages/demonstracoes/python/frictionless/frictionless_basico
+          name: Frictionless - Basico
+        - path: pages/demonstracoes/python/frictionless/frictionless_exemplo1
+          name: Frictionless - Exemplo 1
+        - path: pages/demonstracoes/python/frictionless/frictionless_exemplo2
+          name: Frictionless - Exemplo 2
+    - name: Demo - Jinja
+      items:
+        - path: pages/demonstracoes/jinja/jinja
           name: Jinja
-        - path: pages/demonstracoes/data
-          name: Data
-        - path: pages/demonstracoes/guide
-          name: Guide
+    - name: Demo - Bash
+      items:
+        - path: pages/demonstracoes/bash/bash
+          name: Bash
+    - name: Demo - Json
+      items:
+        - path: pages/demonstracoes/json/json
+          name: Json
+    - name: Demo - Yaml
+      items:
+        - path: pages/demonstracoes/yaml/yaml
+          name: Yaml
+        
 links:
   items:
     - name: Linkedin
