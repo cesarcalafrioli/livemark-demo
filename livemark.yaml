@@ -26,6 +26,8 @@ pages:
           name: Frictionless - Exemplo 1
         - path: pages/demonstracoes/python/frictionless/frictionless_exemplo2
           name: Frictionless - Exemplo 2
+        - path: pages/demonstracoes/python/frictionless/frictionless_describe
+          name: Frictionless - Função Describe
     - name: Demo - Jinja
       items:
         - path: pages/demonstracoes/jinja/jinja

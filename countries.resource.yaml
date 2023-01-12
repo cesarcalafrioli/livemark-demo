@@ -9,6 +9,9 @@ layout:
   headerRows:
     - 2
 schema:
+  missingValues:
+    - ''
+    - n/a
   fields:
     - type: integer
       name: id

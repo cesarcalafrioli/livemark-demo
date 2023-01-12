@@ -12,6 +12,10 @@
     ]
   },
   "schema": {
+    "missingValues": [
+      "",
+      "n/a"
+    ],
     "fields": [
       {
         "type": "integer",
