@@ -12,29 +12,29 @@ with open('data/countries.csv') as paises:
 ### Criando os metadados
 
 ```python script
-from pprint import pprint
+""" from pprint import pprint
 from frictionless import describe, Detector
 
-#resource = describe('data/countries.csv')
-#pprint(resource)
+resource = describe('data/countries.csv')
+pprint(resource)
 
 # Insere novos metadados no schema e corrige os dados
 detector = Detector(field_missing_values=["","n/a"]) # Informa quais os valores que estão vazios
 resource = describe('data/countries.csv', detector=detector) #Aplica substituição do arquivo countries.csv
 resource.schema.get_field("neighbor_id").type = "integer" # Modifica tipo de dado da coluna neighbor_id para ser do tipo inteiro
-#resource.schema.get_field("population").type = "integer" # Modifica tipo de dado da coluna population para ser do tipo inteiro
+resource.schema.get_field("population").type = "integer" # Modifica tipo de dado da coluna population para ser do tipo inteiro
 resource.schema.foreign_keys.append(
-    {"fields": ["neighbor_id"], "reference": {"resource": "", "fields": ["id"]}}
+    {"fields": ["neighbor_id"], "reference": {"resource": "", "fields":["id"]}}
 )
-resource.to_yaml("countries.resource.yaml")
-resource.to_json("countries.resource.json")
+resource.to_yaml("data/countries.resource.yaml")
+#resource.to_json("data/countries.resource.json") """
 ```
 
 Exibindo os metadados em yaml
 
 ```python script
 from pprint import pprint
-with open('countries.resource.yaml') as paises_yaml:
+with open('data/countries.resource.yaml') as paises_yaml:
     pprint(paises_yaml.read())
 ```
 
@@ -42,7 +42,7 @@ Exibindo os metadado em JSON
 
 ```python script
 from pprint import pprint
-with open('countries.resource.json') as paises_json:
+with open('data/countries.resource.json') as paises_json:
     pprint(paises_json.read())
 ```
 
@@ -60,10 +60,14 @@ Exibindo os metadados corrigidos
 
 ```python script
 from pprint import pprint
-from frictionless import extract
+from frictionless import extract, Resource
 
-rows = extract('countries.resource.yaml')
-pprint(rows)
+pasta = 'data'
+resource = Resource('data/countries.resource.yaml')
+pprint(resource.extract())
+
+#rows = extract('data/countries.resource.yaml')
+#pprint(rows)
 ```
 
 ### Validando os dados
@@ -84,7 +88,7 @@ validando os metadados do arquivo csv
 from pprint import pprint
 from frictionless import validate
 
-report = validate('countries.resource.yaml')
+report = validate('data/countries.resource.yaml')
 pprint(report.flatten(["rowPosition", "fieldPosition", "code"]))
 ```
 
@@ -119,7 +123,7 @@ def clean(resource):
                     yield row
 
     # Meta
-    resource.schema = Resource("countries.resource.yaml").schema
+    resource.schema = Resource("data/countries.resource.yaml").schema
     resource.data = data
 
 
@@ -162,35 +166,11 @@ for item in os.listdir(path='.\\data'):
 print(files)
 ```
 
-No script acima, foram encontrados somente dois arquivos, "countries.csv" e "countries_transformed.csv", pois eles estavam localizados dentro do diretório "data". No entando, estão faltando à lista outros dois arquivos, que são o data resource, pois eles estão localizados fora desse mesmo diretório: "countries.resource.json" e "countries.resource.yaml".
-
-O script abaixo tem a mesma funcionalidade do script anterior, porém é feita uma pesquisa recursiva dentro de cada diretório localizado na pasta raiz.
+TESTE 2
 
 ```python script
-files = [] # Lista vazia aonde serão armazenados os items desejados ( No nosso caso são os arquivos que contenham a palavra "countries")
-data_path = '.' # Diretório raiz
-data_dir_list = os.listdir(data_path) # Lista os items dentro de um diretório ( No nosso caso é o diretório raiz)
-
-# Para cada item listado dentro da variável data_dir_list, é verificado se é um arquivo ou uma pasta. Caso seja o arquivo que queiramos, este será adicionado à lista "files". Caso seja uma pasta, será realizado a mesma verificação dentro dela.
-for item in data_dir_list:
-
-    # Verifica primeiro se determinado item é um diretório
-    if os.path.isdir(os.path.join(data_path, item)):
-
-        # Se o item for um diretório, será realizado uma busca dentro dela. Se houver um diretório dentro, será feita uma nova busca dentro ( Recursão ).
-        for dir_file in os.listdir(path=item):
-
-            # Se o item, além de ser um arquivo é o arquivo que desejamos,este seja colocado dentro da lista
-            if os.path.isfile(os.path.join(data_path, item)+'\\'+dir_file) and dir_file.startswith('countries'):
-                files.append(dir_file)
-
-    # Verifica se o item, além de ser um arquivo, é o arquivo que desejamos que seja colocado na lista
-    #print(os.path.join(data_path, dataset))
-    if os.path.isfile(os.path.join(data_path, item)) and item.startswith('countries'):
-        files.append(item)
-
-# Imprime os arquivos desejados que foram encontrados
+files = [f for f in os.listdir(path='.\\data') if os.path.isfile('.\\data\\'+f) and f.startswith('countries')]
 print(files)
-```
 
-Como os arquivos 'countries.resource.json' e 'countries.resource.yaml' foram localizados fora do diretório data ( eles estavam na pasta raiz ), também foram adicionados à lista "files".
+files = [f for f in os.listdir('.') if os.path.isfile(f) and f.startswith('countries')]
+print(files)
