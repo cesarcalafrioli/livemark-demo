@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Descrever os dados, se tratando de frictionless, significa criar metadados para seus arquivos de dados. Por si so, os arquivos de dados nao possuem informacoes adicionais que ajudem a compreender os dados.">
-<meta name="keywords" content="frictionless,-,describe">
+<meta name="description" content="O Resource descreve um recurso de dados como um arquivo individual ou tabela. A classe Resource Ã© a classe mais importante do Framework Frictionless.">
+<meta name="keywords" content="frictionless,-,guia,sobre,o,resource">
 <link rel="icon" href="../../../../assets/github-logo.png">
 <title>César Calafrioli - GitHub | Menu</title>
 <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
@@ -1834,7 +1834,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
             Frictionless - Exemplo 2
           </a>
         </li>
-                <li class="secondary active">
+                <li class="secondary ">
           <a href="frictionless_describe.html" class="secondary">
             Frictionless - Função Describe
           </a>
@@ -1844,7 +1844,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
             Frictionless - Função Extract
           </a>
         </li>
-                <li class="secondary ">
+                <li class="secondary active">
           <a href="frictionless_resource.html" class="secondary">
             Frictionless - (GUIA) Resource
           </a>
@@ -1904,567 +1904,96 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </div>
 <div id="livemark-main">
 <div id="livemark-notes">
-      <a href="https://github.com/cesarcalafrioli/livemark-demo/edit/main/pages/demonstracoes/python/frictionless/frictionless_describe.md" target="_blank">Edit page </a> in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-    (2023-01-19 17:47)
+      <a href="https://github.com/cesarcalafrioli/livemark-demo/edit/main/pages/demonstracoes/python/frictionless/frictionless_resource.md" target="_blank">Edit page </a> in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
+    (2023-01-19 20:34)
 </div>
 
-<h1>FRICTIONLESS - DESCRIBE</h1>
-<p>Descrever os dados, se tratando de frictionless, significa criar metadados para seus arquivos de dados. Por si so, os arquivos de dados nao possuem informacoes adicionais que ajudem a compreender os dados.</p>
-<p>Um arquivo no formato CSV sem os metadados carece de informacoes criticas como significado dos campos, tipos de dados, restricoes, relacoes e etc...</p>
-<p>Descrevemos os dados utilizando a funcao describe()</p>
-<div><pre><code class="language-python"># Descrevendo o arquivo "table.csv"
-from frictionless import describe
-
-package = describe("data/table.csv", type="package")
-print(package.to_yaml())
-</code></pre>
-
-<pre><code class="language-markup">resources:
-  - path: data/table.csv
-    name: table
-    profile: tabular-data-resource
-    scheme: file
-    format: csv
-    hashing: md5
-    encoding: utf-8
-    schema:
-      fields:
-        - type: integer
-          name: id
-        - type: string
-          name: name
-profile: data-package</code></pre>
-</div><h2>Descrevendo um schema</h2>
-<p>Fornece um "schema" para dados tabulares. Equivale ao schema de banco de dados. A informacao do schema inclui:</p>
-<ul>
-<li>Tipos de dados esperados para cada valor em uma coluna ( "String", "number", "date", etc );</li>
-<li>Restricoes em cada valor ( Ex: "Determinada string permite ate 10 caracteres");</li>
-<li>Formato esperado de dados ( Ex: "Determinado campo deve conter apenas strings e estar em forma de um endereco de email.")</li>
-</ul>
-<p>Os schemas de tabelas podem tambem especificar relacoes entre tabelas</p>
-<div><pre><code class="language-python"># Exibe as informacoes do arquivo "country-1.csv"
-with open('data/country-1.csv') as file:
-    print(file.read())
-</code></pre>
-
-<pre><code class="language-markup">id,neighbor_id,name,population
-1,,Britain,67
-2,3,France,67
-3,2,Germany,83
-4,5,Italy,60
-5,4,Spain,47</code></pre>
-</div><div><pre><code class="language-python"># Descreve o schema do rquivo "country-1.csv" e o salva no arquivo "country.schema.yaml"
-from frictionless import Schema
-
-schema = Schema.describe("data/country-1.csv")
-schema.to_yaml("country.schema.yaml")
-</code></pre>
-</div><div><pre><code class="language-python"># Exibindo as informacoes do arquivo schema
-with open('country.schema.yaml') as file:
-    print(file.read())
-</code></pre>
-
-<pre><code class="language-markup">fields:
-  - type: integer
-    name: id
-  - type: integer
-    name: neighbor_id
-  - type: string
-    name: name
-  - type: integer
-    name: population</code></pre>
-</div><div><pre><code class="language-python">from frictionless import schema
-
-schema = Schema.describe("data/country-1.csv")
-schema.get_field("id").title = "Identifier"
-schema.get_field("neighbor_id").title = "Identifier of the neighbor"
-schema.get_field("name").title = "Name of the country"
-schema.get_field("population").title = "Population"
-schema.get_field("population").description = "According to the year 2020's data"
-schema.get_field("population").constraints["minimum"] = 0
-schema.foreign_keys.append(
-    {"fields": ["neighbor_id"], "reference": {"resource": "", "fields": ["id"]}}
-)
-schema.to_yaml("country-1.schema.yaml")
-</code></pre>
-</div><div><pre><code class="language-python">with open('country-1.schema.yaml') as file:
-    print(file.read())
-</code></pre>
-
-<pre><code class="language-markup">fields:
-  - type: integer
-    name: id
-    title: Identifier
-  - type: integer
-    name: neighbor_id
-    title: Identifier of the neighbor
-  - type: string
-    name: name
-    title: Name of the country
-  - type: integer
-    name: population
-    title: Population
-    description: According to the year 2020's data
-    constraints:
-      minimum: 0
-foreignKeys:
-  - fields:
-      - neighbor_id
-    reference:
-      resource: ''
-      fields:
-        - id</code></pre>
-</div><h2>Descrevendo um resource</h2>
-<p>Descreve um resource de dados como um arquivo individual ou tabela de dados. A essencia de um Data Resource Ã© um caminho ao arquivo de dados que ele descreve.</p>
-<div><pre><code class="language-python">with open('data/country-2.csv') as file:
-    print(file.read())
-</code></pre>
-
-<pre><code class="language-markup"># Author: the scientist
-id;neighbor_id;name;population
-1;;Britain;67
-2;3;France;67
-3;2;Germany;83
-4;5;Italy;60
-5;4;Spain;47</code></pre>
-</div><p>Descrevendo o table resource:</p>
-<div><pre><code class="language-python">from frictionless import describe
-
-resource = describe('data/country-2.csv')
-print(resource.to_yaml())
-</code></pre>
-
-<pre><code class="language-markup">path: data/country-2.csv
-name: country-2
-profile: tabular-data-resource
-scheme: file
-format: csv
-hashing: md5
-encoding: utf-8
-schema:
-  fields:
-    - type: string
-      name: '# Author: the scientist'</code></pre>
-</div><div><pre><code class="language-python">from frictionless import Schema, describe
-
-resource = describe("data/country-2.csv")
-resource.dialect.delimiter = ";"
-resource.layout.header_rows = [2]
-resource.schema = Schema("country-1.schema.yaml")
-resource.to_yaml("country-2.resource.yaml")
-</code></pre>
-</div><div><pre><code class="language-python">with open('country-2.resource.yaml') as file:
-    print(file.read())
-</code></pre>
-
-<pre><code class="language-markup">path: data/country-2.csv
-name: country-2
-profile: tabular-data-resource
-scheme: file
-format: csv
-hashing: md5
-encoding: utf-8
-schema:
-  fields:
-    - type: integer
-      name: id
-      title: Identifier
-    - type: integer
-      name: neighbor_id
-      title: Identifier of the neighbor
-    - type: string
-      name: name
-      title: Name of the country
-    - type: integer
-      name: population
-      title: Population
-      description: According to the year 2020's data
-      constraints:
-        minimum: 0
-  foreignKeys:
-    - fields:
-        - neighbor_id
-      reference:
-        resource: ''
-        fields:
-          - id
-dialect:
-  delimiter: ;
-layout:
-  headerRows:
-    - 2</code></pre>
-</div><h2>Descrevendo um package</h2>
-<p>Exibindo as informaÃ§Ãµes do arquivo "country-3.csv":</p>
-<div><pre><code class="language-python">with open('data/country-3.csv') as file:
-    print(file.read())
-</code></pre>
-
-<pre><code class="language-markup">id,capital_id,name,population
-1,1,Britain,67
-2,3,France,67
-3,2,Germany,83
-4,5,Italy,60
-5,4,Spain,47</code></pre>
-</div><p>Exibindo as informaÃ§Ãµes do arquivo "capital-3.csv":</p>
-<div><pre><code class="language-python">with open('data/capital-3.csv') as file:
-    print(file.read())
-</code></pre>
-
-<pre><code class="language-markup">id,name
-1,London
-2,Berlin
-3,Paris
-4,Madrid
-5,Rome</code></pre>
-</div><p>Descrevendo os metadados de ambos os arquivos acima:</p>
-<div><pre><code class="language-python">from pprint import pprint
-from frictionless import describe
-
-package = describe("data/*-3.csv")
-
-print(package.to_yaml())
-</code></pre>
-
-<pre><code class="language-markup">resources:
-  - path: data\capital-3.csv
-    name: capital-3
-    profile: tabular-data-resource
-    scheme: file
-    format: csv
-    hashing: md5
-    encoding: utf-8
-    schema:
-      fields:
-        - type: integer
-          name: id
-        - type: string
-          name: name
-  - path: data\country-3.csv
-    name: country-3
-    profile: tabular-data-resource
-    scheme: file
-    format: csv
-    hashing: md5
-    encoding: utf-8
-    schema:
-      fields:
-        - type: integer
-          name: id
-        - type: integer
-          name: capital_id
-        - type: string
-          name: name
-        - type: integer
-          name: population
-profile: data-package</code></pre>
-</div><p>Adicionando informaÃ§Ãµes adicionais:</p>
-<div><pre><code class="language-python">from frictionless import describe
-
-package = describe("data/*-3.csv")
-package.title = "Countries and their capitals"
-package.description = "The data was collected as a research project"
-package.get_resource("country-3").name = "country"
-package.get_resource("capital-3").name = "capital"
-package.get_resource("country").schema.foreign_keys.append(
-    {"fields": ["capital_id"], "reference": {"resource": "capital", "fields": ["id"]}}
-)
-package.to_yaml("data/country-3.package.yaml")
-</code></pre>
-</div><p>Exibindo as informaÃ§Ãµes do pacote de dados:</p>
-<div><pre><code class="language-python">with open('data/country-3.package.yaml') as file:
-    print(file.read())
-</code></pre>
-
-<pre><code class="language-markup">resources:
-  - path: data\capital-3.csv
-    name: capital
-    profile: tabular-data-resource
-    scheme: file
-    format: csv
-    hashing: md5
-    encoding: utf-8
-    schema:
-      fields:
-        - type: integer
-          name: id
-        - type: string
-          name: name
-  - path: data\country-3.csv
-    name: country
-    profile: tabular-data-resource
-    scheme: file
-    format: csv
-    hashing: md5
-    encoding: utf-8
-    schema:
-      fields:
-        - type: integer
-          name: id
-        - type: integer
-          name: capital_id
-        - type: string
-          name: name
-        - type: integer
-          name: population
-      foreignKeys:
-        - fields:
-            - capital_id
-          reference:
-            resource: capital
-            fields:
-              - id
-profile: data-package
-title: Countries and their capitals
-description: The data was collected as a research project</code></pre>
-</div><h2>Importancia dos metadados</h2>
-<p>Exibindo dados do arquivo "country-2.csv":</p>
-<div><pre><code class="language-python">with open('data/country-2.csv') as file:
-    print(file.read())
-</code></pre>
-
-<pre><code class="language-markup"># Author: the scientist
-id;neighbor_id;name;population
-1;;Britain;67
-2;3;France;67
-3;2;Germany;83
-4;5;Italy;60
-5;4;Spain;47</code></pre>
-</div><p>Descrevendo os metadados do arquivo "country-2.csv"</p>
-<div><pre><code class="language-python">from frictionless import describe
-
-resource = describe("data/country-2.csv")
-print(resource.to_yaml())
-</code></pre>
-
-<pre><code class="language-markup">path: data/country-2.csv
-name: country-2
-profile: tabular-data-resource
-scheme: file
-format: csv
-hashing: md5
-encoding: utf-8
-schema:
-  fields:
-    - type: string
-      name: '# Author: the scientist'</code></pre>
-</div><div><pre><code class="language-python">from frictionless import extract
-from tabulate import tabulate
-
-resource = extract("data/country-2.csv")
-print(tabulate(resource, headers="keys", tablefmt="rst"))
-</code></pre>
-
-<pre><code class="language-markup">==============================
-# Author: the scientist
-==============================
-id;neighbor_id;name;population
-1;;Britain;67
-2;3;France;67
-3;2;Germany;83
-4;5;Italy;60
-5;4;Spain;47
-==============================</code></pre>
-</div><div><pre><code class="language-python">from frictionless import extract
-from tabulate import tabulate
-
-data = extract("country-2.resource.yaml")
-print(tabulate(data, headers="keys", tablefmt="rst"))
-</code></pre>
-
-<pre><code class="language-markup">====  =============  =======  ============
-  id    neighbor_id  name       population
-====  =============  =======  ============
-   1                 Britain            67
-   2              3  France             67
-   3              2  Germany            83
-   4              5  Italy              60
-   5              4  Spain              47
-====  =============  =======  ============</code></pre>
-</div><p>TESTE</p>
-<div><pre><code class="language-python">from frictionless import extract, Resource
-from tabulate import tabulate
-
-resource = Resource("data/country-3.package.yaml")
-resource.path = "country-3.csv"
-resource.to_yaml("data/country-3.package.yaml")
-
-pprint(resource.extract())
-</code></pre>
-
-<pre><code class="language-markup">[{'id': 1, 'capital_id': 1, 'name': 'Britain', 'population': 67},
- {'id': 2, 'capital_id': 3, 'name': 'France', 'population': 67},
- {'id': 3, 'capital_id': 2, 'name': 'Germany', 'population': 83},
- {'id': 4, 'capital_id': 5, 'name': 'Italy', 'population': 60},
- {'id': 5, 'capital_id': 4, 'name': 'Spain', 'population': 47}]</code></pre>
-</div><h2>Inferindo metadados</h2>
-<div><pre><code class="language-python">from pprint import pprint
+<h1>FRICTIONLESS - GUIA SOBRE O RESOURCE</h1>
+<p>O Resource descreve um recurso de dados como um arquivo individual ou tabela. A classe Resource Ã© a classe mais importante do Framework Frictionless.</p>
+<div><pre><code class="language-python"># Criando o resource
 from frictionless import Resource
 
-resource = Resource("data/country-1.csv")
-pprint(resource)
+# Criando o resource do arquivo csv
+resource = Resource('data/table.csv')
+
+# OUTROS EXEMPLOS
+#resource = Resource('data/resource.json') # Criando o resource do descriptor
+#resource = Resource({'path': 'data/table.csv'}) # Criando resource por meio do dicionario
+#resource = Resource(path='data/table.csv') # Criando resource utilizando parametro path
+#resource = Resource(descriptor='data/resource.json') # Criando resource utilizando parametro descriptor
 </code></pre>
-
-<pre><code class="language-markup">{'path': 'data/country-1.csv'}</code></pre>
-</div><div><pre><code class="language-python">from pprint import pprint
-from frictionless import Resource
-
-resource = Resource("data/country-1.csv")
-resource.infer(stats=True)
-pprint(resource)
-</code></pre>
-
-<pre><code class="language-markup">{'encoding': 'utf-8',
- 'format': 'csv',
- 'hashing': 'md5',
- 'name': 'country-1',
- 'path': 'data/country-1.csv',
- 'profile': 'tabular-data-resource',
- 'schema': {'fields': [{'name': 'id', 'type': 'integer'},
-                       {'name': 'neighbor_id', 'type': 'integer'},
-                       {'name': 'name', 'type': 'string'},
-                       {'name': 'population', 'type': 'integer'}]},
- 'scheme': 'file',
- 'stats': {'bytes': 100,
-           'fields': 4,
-           'hash': '4204f087f328b70c854c03403ab448c4',
-           'rows': 5}}</code></pre>
-</div><h2>Expandindo os metadados</h2>
-<div><pre><code class="language-python">from pprint import pprint
-from frictionless import describe
-
-resource = describe("data/country-1.csv")
-pprint(resource.schema)
-</code></pre>
-
-<pre><code class="language-markup">{'fields': [{'name': 'id', 'type': 'integer'},
-            {'name': 'neighbor_id', 'type': 'integer'},
-            {'name': 'name', 'type': 'string'},
-            {'name': 'population', 'type': 'integer'}]}</code></pre>
-</div><p>Revelando metadados implÃ­citos com a funÃ§Ã£o expand()</p>
-<div><pre><code class="language-python">from pprint import pprint
-from frictionless import describe
-
-resource = describe("data/country-1.csv")
-resource.schema.expand()
-pprint(resource.schema)
-</code></pre>
-
-<pre><code class="language-markup">{'fields': [{'bareNumber': True,
-             'format': 'default',
-             'name': 'id',
-             'type': 'integer'},
-            {'bareNumber': True,
-             'format': 'default',
-             'name': 'neighbor_id',
-             'type': 'integer'},
-            {'format': 'default', 'name': 'name', 'type': 'string'},
-            {'bareNumber': True,
-             'format': 'default',
-             'name': 'population',
-             'type': 'integer'}],
- 'missingValues': ['']}</code></pre>
-</div><h2>Transformando metadados</h2>
+</div><h2>Descrevendo resource</h2>
 <div><pre><code class="language-python">from frictionless import Resource
 
-resource = Resource("country-2.resource.yaml")
-resource.title = "Countries"
-resource.description = "It's a research project"
-resource.dialect.delimiter = ";"
-resource.layout.header_rows = [2]
-resource.to_yaml("country-2-transformed.resource.yaml")
-</code></pre>
-</div><div><pre><code class="language-python">from frictionless import Resource
+resource = Resource(
+    path='data/table.csv',
+    name='resource', # Nome do resource
+    title='My Resource', # Titulo no resource
+    description='My Resource for the Guide', # Descricao do resource
+)
 
-resource = Resource("country-2.resource.yaml")
-resource["customKey1"] = "Value1"
-resource["customKey2"] = "Value2"
-resource["path"] = "data/country-2.csv"
-resource.to_yaml("country-2-transformed.resource.yaml")
-</code></pre>
-</div><div><pre><code class="language-python">with open('country-2-transformed.resource.yaml') as file:
-    print(file.read())
-</code></pre>
+# Salvando o resource
+resource.to_yaml('data/table.resource.yaml')
 
-<pre><code class="language-markup">path: data/country-2.csv
-name: country-2
-profile: tabular-data-resource
-scheme: file
-format: csv
-hashing: md5
-encoding: utf-8
-schema:
-  fields:
-    - type: integer
-      name: id
-      title: Identifier
-    - type: integer
-      name: neighbor_id
-      title: Identifier of the neighbor
-    - type: string
-      name: name
-      title: Name of the country
-    - type: integer
-      name: population
-      title: Population
-      description: According to the year 2020's data
-      constraints:
-        minimum: 0
-  foreignKeys:
-    - fields:
-        - neighbor_id
-      reference:
-        resource: ''
-        fields:
-          - id
-dialect:
-  delimiter: ;
-layout:
-  headerRows:
-    - 2
-customKey1: Value1
-customKey2: Value2</code></pre>
-</div><h2>Validating metadados</h2>
-<p>Antes de publicar os metadados Ã© recomendado validÃ¡-los</p>
-<div><pre><code class="language-python"># Tornando um metadado invÃ¡lido
-from frictionless import Resource
+# ALTERNATIVA - SALVAR NO FORMATO JSON
+# resource.to_json('data/table.resource.json')
+</code></pre>
+</div><p>Ao criar um resource voce pode acessar suas propriedades e tambem edita-las</p>
+<div><pre><code class="language-python">from frictionless import Resource
 
-resource = Resource("country.resource.yaml")
-resource["title"] = 1
-print(resource.metadata_valid)
-print(resource.metadata_errors)
+resource = Resource('data/table.resource.yaml')
+
+print(f'Nome do resource: {resource.name}')
+print(f'Titulo do resource: {resource.title}')
+print(f'Descricao do resource: {resource.description}')
+
+print("")
+resource.name = 'new-name'
+resource.title = 'New Title'
+resource.description = 'New Description'
+
+print(resource)
 </code></pre>
 
-<pre><code class="language-markup">False
-[{'code': 'resource-error',
- 'description': 'A validation cannot be processed.',
- 'message': 'The data resource has an error: "1 is not of type \'string\'" at '
-            '"title" in metadata and at "properties/title/type" in profile',
- 'name': 'Resource Error',
- 'note': '"1 is not of type \'string\'" at "title" in metadata and at '
-         '"properties/title/type" in profile',
- 'tags': []}]</code></pre>
-</div><p>A funÃ§Ã£o metadata_valid sÃ³ precisa ser utilizada quando o metadados Ã© alterado manualmente. Certas funÃ§Ãµes do frictionless validam os metadados por si sÃ³.</p>
-<div><pre><code class="language-python"># Fixando o metadado para tornÃ¡-lo vÃ¡lido
-from frictionless import Resource
+<pre><code class="language-markup">Nome do resource: resource
+Titulo do resource: My Resource
+Descricao do resource: My Resource for the Guide
 
-resource = Resource("country.resource.yaml")
-resource["title"] = 'Countries'
-print(resource.metadata_valid)
+{'description': 'New Description',
+ 'name': 'new-name',
+ 'path': 'data/table.csv',
+ 'title': 'New Title'}</code></pre>
+</div><p>Apos editar as propriedades, salve no formato yaml ou json ( se preferir )</p>
+<p>Mais informacoes sobre propriedades da classe Resource <a href="https://specs.frictionlessdata.io/data-resource/#metadata-properties">aqui</a></p>
+<h2>Ciclo de vida do Resource</h2>
+<p><a href="https://v4.framework.frictionlessdata.io/docs/guides/framework/resource-guide#resource-lifecycle">https://v4.framework.frictionlessdata.io/docs/guides/framework/resource-guide#resource-lifecycle</a></p>
+<p>O resource Ã© uma interface de streaming, logo, uma vez lido voce ira precisar abri-lo novamente. Em contrapartida, voce pode ler dados de um resource sem abrir e fecha-lo explicitamente.</p>
+<div><pre><code class="language-python">from pprint import pprint
+from frictionless import resource
+
+resource = Resource('data/capital-3.csv')
+pprint(resource.read_rows())
 </code></pre>
 
-<pre><code class="language-markup">True</code></pre>
-</div>
+<pre><code class="language-markup">[{'id': 1, 'name': 'London'},
+ {'id': 2, 'name': 'Berlin'},
+ {'id': 3, 'name': 'Paris'},
+ {'id': 4, 'name': 'Madrid'},
+ {'id': 5, 'name': 'Rome'}]</code></pre>
+</div><h2>Lendo dados</h2>
+<p>A classe Resource tambem e uma classe metadata que fornece varias funcoes de read e stream. A classe resource pode fazer a mesma atividade da funcao extract ( que sempre le linhas na memoria ), porem tambem oferece a escolha de exibir os dados.</p>
+<p><a href="https://v4.framework.frictionlessdata.io/docs/guides/framework/resource-guide#reading-data">https://v4.framework.frictionlessdata.io/docs/guides/framework/resource-guide#reading-data</a></p>
 
 <div id="livemark-signs">
   <div>
         <div class="next">
-      <a href="frictionless_extract.html">
-        FRICTIONLESS - EXTRACT »
+      <a href="../../jinja/jinja.html">
+        Jinja »
       </a>
     </div>
             <div class="prev">
-      <a href="frictionless_exemplo2.html">
-        « FRICTIONLESS - EXEMPLO 2
+      <a href="frictionless_extract.html">
+        « FRICTIONLESS - EXTRACT
       </a>
     </div>
       </div>

@@ -28,6 +28,10 @@ pages:
           name: Frictionless - Exemplo 2
         - path: pages/demonstracoes/python/frictionless/frictionless_describe
           name: Frictionless - Função Describe
+        - path: pages/demonstracoes/python/frictionless/frictionless_extract
+          name: Frictionless - Função Extract
+        - path: pages/demonstracoes/python/frictionless/frictionless_resource
+          name: Frictionless - (GUIA) Resource
     - name: Demo - Jinja
       items:
         - path: pages/demonstracoes/jinja/jinja
@@ -45,7 +49,7 @@ pages:
         - path: pages/demonstracoes/yaml/yaml
           name: Yaml
         
-links:
+links:  
   items:
     - name: Linkedin
       path: https://www.linkedin.com/in/c%C3%A9sar-calafrioli-998387156/

@@ -12,22 +12,18 @@ with open('data/countries.csv') as paises:
 ### Criando os metadados
 
 ```python script
-""" from pprint import pprint
+from pprint import pprint
 from frictionless import describe, Detector
 
-resource = describe('data/countries.csv')
-pprint(resource)
-
 # Insere novos metadados no schema e corrige os dados
-detector = Detector(field_missing_values=["","n/a"]) # Informa quais os valores que estão vazios
-resource = describe('data/countries.csv', detector=detector) #Aplica substituição do arquivo countries.csv
+detector = Detector(field_missing_values=["","n/a"]) # Informa quais os valores que devem ser reconhecidos como "vazios"
+resource = describe('data/countries.csv', detector=detector) # Aplica substituição do arquivo countries.csv
 resource.schema.get_field("neighbor_id").type = "integer" # Modifica tipo de dado da coluna neighbor_id para ser do tipo inteiro
 resource.schema.get_field("population").type = "integer" # Modifica tipo de dado da coluna population para ser do tipo inteiro
 resource.schema.foreign_keys.append(
-    {"fields": ["neighbor_id"], "reference": {"resource": "", "fields":["id"]}}
+    {"fields": ["neighbor_id"], "reference": {"resource": "", "fields": ["id"]}}
 )
-resource.to_yaml("data/countries.resource.yaml")
-#resource.to_json("data/countries.resource.json") """
+resource.to_yaml("data/countries.resource.yaml") # Exportando o schema
 ```
 
 Exibindo os metadados em yaml
@@ -46,9 +42,11 @@ with open('data/countries.resource.json') as paises_json:
     pprint(paises_json.read())
 ```
 
+
 ### Extraindo os dados
 
 ```python script
+# Exibindo os dados de countries.csv ignorando os metadados
 from pprint import pprint
 from frictionless import extract
 
@@ -56,23 +54,33 @@ rows = extract('data/countries.csv')
 pprint(rows)
 ```
 
+Falhas encontrada no arquivo countries.csv:
+- Valores inteiros misturados com valores string;
+- Linhas praticamente vazias
+- Incoerencia no campo neighbor_id ( No lugar do id aparece o nome do país. )
+
 Exibindo os metadados corrigidos
 
 ```python script
+# Extraindo os dados do mesmo arquivo countries.csv atraves do metadados countries.resource.yaml
 from pprint import pprint
 from frictionless import extract, Resource
 
-pasta = 'data'
+# Alterando o campo path do resource countries.resource.yaml para countries.csv
 resource = Resource('data/countries.resource.yaml')
-pprint(resource.extract())
+resource.path = "countries.csv"
+resource.to_yaml('data/countries.resource.yaml')
 
-#rows = extract('data/countries.resource.yaml')
-#pprint(rows)
+# Extraindo os dados com o metadado criado
+rows = extract('data/countries.resource.yaml')
+pprint(rows)
 ```
+
+
 
 ### Validando os dados
 
-Validando os dados diretamente do arquivo CSV
+Validando os dados diretamente do arquivo CSV ( Não colocar dentro do projeto real )
 
 ```python script
 from pprint import pprint
@@ -81,8 +89,6 @@ from frictionless import validate
 report = validate('data/countries.csv')
 pprint(report.flatten(["rowPosition", "fieldPosition", "code"]))
 ```
-
-validando os metadados do arquivo csv
 
 ```python script
 from pprint import pprint

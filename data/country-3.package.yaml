@@ -39,3 +39,4 @@ resources:
 profile: data-package
 title: Countries and their capitals
 description: The data was collected as a research project
+path: country-3.csv
