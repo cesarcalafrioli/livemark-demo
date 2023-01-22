@@ -4,6 +4,11 @@ Descrever os dados, se tratando de frictionless, significa criar metadados para 
 
 Um arquivo no formato CSV sem os metadados carece de informacoes criticas como significado dos campos, tipos de dados, restricoes, relacoes e etc...
 
+Existem 3 tipos de metadados no frictionles:
+-   Resource
+-   Schema
+-   Package
+
 Descrevemos os dados utilizando a funcao describe()
 
 
@@ -32,16 +37,16 @@ with open('data/country-1.csv') as file:
 ```
 
 ```python script
-# Descreve o schema do rquivo "country-1.csv" e o salva no arquivo "country.schema.yaml"
+# Descreve o schema do rquivo "country-1.csv" e o salva no arquivo "country-1.schema.yaml"
 from frictionless import Schema
 
 schema = Schema.describe("data/country-1.csv")
-schema.to_yaml("country.schema.yaml")
+schema.to_yaml("data/country-1.schema.yaml")
 ```
 
 ```python script
 # Exibindo as informacoes do arquivo schema
-with open('country.schema.yaml') as file:
+with open('data/country-1.schema.yaml') as file:
     print(file.read())
 ```
 
@@ -58,17 +63,19 @@ schema.get_field("population").constraints["minimum"] = 0
 schema.foreign_keys.append(
     {"fields": ["neighbor_id"], "reference": {"resource": "", "fields": ["id"]}}
 )
-schema.to_yaml("country-1.schema.yaml")
+schema.to_yaml("data/country-1.schema.yaml")
 ```
 
 ```python script
-with open('country-1.schema.yaml') as file:
+with open('data/country-1.schema.yaml') as file:
     print(file.read())
 ```
 
 ## Descrevendo um resource
 
 Descreve um resource de dados como um arquivo individual ou tabela de dados. A essencia de um Data Resource é um caminho ao arquivo de dados que ele descreve.
+
+O resource prove um conjunto de propriedades mais rico, além de incluir o proprio schema.
 
 ```python script
 with open('data/country-2.csv') as file:
@@ -88,14 +95,15 @@ print(resource.to_yaml())
 from frictionless import Schema, describe
 
 resource = describe("data/country-2.csv")
-resource.dialect.delimiter = ";"
-resource.layout.header_rows = [2]
-resource.schema = Schema("country-1.schema.yaml")
-resource.to_yaml("country-2.resource.yaml")
+resource.path = "country-2.csv" # Atribuindo o caminho correto do arquivo
+resource.dialect.delimiter = ";" # Atribuindo o delimitador para ponto-e-virgula ( ; )
+resource.layout.header_rows = [2] # A coluna começa na linha 2
+resource.schema = Schema("data/country-1.schema.yaml") # Reutilizando o schema criado anteriormente pois os dados possuem a mesma estrutura e significado
+resource.to_yaml("data/country-2.resource.yaml")
 ```
 
 ```python script
-with open('country-2.resource.yaml') as file:
+with open('data/country-2.resource.yaml') as file:
     print(file.read())
 ```
 
@@ -115,7 +123,7 @@ with open('data/capital-3.csv') as file:
     print(file.read())
 ```
 
-Descrevendo os metadados de ambos os arquivos acima:
+Descrevendo o pacote contendo os metadados de ambos os arquivos:
 
 ```python script
 from pprint import pprint
@@ -133,7 +141,9 @@ from frictionless import describe
 package = describe("data/*-3.csv")
 package.title = "Countries and their capitals"
 package.description = "The data was collected as a research project"
+package.get_resource("country-3").path = "country-3.csv"
 package.get_resource("country-3").name = "country"
+package.get_resource("capital-3").path = "capital-3.csv" # É necessário colocar na ordem para ser reconhecido ( ANOTAÇÃO )
 package.get_resource("capital-3").name = "capital"
 package.get_resource("country").schema.foreign_keys.append(
     {"fields": ["capital_id"], "reference": {"resource": "capital", "fields": ["id"]}}
@@ -177,21 +187,19 @@ print(tabulate(resource, headers="keys", tablefmt="rst"))
 from frictionless import extract
 from tabulate import tabulate
 
-data = extract("country-2.resource.yaml")
+data = extract("data/country-2.resource.yaml")
 print(tabulate(data, headers="keys", tablefmt="rst"))
 ```
 
-TESTE
-
 ```python script
-from frictionless import extract, Resource
+""" from frictionless import extract, Resource
 from tabulate import tabulate
 
 resource = Resource("data/country-3.package.yaml")
 resource.path = "country-3.csv"
 resource.to_yaml("data/country-3.package.yaml")
 
-pprint(resource.extract())
+pprint(resource.extract()) """
 ```
 
 ## Inferindo metadados
@@ -237,28 +245,30 @@ pprint(resource.schema)
 ## Transformando metadados
 
 ```python script
+# Transformando as propriedades dos metadados
 from frictionless import Resource
 
-resource = Resource("country-2.resource.yaml")
+resource = Resource("data/country-2.resource.yaml")
 resource.title = "Countries"
 resource.description = "It's a research project"
+#resource.path = "country-2.csv"
 resource.dialect.delimiter = ";"
 resource.layout.header_rows = [2]
-resource.to_yaml("country-2-transformed.resource.yaml")
+resource.to_yaml("data/country-2-transformed.resource.yaml")
 ```
 
 ```python script
+# Adicionando arbitrariamente metadados ao descriptor
 from frictionless import Resource
 
-resource = Resource("country-2.resource.yaml")
+resource = Resource("data/country-2.resource.yaml")
 resource["customKey1"] = "Value1"
 resource["customKey2"] = "Value2"
-resource["path"] = "data/country-2.csv"
-resource.to_yaml("country-2-transformed.resource.yaml")
+resource.to_yaml("data/country-2-transformed.resource.yaml")
 ```
 
 ```python script
-with open('country-2-transformed.resource.yaml') as file:
+with open('data/country-2-transformed.resource.yaml') as file:
     print(file.read())
 ```
 
@@ -270,7 +280,7 @@ Antes de publicar os metadados é recomendado validá-los
 # Tornando um metadado inválido
 from frictionless import Resource
 
-resource = Resource("country.resource.yaml")
+resource = Resource("data/country-2.resource.yaml")
 resource["title"] = 1
 print(resource.metadata_valid)
 print(resource.metadata_errors)
@@ -282,7 +292,7 @@ A função metadata_valid só precisa ser utilizada quando o metadados é altera
 # Fixando o metadado para torná-lo válido
 from frictionless import Resource
 
-resource = Resource("country.resource.yaml")
+resource = Resource("data/country-2.resource.yaml")
 resource["title"] = 'Countries'
 print(resource.metadata_valid)
 ```

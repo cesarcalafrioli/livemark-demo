@@ -1,5 +1,5 @@
 resources:
-  - path: data\capital-3.csv
+  - path: capital-3.csv
     name: capital
     profile: tabular-data-resource
     scheme: file
@@ -12,7 +12,7 @@ resources:
           name: id
         - type: string
           name: name
-  - path: data\country-3.csv
+  - path: country-3.csv
     name: country
     profile: tabular-data-resource
     scheme: file
@@ -39,4 +39,3 @@ resources:
 profile: data-package
 title: Countries and their capitals
 description: The data was collected as a research project
-path: country-3.csv

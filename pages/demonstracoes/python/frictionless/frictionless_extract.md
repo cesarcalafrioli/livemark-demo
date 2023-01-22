@@ -53,6 +53,7 @@ resource.infer()
 
 # Adicionando valor ao schema
 resource.schema.missing_values.append('3') # Interpret 3 as a missing value
+#resource.path="capital-3.csv" TESTEI E NAO FUNCIONOU
 resource.to_yaml('capital-3.resource.yaml')
 ```
 
@@ -63,9 +64,21 @@ with open('capital-3.resource.yaml') as file:
 ```
 
 ```python script
+"""
+A funcao describe atribui automaticamente o caminho relativo do arquivo tabular na propriedade path do arquivo resource.yaml
+Como este arquivo resource.yaml está localizado na pasta data, o caminho 'data/countries.csv' não será reconhecido pois não há uma pasta data dentro da pasta em que o arquivo countries.resource.yaml se encontra. Logo, é necessário alerar a propriedade path no resource para a localizacao correta do arquivo .csv e isso pode ser feito por meio da classe Resource.
+
+Para mais informações sobre a classe resoure acesse o link abaixo:
+https://v4.framework.frictionlessdata.io/docs/guides/framework/resource-guide
+"""
 # Extraindo o resource como descritor
 from frictionless import extract
 from tabulate import tabulate
+
+# Alterando a propriedade path do resource countries.resource.yaml para "countries.csv"
+#resource = Resource('data/countries.resource.yaml')
+#resource.path = "countries.csv"
+#resource.to_yaml('data/countries.resource.yaml')
 
 data = extract('capital-3.resource.yaml')
 print(tabulate(data, headers="keys", tablefmt="rst"))

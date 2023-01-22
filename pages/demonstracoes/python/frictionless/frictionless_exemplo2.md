@@ -23,6 +23,7 @@ resource.schema.get_field("population").type = "integer" # Modifica tipo de dado
 resource.schema.foreign_keys.append(
     {"fields": ["neighbor_id"], "reference": {"resource": "", "fields": ["id"]}}
 )
+resource.path = "countries.csv" # Modificando o caminho exato do arquivo csv
 resource.to_yaml("data/countries.resource.yaml") # Exportando o schema
 ```
 
@@ -33,15 +34,6 @@ from pprint import pprint
 with open('data/countries.resource.yaml') as paises_yaml:
     pprint(paises_yaml.read())
 ```
-
-Exibindo os metadado em JSON
-
-```python script
-from pprint import pprint
-with open('data/countries.resource.json') as paises_json:
-    pprint(paises_json.read())
-```
-
 
 ### Extraindo os dados
 
@@ -62,21 +54,26 @@ Falhas encontrada no arquivo countries.csv:
 Exibindo os metadados corrigidos
 
 ```python script
+"""
+A funcao describe atribui automaticamente o caminho relativo do arquivo tabular na propriedade path do arquivo resource.yaml
+Como este arquivo resource.yaml está localizado na pasta data, o caminho 'data/countries.csv' não será reconhecido pois não há uma pasta data dentro da pasta em que o arquivo countries.resource.yaml se encontra. Logo, é necessário alerar a propriedade path no resource para a localizacao correta do arquivo .csv e isso pode ser feito por meio da classe Resource.
+
+Para mais informações sobre a classe resoure acesse o link abaixo:
+https://v4.framework.frictionlessdata.io/docs/guides/framework/resource-guide
+"""
 # Extraindo os dados do mesmo arquivo countries.csv atraves do metadados countries.resource.yaml
 from pprint import pprint
 from frictionless import extract, Resource
 
-# Alterando o campo path do resource countries.resource.yaml para countries.csv
-resource = Resource('data/countries.resource.yaml')
-resource.path = "countries.csv"
-resource.to_yaml('data/countries.resource.yaml')
+# Alterando a propriedade path do resource countries.resource.yaml para "countries.csv"
+#resource = Resource('data/countries.resource.yaml')
+#resource.path = "countries.csv"
+#resource.to_yaml('data/countries.resource.yaml')
 
 # Extraindo os dados com o metadado criado
 rows = extract('data/countries.resource.yaml')
 pprint(rows)
 ```
-
-
 
 ### Validando os dados
 

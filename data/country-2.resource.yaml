@@ -1,4 +1,4 @@
-path: data/country-2.csv
+path: country-2.csv
 name: country-2
 profile: tabular-data-resource
 scheme: file
@@ -34,5 +34,3 @@ dialect:
 layout:
   headerRows:
     - 2
-customKey1: Value1
-customKey2: Value2
