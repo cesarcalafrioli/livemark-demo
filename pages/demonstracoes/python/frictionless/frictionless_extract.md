@@ -53,13 +53,13 @@ resource.infer()
 
 # Adicionando valor ao schema
 resource.schema.missing_values.append('3') # Interpret 3 as a missing value
-#resource.path="capital-3.csv" TESTEI E NAO FUNCIONOU
-resource.to_yaml('capital-3.resource.yaml')
+resource.path="capital-3.csv"
+resource.to_yaml('data/capital-3.resource.yaml')
 ```
 
 ```python script
 # Visualizando o arquivo capital-3.resource.yaml
-with open('capital-3.resource.yaml') as file:
+with open('data/capital-3.resource.yaml') as file:
     print(file.read())
 ```
 
@@ -75,12 +75,7 @@ https://v4.framework.frictionlessdata.io/docs/guides/framework/resource-guide
 from frictionless import extract
 from tabulate import tabulate
 
-# Alterando a propriedade path do resource countries.resource.yaml para "countries.csv"
-#resource = Resource('data/countries.resource.yaml')
-#resource.path = "countries.csv"
-#resource.to_yaml('data/countries.resource.yaml')
-
-data = extract('capital-3.resource.yaml')
+data = extract('data/capital-3.resource.yaml')
 print(tabulate(data, headers="keys", tablefmt="rst"))
 ```
 

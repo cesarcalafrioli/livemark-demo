@@ -1,4 +1,4 @@
-path: data/capital-3.csv
+path: capital-3.csv
 name: capital-3
 profile: tabular-data-resource
 scheme: file
