@@ -1,34 +1,36 @@
+title: Countries and their capitals
+description: The data was collected as a research project
 resources:
-  - path: capital-3.csv
-    name: capital
-    profile: tabular-data-resource
+  - name: capital
+    type: table
+    path: capital-3.csv
     scheme: file
     format: csv
-    hashing: md5
     encoding: utf-8
+    mediatype: text/csv
     schema:
       fields:
-        - type: integer
-          name: id
-        - type: string
-          name: name
-  - path: country-3.csv
-    name: country
-    profile: tabular-data-resource
+        - name: id
+          type: integer
+        - name: name
+          type: string
+  - name: country
+    type: table
+    path: capital-3.csv
     scheme: file
     format: csv
-    hashing: md5
     encoding: utf-8
+    mediatype: text/csv
     schema:
       fields:
-        - type: integer
-          name: id
-        - type: integer
-          name: capital_id
-        - type: string
-          name: name
-        - type: integer
-          name: population
+        - name: id
+          type: integer
+        - name: capital_id
+          type: integer
+        - name: name
+          type: string
+        - name: population
+          type: integer
       foreignKeys:
         - fields:
             - capital_id
@@ -36,6 +38,3 @@ resources:
             resource: capital
             fields:
               - id
-profile: data-package
-title: Countries and their capitals
-description: The data was collected as a research project

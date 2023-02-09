@@ -1,0 +1,3 @@
+tasks:
+  - source: data/capital-valid.csv
+  - source: data/capital.resource.yaml

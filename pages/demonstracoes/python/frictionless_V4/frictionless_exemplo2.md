@@ -122,7 +122,7 @@ def clean(resource):
                     row["population"] = 67
                 if row["name"] == "Germany":
                     row["neighbor_id"] = 2
-                if row["name"]:
+                if row["name"]: # Retorna linhas que estão preenchidas. Linhas vazias não são retornadas
                     yield row
 
     # Meta

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="None">
-<meta name="keywords" content="frictionless,-,basico">
+<meta name="description" content="Para atualizar a versÃ£o do frictionless, rode o seguinte comando:">
+<meta name="keywords" content="frictionless,v5,-,exemplo,inicial">
 <link rel="icon" href="../../../../assets/github-logo.png">
 <title>César Calafrioli - GitHub | Menu</title>
 <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
@@ -1814,39 +1814,41 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         </li>
               </ul>
           </li>
-        <li class="primary group active">
+        <li class="primary group ">
       <a href="" class="primary">
-        Demo - Frictionless
+        Demo - Frictionless V4
       </a>
             <ul class="secondary">
-                <li class="secondary active">
-          <a href="frictionless_basico.html" class="secondary">
+                <li class="secondary ">
+          <a href="../frictionless_V4/frictionless_basico.html" class="secondary">
             Frictionless - Basico
           </a>
         </li>
                 <li class="secondary ">
-          <a href="frictionless_exemplo1.html" class="secondary">
+          <a href="../frictionless_V4/frictionless_exemplo1.html" class="secondary">
             Frictionless - Exemplo 1
           </a>
         </li>
-                <li class="secondary ">
-          <a href="frictionless_exemplo2.html" class="secondary">
-            Frictionless - Exemplo 2
+              </ul>
+          </li>
+        <li class="primary group active">
+      <a href="" class="primary">
+        Demo - Frictionless V5
+      </a>
+            <ul class="secondary">
+                <li class="secondary active">
+          <a href="frictionless_v5_exemplo-inicial.html" class="secondary">
+            Frictionless - Início
           </a>
         </li>
                 <li class="secondary ">
-          <a href="frictionless_describe.html" class="secondary">
+          <a href="frictionless_v5_basico.html" class="secondary">
+            Frictionless - Básico
+          </a>
+        </li>
+                <li class="secondary ">
+          <a href="frictionless_v5_describe.html" class="secondary">
             Frictionless - Função Describe
-          </a>
-        </li>
-                <li class="secondary ">
-          <a href="frictionless_extract.html" class="secondary">
-            Frictionless - Função Extract
-          </a>
-        </li>
-                <li class="secondary ">
-          <a href="frictionless_resource.html" class="secondary">
-            Frictionless - (GUIA) Resource
           </a>
         </li>
               </ul>
@@ -1887,39 +1889,155 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         </li>
               </ul>
           </li>
-        <li class="primary group ">
-      <a href="" class="primary">
-        Demo - Yaml
-      </a>
-            <ul class="secondary">
-                <li class="secondary ">
-          <a href="../../yaml/yaml.html" class="secondary">
-            Yaml
-          </a>
-        </li>
-              </ul>
-          </li>
       </ul>
 </div>
 </div>
 <div id="livemark-main">
 <div id="livemark-notes">
-      <a href="https://github.com/cesarcalafrioli/livemark-demo/edit/main/pages/demonstracoes/python/frictionless/frictionless_basico.md" target="_blank">Edit page </a> in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-    (2023-01-08 16:21)
+      <a href="https://github.com/cesarcalafrioli/livemark-demo/edit/main/pages/demonstracoes/python/frictionless_V5/frictionless_v5_exemplo-inicial.md" target="_blank">Edit page </a> in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
+    (2023-01-30 14:29)
 </div>
 
-<h1>FRICTIONLESS - BASICO</h1>
+<h1>Frictionless V5 - Exemplo inicial</h1>
+<div><pre><code class="language-bash">frictionless validate data/invalid.csv
+</code></pre>
+
+<pre><code class="language-markup"># -------
+# invalid: data/invalid.csv
+# -------
+
+## Summary
+
++-----------------+------------------+
+| Name            | Value            |
++=================+==================+
+| File Place      | data/invalid.csv |
++-----------------+------------------+
+| File Size       | 50 Bytes         |
++-----------------+------------------+
+| Total Time      | 0.125 Seconds    |
++-----------------+------------------+
+| Rows Checked    | 4                |
++-----------------+------------------+
+| Total Errors    | 8                |
++-----------------+------------------+
+| Blank Label     | 1                |
++-----------------+------------------+
+| Duplicate Label | 1                |
++-----------------+------------------+
+| Missing Cell    | 4                |
++-----------------+------------------+
+| Blank Row       | 1                |
++-----------------+------------------+
+| Extra Cell      | 1                |
++-----------------+------------------+
+
+## Errors
+
++-------+---------+-----------------+--------------------------------------------------------------------------------------+
+| Row   | Field   | Type            | Message                                                                              |
++=======+=========+=================+======================================================================================+
+|       | 3       | blank-label     | Label in the header in field at position "3" is blank                                |
++-------+---------+-----------------+--------------------------------------------------------------------------------------+
+|       | 4       | duplicate-label | Label "name" in the header at position "4" is duplicated to a label: at position "2" |
++-------+---------+-----------------+--------------------------------------------------------------------------------------+
+| 2     | 3       | missing-cell    | Row at position "2" has a missing cell in field "field3" at position "3"             |
++-------+---------+-----------------+--------------------------------------------------------------------------------------+
+| 2     | 4       | missing-cell    | Row at position "2" has a missing cell in field "name2" at position "4"              |
++-------+---------+-----------------+--------------------------------------------------------------------------------------+
+| 3     | 3       | missing-cell    | Row at position "3" has a missing cell in field "field3" at position "3"             |
++-------+---------+-----------------+--------------------------------------------------------------------------------------+
+| 3     | 4       | missing-cell    | Row at position "3" has a missing cell in field "name2" at position "4"              |
++-------+---------+-----------------+--------------------------------------------------------------------------------------+
+| 4     |         | blank-row       | Row at position "4" is completely blank                                              |
++-------+---------+-----------------+--------------------------------------------------------------------------------------+
+| 5     | 5       | extra-cell      | Row at position "5" has an extra value in field at position "5"                      |
++-------+---------+-----------------+--------------------------------------------------------------------------------------+</code></pre>
+</div><h1>AtualizaÃ§Ã£o de versÃ£o</h1>
+<p>Para atualizar a versÃ£o do frictionless, rode o seguinte comando:</p>
+<p>'''
+pip install --upgrade frictionless
+'''</p>
+<h1>Uso</h1>
+<p>ExtraÃ§Ã£o de dados - exemplo inicial</p>
+<div><pre><code class="language-python">from frictionless import extract
+
+rows = extract('data/table.csv')
+print(rows)
+
+</code></pre>
+
+<pre><code class="language-markup">[{'id': 1, 'name': 'english'}, {'id': 2, 'name': '中国人'}]</code></pre>
+</div><h1>Describe - exemplo inicial</h1>
+<p>Imprindo as informaÃ§Ãµes o arquivo table.csv</p>
+<div><pre><code class="language-python">with open('data/invalid.csv') as file:
+    print(file.read())
+</code></pre>
+
+<pre><code class="language-markup">id,name,,name
+1,english
+1,english
+
+2,german,1,2,3</code></pre>
+</div><p>Inferindo os metadados diretamente do dado tabular:</p>
+<div><pre><code class="language-python">from frictionless import describe
+from pprint import pprint
+
+resource = describe('data/invalid.csv')
+pprint(resource)
+</code></pre>
+
+<pre><code class="language-markup">{'name': 'invalid',
+ 'type': 'table',
+ 'path': 'data/invalid.csv',
+ 'scheme': 'file',
+ 'format': 'csv',
+ 'encoding': 'utf-8',
+ 'mediatype': 'text/csv',
+ 'schema': {'fields': [{'name': 'id', 'type': 'integer'},
+                       {'name': 'name', 'type': 'string'},
+                       {'name': 'field3', 'type': 'integer'},
+                       {'name': 'name2', 'type': 'integer'}]}}</code></pre>
+</div><p>Lendo os dados tabulares normalizados do arquivo fonte invalid.csv:</p>
+<div><pre><code class="language-python">from pprint import pprint
+from frictionless import extract
+
+rows = extract('data/invalid.csv')
+pprint(rows)
+</code></pre>
+
+<pre><code class="language-markup">[{'id': 1, 'name': 'english', 'field3': None, 'name2': None},
+ {'id': 1, 'name': 'english', 'field3': None, 'name2': None},
+ {'id': None, 'name': None, 'field3': None, 'name2': None},
+ {'id': 2, 'name': 'german', 'field3': 1, 'name2': 2}]</code></pre>
+</div><p>Gerando o relatÃ³rio de validaÃ§Ã£o que nos ajudarÃ¡ a identificar e corrigir todos os erros presentes nos dados tabulares.</p>
+<div><pre><code class="language-python">from pprint import pprint
+from frictionless import validate
+
+report = validate('data/invalid.csv')
+pprint(report.flatten(["rowNumber", "fieldNumber", "type"]))
+</code></pre>
+
+<pre><code class="language-markup">[[None, 3, 'blank-label'],
+ [None, 4, 'duplicate-label'],
+ [2, 3, 'missing-cell'],
+ [2, 4, 'missing-cell'],
+ [3, 3, 'missing-cell'],
+ [3, 4, 'missing-cell'],
+ [4, None, 'blank-row'],
+ [5, 5, 'extra-cell']]</code></pre>
+</div>
 
 <div id="livemark-signs">
   <div>
         <div class="next">
-      <a href="frictionless_exemplo1.html">
-        FRICTIONLESS - EXEMPLO 1 »
+      <a href="frictionless_v5_basico.html">
+        Frictionless - Basico »
       </a>
     </div>
             <div class="prev">
-      <a href="../python_geral.html">
-        « PYTHON - GERAL
+      <a href="../frictionless_V4/frictionless_exemplo1.html">
+        « FRICTIONLESS - EXEMPLO 1
       </a>
     </div>
       </div>
@@ -2300,7 +2418,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Sobre mim',
           'path': 'pages/sobre',
           'relpath': '../../../sobre',
-          'text': "# Sobre mim d",
+          'text': "# Sobre mim EM CONSTRU\u00c3\u2021\u00c3\u0192O",
       },
           'pages/repositorios': {
           'name': 'Repositorios',
@@ -2320,41 +2438,35 @@ document.addEventListener("DOMContentLoaded", function () {
           'relpath': '../python_geral',
           'text': "# PYTHON - GERAL Essa pagina demonstra a execu\u00c3\u00a7\u00c3\u00a3o dos scripts python dentro dos documentos markdown utilizando as tasks para armazenar o script e depois executa-lo por meio do comando \"livemark run\". Segue o exemplo abaixo: ```` ```python task id=example print(\u0027It is a task\u0027) ``` ```` ```` ```bash script livemark run example ``` ```` ```python script for number in range(1, 6): print(f\u0027Hello World #{number}!\u0027) ``` ```python task id=data-transform print(\u0027Data Transform\u0027) ``` ```python task id=data-load print(\u0027Data Load\u0027) ``` ```python task id=test-code print(\u0027Test Code\u0027) ``` ```python task id=example print(\u0027It is a task\u0027) ``` OUTRO TESTE ```bash script python scripts/teste.py ```",
       },
-          'pages/demonstracoes/python/frictionless/frictionless_basico': {
+          'pages/demonstracoes/python/frictionless_V4/frictionless_basico': {
           'name': 'FRICTIONLESS - BASICO',
-          'path': 'pages/demonstracoes/python/frictionless/frictionless_basico',
-          'relpath': 'frictionless_basico',
+          'path': 'pages/demonstracoes/python/frictionless_V4/frictionless_basico',
+          'relpath': '../frictionless_V4/frictionless_basico',
           'text': "# FRICTIONLESS - BASICO",
       },
-          'pages/demonstracoes/python/frictionless/frictionless_exemplo1': {
+          'pages/demonstracoes/python/frictionless_V4/frictionless_exemplo1': {
           'name': 'FRICTIONLESS - EXEMPLO 1',
-          'path': 'pages/demonstracoes/python/frictionless/frictionless_exemplo1',
-          'relpath': 'frictionless_exemplo1',
+          'path': 'pages/demonstracoes/python/frictionless_V4/frictionless_exemplo1',
+          'relpath': '../frictionless_V4/frictionless_exemplo1',
           'text': "# FRICTIONLESS - EXEMPLO 1 Descrevendo os dados inv\u00c3\u00a1lidos do arquivo invalid.csv ### Descrevendo o arquivo Descrever o arquivo, na linguagem do Frictionless, significa criar os metadados para os arquivos de dados. A criacao de metadados e feita atraves da funcao describe. ```python task id=data-describe from pprint import pprint from frictionless import describe resource = describe(\u0027data/invalid.csv\u0027) pprint(resource) ``` Executando o script acima no bash ```bash script livemark run data-describe ``` ### Extraindo o arquivo Extrair consiste em ler os dados tabulares do arquivo fonte CSV. ```python task id=data-extract from pprint import pprint from frictionless import extract rows = extract(\u0027data/invalid.csv\u0027) pprint(rows) ``` ```bash script livemark run data-extract ``` ### Validando o arquivo Validamos o arquivo csv atraves da funcao validate. Essa funcao visa identificar e fixar todos os erros presentes nos dados tabulares. ```python task id=data-validate from pprint import pprint from frictionless import validate report = validate(\u0027data/invalid.csv\u0027) pprint(report.flatten([\"rowPosition\", \"fieldPosition\", \"code\"])) ``` ```bash script livemark run data-validate ```",
       },
-          'pages/demonstracoes/python/frictionless/frictionless_exemplo2': {
-          'name': 'FRICTIONLESS - EXEMPLO 2',
-          'path': 'pages/demonstracoes/python/frictionless/frictionless_exemplo2',
-          'relpath': 'frictionless_exemplo2',
-          'text': "# FRICTIONLESS - EXEMPLO 2 Transformando dados com os metadados gerados pelo arquivo countries.csv Lendo o arquivo csv no formato original ```python script with open(\u0027data/countries.csv\u0027) as paises: print(paises.read()) ``` ### Criando os metadados ```python script from pprint import pprint from frictionless import describe, Detector # Insere novos metadados no schema e corrige os dados detector = Detector(field_missing_values=[\"\",\"n/a\"]) # Informa quais os valores que devem ser reconhecidos como \"vazios\" resource = describe(\u0027data/countries.csv\u0027, detector=detector) # Aplica substitui\u00c3\u00a7\u00c3\u00a3o do arquivo countries.csv resource.schema.get_field(\"neighbor_id\").type = \"integer\" # Modifica tipo de dado da coluna neighbor_id para ser do tipo inteiro resource.schema.get_field(\"population\").type = \"integer\" # Modifica tipo de dado da coluna population para ser do tipo inteiro resource.schema.foreign_keys.append( {\"fields\": [\"neighbor_id\"], \"reference\": {\"resource\": \"\", \"fields\": [\"id\"]}} ) resource.path = \"countries.csv\" # Modificando o caminho exato do arquivo csv resource.to_yaml(\"data/countries.resource.yaml\") # Exportando o schema ``` Exibindo os metadados em yaml ```python script from pprint import pprint with open(\u0027data/countries.resource.yaml\u0027) as paises_yaml: pprint(paises_yaml.read()) ``` ### Extraindo os dados ```python script # Exibindo os dados de countries.csv ignorando os metadados from pprint import pprint from frictionless import extract rows = extract(\u0027data/countries.csv\u0027) pprint(rows) ``` Falhas encontrada no arquivo countries.csv: - Valores inteiros misturados com valores string; - Linhas praticamente vazias - Incoerencia no campo neighbor_id ( No lugar do id aparece o nome do pa\u00c3\u00ads. ) Exibindo os metadados corrigidos ```python script \"\"\" A funcao describe atribui automaticamente o caminho relativo do arquivo tabular na propriedade path do arquivo resource.yaml Como este arquivo resource.yaml est\u00c3\u00a1 localizado na pasta data, o caminho \u0027data/countries.csv\u0027 n\u00c3\u00a3o ser\u00c3\u00a1 reconhecido pois n\u00c3\u00a3o h\u00c3\u00a1 uma pasta data dentro da pasta em que o arquivo countries.resource.yaml se encontra. Logo, \u00c3\u00a9 necess\u00c3\u00a1rio alerar a propriedade path no resource para a localizacao correta do arquivo .csv e isso pode ser feito por meio da classe Resource. Para mais informa\u00c3\u00a7\u00c3\u00b5es sobre a classe resoure acesse o link abaixo: https://v4.framework.frictionlessdata.io/docs/guides/framework/resource-guide \"\"\" # Extraindo os dados do mesmo arquivo countries.csv atraves do metadados countries.resource.yaml from pprint import pprint from frictionless import extract, Resource # Alterando a propriedade path do resource countries.resource.yaml para \"countries.csv\" #resource = Resource(\u0027data/countries.resource.yaml\u0027) #resource.path = \"countries.csv\" #resource.to_yaml(\u0027data/countries.resource.yaml\u0027) # Extraindo os dados com o metadado criado rows = extract(\u0027data/countries.resource.yaml\u0027) pprint(rows) ``` ### Validando os dados Validando os dados diretamente do arquivo CSV ( N\u00c3\u00a3o colocar dentro do projeto real ) ```python script from pprint import pprint from frictionless import validate report = validate(\u0027data/countries.csv\u0027) pprint(report.flatten([\"rowPosition\", \"fieldPosition\", \"code\"])) ``` ```python script from pprint import pprint from frictionless import validate report = validate(\u0027data/countries.resource.yaml\u0027) pprint(report.flatten([\"rowPosition\", \"fieldPosition\", \"code\"])) ``` ### Transformando os dados Fixando o metadados que ser\u00c3\u00a1 utilizado para fixar os problemas dos tipos de dados automaticamente Antes da transformacao ```python script with open(\u0027data/countries.csv\u0027) as file: print(file.read()) ``` Transformando os dados ```python script from frictionless import Resource, describe, transform, steps def clean(resource): current = resource.to_copy() # Data def data(): with current: for row in current.row_stream: if row[\"name\"] == \"France\": row[\"population\"] = 67 if row[\"name\"] == \"Germany\": row[\"neighbor_id\"] = 2 if row[\"name\"]: yield row # Meta resource.schema = Resource(\"data/countries.resource.yaml\").schema resource.data = data source = describe(\"data/countries.csv\") target = transform( source, steps=[ clean, steps.table_write(path=\"data/countries_transformed.csv\"), ], ) ``` Depois da transformacao ```python script with open(\u0027data/countries_transformed.csv\u0027) as file: print(file.read()) ``` Acima temos o arquivo transformado com as informa\u00c3\u00a7\u00c3\u00a3o devidamente preenchidas. O script abaixo lista os arquivos contendo a palavra \u0027countries\u0027 dentro do diret\u00c3\u00b3rio \u0027data\u0027: ```python script import os files = [] # Lista vazia aonde ser\u00c3\u00a3o armazenados os items desejados ( No nosso caso s\u00c3\u00a3o os arquivos que contenham a palavra \"countries\" ) # Para cada arquivo listado dentro do diret\u00c3\u00b3rio \"data\", \u00c3\u00a9 verificado se \u00c3\u00a9 o arquivo desejado ( arquivos que contenham a palavra \"countries\" ). Caso afirmativo, este ser\u00c3\u00a1 adicionado \u00c3 lista \"files\". for item in os.listdir(path=\u0027.\\\\data\u0027): # Se o item, al\u00c3\u00a9m de ser um arquivo, for o arquivo desejado, este ser\u00c3\u00a1 adicionado \u00c3 lista files if os.path.isfile(\u0027.\\\\data\\\\\u0027+item) and item.startswith(\u0027countries\u0027): # Adicionando o arquivo \u00c3 lista \"files\" files.append(item) # Imprime os arquivos desejados que foram encontrados print(files) ``` TESTE 2 ```python script files = [f for f in os.listdir(path=\u0027.\\\\data\u0027) if os.path.isfile(\u0027.\\\\data\\\\\u0027+f) and f.startswith(\u0027countries\u0027)] print(files) files = [f for f in os.listdir(\u0027.\u0027) if os.path.isfile(f) and f.startswith(\u0027countries\u0027)] print(files)",
+          'pages/demonstracoes/python/frictionless_V5/frictionless_v5_exemplo-inicial': {
+          'name': 'Frictionless V5 - Exemplo inicial',
+          'path': 'pages/demonstracoes/python/frictionless_V5/frictionless_v5_exemplo-inicial',
+          'relpath': 'frictionless_v5_exemplo-inicial',
+          'text': "# Frictionless V5 - Exemplo inicial ```bash script frictionless validate data/invalid.csv ``` # Atualiza\u00c3\u00a7\u00c3\u00a3o de vers\u00c3\u00a3o Para atualizar a vers\u00c3\u00a3o do frictionless, rode o seguinte comando: \u0027\u0027\u0027 pip install --upgrade frictionless \u0027\u0027\u0027 # Uso Extra\u00c3\u00a7\u00c3\u00a3o de dados - exemplo inicial ```python script from frictionless import extract rows = extract(\u0027data/table.csv\u0027) print(rows) ``` # Describe - exemplo inicial Imprindo as informa\u00c3\u00a7\u00c3\u00b5es o arquivo table.csv ```python script with open(\u0027data/invalid.csv\u0027) as file: print(file.read()) ``` Inferindo os metadados diretamente do dado tabular: ```python script from frictionless import describe from pprint import pprint resource = describe(\u0027data/invalid.csv\u0027) pprint(resource) ``` Lendo os dados tabulares normalizados do arquivo fonte invalid.csv: ```python script from pprint import pprint from frictionless import extract rows = extract(\u0027data/invalid.csv\u0027) pprint(rows) ``` Gerando o relat\u00c3\u00b3rio de valida\u00c3\u00a7\u00c3\u00a3o que nos ajudar\u00c3\u00a1 a identificar e corrigir todos os erros presentes nos dados tabulares. ```python script from pprint import pprint from frictionless import validate report = validate(\u0027data/invalid.csv\u0027) pprint(report.flatten([\"rowNumber\", \"fieldNumber\", \"type\"])) ```",
       },
-          'pages/demonstracoes/python/frictionless/frictionless_describe': {
-          'name': 'FRICTIONLESS - DESCRIBE',
-          'path': 'pages/demonstracoes/python/frictionless/frictionless_describe',
-          'relpath': 'frictionless_describe',
-          'text': "# FRICTIONLESS - DESCRIBE Descrever os dados, se tratando de frictionless, significa criar metadados para seus arquivos de dados. Por si so, os arquivos de dados nao possuem informacoes adicionais que ajudem a compreender os dados. Um arquivo no formato CSV sem os metadados carece de informacoes criticas como significado dos campos, tipos de dados, restricoes, relacoes e etc... Existem 3 tipos de metadados no frictionles: - Resource - Schema - Package Descrevemos os dados utilizando a funcao describe() ```python script # Descrevendo o arquivo \"table.csv\" from frictionless import describe package = describe(\"data/table.csv\", type=\"package\") print(package.to_yaml()) ``` ## Descrevendo um schema Fornece um \"schema\" para dados tabulares. Equivale ao schema de banco de dados. A informacao do schema inclui: - Tipos de dados esperados para cada valor em uma coluna ( \"String\", \"number\", \"date\", etc ); - Restricoes em cada valor ( Ex: \"Determinada string permite ate 10 caracteres\"); - Formato esperado de dados ( Ex: \"Determinado campo deve conter apenas strings e estar em forma de um endereco de email.\") Os schemas de tabelas podem tambem especificar relacoes entre tabelas ```python script # Exibe as informacoes do arquivo \"country-1.csv\" with open(\u0027data/country-1.csv\u0027) as file: print(file.read()) ``` ```python script # Descreve o schema do rquivo \"country-1.csv\" e o salva no arquivo \"country-1.schema.yaml\" from frictionless import Schema schema = Schema.describe(\"data/country-1.csv\") schema.to_yaml(\"data/country-1.schema.yaml\") ``` ```python script # Exibindo as informacoes do arquivo schema with open(\u0027data/country-1.schema.yaml\u0027) as file: print(file.read()) ``` ```python script from frictionless import schema schema = Schema.describe(\"data/country-1.csv\") schema.get_field(\"id\").title = \"Identifier\" schema.get_field(\"neighbor_id\").title = \"Identifier of the neighbor\" schema.get_field(\"name\").title = \"Name of the country\" schema.get_field(\"population\").title = \"Population\" schema.get_field(\"population\").description = \"According to the year 2020\u0027s data\" schema.get_field(\"population\").constraints[\"minimum\"] = 0 schema.foreign_keys.append( {\"fields\": [\"neighbor_id\"], \"reference\": {\"resource\": \"\", \"fields\": [\"id\"]}} ) schema.to_yaml(\"data/country-1.schema.yaml\") ``` ```python script with open(\u0027data/country-1.schema.yaml\u0027) as file: print(file.read()) ``` ## Descrevendo um resource Descreve um resource de dados como um arquivo individual ou tabela de dados. A essencia de um Data Resource \u00c3\u00a9 um caminho ao arquivo de dados que ele descreve. O resource prove um conjunto de propriedades mais rico, al\u00c3\u00a9m de incluir o proprio schema. ```python script with open(\u0027data/country-2.csv\u0027) as file: print(file.read()) ``` Descrevendo o table resource: ```python script from frictionless import describe resource = describe(\u0027data/country-2.csv\u0027) print(resource.to_yaml()) ``` ```python script from frictionless import Schema, describe resource = describe(\"data/country-2.csv\") resource.path = \"country-2.csv\" # Atribuindo o caminho correto do arquivo resource.dialect.delimiter = \";\" # Atribuindo o delimitador para ponto-e-virgula ( ; ) resource.layout.header_rows = [2] # A coluna come\u00c3\u00a7a na linha 2 resource.schema = Schema(\"data/country-1.schema.yaml\") # Reutilizando o schema criado anteriormente pois os dados possuem a mesma estrutura e significado resource.to_yaml(\"data/country-2.resource.yaml\") ``` ```python script with open(\u0027data/country-2.resource.yaml\u0027) as file: print(file.read()) ``` ## Descrevendo um package Exibindo as informa\u00c3\u00a7\u00c3\u00b5es do arquivo \"country-3.csv\": ```python script with open(\u0027data/country-3.csv\u0027) as file: print(file.read()) ``` Exibindo as informa\u00c3\u00a7\u00c3\u00b5es do arquivo \"capital-3.csv\": ```python script with open(\u0027data/capital-3.csv\u0027) as file: print(file.read()) ``` Descrevendo o pacote contendo os metadados de ambos os arquivos: ```python script from pprint import pprint from frictionless import describe package = describe(\"data/*-3.csv\") print(package.to_yaml()) ``` Adicionando informa\u00c3\u00a7\u00c3\u00b5es adicionais: ```python script from frictionless import describe package = describe(\"data/*-3.csv\") package.title = \"Countries and their capitals\" package.description = \"The data was collected as a research project\" package.get_resource(\"country-3\").path = \"country-3.csv\" package.get_resource(\"country-3\").name = \"country\" package.get_resource(\"capital-3\").path = \"capital-3.csv\" # \u00c3\u2030 necess\u00c3\u00a1rio colocar na ordem para ser reconhecido ( ANOTA\u00c3\u2021\u00c3\u0192O ) package.get_resource(\"capital-3\").name = \"capital\" package.get_resource(\"country\").schema.foreign_keys.append( {\"fields\": [\"capital_id\"], \"reference\": {\"resource\": \"capital\", \"fields\": [\"id\"]}} ) package.to_yaml(\"data/country-3.package.yaml\") ``` Exibindo as informa\u00c3\u00a7\u00c3\u00b5es do pacote de dados: ```python script with open(\u0027data/country-3.package.yaml\u0027) as file: print(file.read()) ``` ## Importancia dos metadados Exibindo dados do arquivo \"country-2.csv\": ```python script with open(\u0027data/country-2.csv\u0027) as file: print(file.read()) ``` Descrevendo os metadados do arquivo \"country-2.csv\" ```python script from frictionless import describe resource = describe(\"data/country-2.csv\") print(resource.to_yaml()) ``` ```python script from frictionless import extract from tabulate import tabulate resource = extract(\"data/country-2.csv\") print(tabulate(resource, headers=\"keys\", tablefmt=\"rst\")) ``` ```python script from frictionless import extract from tabulate import tabulate data = extract(\"data/country-2.resource.yaml\") print(tabulate(data, headers=\"keys\", tablefmt=\"rst\")) ``` ```python script \"\"\" from frictionless import extract, Resource from tabulate import tabulate resource = Resource(\"data/country-3.package.yaml\") resource.path = \"country-3.csv\" resource.to_yaml(\"data/country-3.package.yaml\") pprint(resource.extract()) \"\"\" ``` ## Inferindo metadados ```python script from pprint import pprint from frictionless import Resource resource = Resource(\"data/country-1.csv\") pprint(resource) ``` ```python script from pprint import pprint from frictionless import Resource resource = Resource(\"data/country-1.csv\") resource.infer(stats=True) pprint(resource) ``` ## Expandindo os metadados ```python script from pprint import pprint from frictionless import describe resource = describe(\"data/country-1.csv\") pprint(resource.schema) ``` Revelando metadados impl\u00c3\u00adcitos com a fun\u00c3\u00a7\u00c3\u00a3o expand() ```python script from pprint import pprint from frictionless import describe resource = describe(\"data/country-1.csv\") resource.schema.expand() pprint(resource.schema) ``` ## Transformando metadados ```python script # Transformando as propriedades dos metadados from frictionless import Resource resource = Resource(\"data/country-2.resource.yaml\") resource.title = \"Countries\" resource.description = \"It\u0027s a research project\" #resource.path = \"country-2.csv\" resource.dialect.delimiter = \";\" resource.layout.header_rows = [2] resource.to_yaml(\"data/country-2-transformed.resource.yaml\") ``` ```python script # Adicionando arbitrariamente metadados ao descriptor from frictionless import Resource resource = Resource(\"data/country-2.resource.yaml\") resource[\"customKey1\"] = \"Value1\" resource[\"customKey2\"] = \"Value2\" resource.to_yaml(\"data/country-2-transformed.resource.yaml\") ``` ```python script with open(\u0027data/country-2-transformed.resource.yaml\u0027) as file: print(file.read()) ``` ## Validating metadados Antes de publicar os metadados \u00c3\u00a9 recomendado valid\u00c3\u00a1-los ```python script # Tornando um metadado inv\u00c3\u00a1lido from frictionless import Resource resource = Resource(\"data/country-2.resource.yaml\") resource[\"title\"] = 1 print(resource.metadata_valid) print(resource.metadata_errors) ``` A fun\u00c3\u00a7\u00c3\u00a3o metadata_valid s\u00c3\u00b3 precisa ser utilizada quando o metadados \u00c3\u00a9 alterado manualmente. Certas fun\u00c3\u00a7\u00c3\u00b5es do frictionless validam os metadados por si s\u00c3\u00b3. ```python script # Fixando o metadado para torn\u00c3\u00a1-lo v\u00c3\u00a1lido from frictionless import Resource resource = Resource(\"data/country-2.resource.yaml\") resource[\"title\"] = \u0027Countries\u0027 print(resource.metadata_valid) ```",
+          'pages/demonstracoes/python/frictionless_V5/frictionless_v5_basico': {
+          'name': 'Frictionless - Basico',
+          'path': 'pages/demonstracoes/python/frictionless_V5/frictionless_v5_basico',
+          'relpath': 'frictionless_v5_basico',
+          'text': "# Frictionless - Basico ```python script with open(\u0027data/countries.csv\u0027) as file: print(file.read()) ``` ## Descrevendo dados ```python script from pprint import pprint from frictionless import describe resource = describe(\u0027data/countries.csv\u0027) pprint(resource) ``` Atualizando os metadados e salvando-os no disco: ```python script from frictionless import Detector, describe # Usa o m\u00c3\u00a9todo Detector com o argumento field missing_values p/determinar valores ausentes detector = Detector(field_missing_values=[\"\",\"n/a\"]) # O m\u00c3\u00a9todo detector como argumento no describe vai reconhecer os valores ausentes resource = describe(\"data/countries.csv\", detector=detector) # Substitui\u00c3\u00a7\u00c3\u00a3o do tipo de dados do campo \"neighbor_id\" de string para int resource.schema.get_field(\"neighbor_id\").type = \"integer\" # Relaciona o campo \"neighbor_id\" com a pr\u00c3\u00b3pria tabela dizendo que ele faz referencia a sim pr\u00c3\u00b3pria resource.schema.foreign_keys.append( {\"fields\": [\"neighbor_id\"], \"reference\": {\"resource\": \"\", \"fields\": [\"id\"]}} ) # Altera o caminho do yaml resource.path = \"countries.csv\" resource.to_yaml(\"data/countries.resource.yaml\") ``` Exibindo as informacoes do metadado criado ```python script with open(\u0027data/countries.resource.yaml\u0027) as file: print(file.read()) ``` ## Extraindo os dados Extraindo as informacoes dos dados sem levar em conta o metadado que foi criado: ```python script from pprint import pprint from frictionless import extract rows = extract(\u0027data/countries.csv\u0027) pprint(rows) ``` Extraindo os dados corrigidos atraves do arquivo yaml ```python script from pprint import pprint from frictionless import extract rows = extract(\u0027data/countries.resource.yaml\u0027) pprint(rows) ``` ## Validando os dados Validando o arquivo csv ```python script from pprint import pprint from frictionless import validate report = validate(\u0027data/countries.csv\u0027) pprint(report.flatten([\"rowNumber\", \"fieldNumber\", \"type\"])) ``` Validando o arquivo yaml ```python script from pprint import pprint from frictionless import validate report = validate(\u0027data/countries.resource.yaml\u0027) pprint(report.flatten([\"rowNumber\", \"fieldNumber\", \"type\"])) ``` ## Transformando os dados ```python script from pprint import pprint from frictionless import Resource, Pipeline, describe, transform, steps # Pipeline parece ser uma novidade da vers\u00c3\u00a3o 5 - ANALIZAR A DOC pipeline = Pipeline( steps = [ # Corrige as informa\u00c3\u00a7\u00c3\u00b5es dos campos. steps.cell_replace(field_name = \u0027neighbor_id\u0027, pattern=\u002722\u0027, replace=\u00272\u0027), steps.cell_replace(field_name = \u0027population\u0027, pattern=\u0027n/a\u0027, replace=\u002767\u0027), # Filtrando ( comentar depois ) steps.row_filter(formula=\u0027population\u0027), # Atribuindo o tipo de dados para a coluna steps.field_update(name=\u0027neighbor_id\u0027, descriptor={\"type\": \"integer\"}), # Criando a normaliza\u00c3\u00a7\u00c3\u00a3o steps.table_normalize(), # Criando um arquivo csv com as informa\u00c3\u00a7oes corrigidas steps.table_write(path=\"data/countries-cleaned.csv\"), ]) source = Resource(\"data/countries.csv\") target = source.transform(pipeline) pprint(target.read_rows()) ``` Mostra as informa\u00c3\u00a7\u00c3\u00b5es do arquivo corrigido ```python script with open(\u0027data/countries-cleaned.csv\u0027) as file: print(file.read()) ``` Listando o arquivo ```python script import os files = [f for f in os.listdir(\u0027.\\\\data\u0027) if os.path.isfile(\u0027.\\\\data\\\\\u0027+f) and f.startswith(\u0027countries-cleaned\u0027)] print(files) ``` ```python script from pprint import pprint from frictionless import extract rows = extract(\u0027data/countries.resource.yaml\u0027) pprint(rows) ``` ## Validando os dados Validando os dados do arquivo tabular: ```python script from pprint import pprint from frictionless import validate report = validate(\"data/countries.csv\") pprint(report.flatten([\"rowNumber\", \"fieldNumber\", \"type\"])) ``` Validando os metadados do arquivo tabular: ```python script from pprint import pprint from frictionless import validate report = validate(\"data/countries.resource.yaml\") pprint(report.flatten([\"rowNumber\", \"fieldNumber\", \"type\"])) ``` ## Transformando os dados Utilizamos os metadados para fixar automaticamente todos os tipos de problemas ( Alguns problemas precisaremos fixar manualmente ). ```python script from pprint import pprint from frictionless import Resource, Pipeline, describe, transform, steps # Pipeline parece ser uma novidade da vers\u00c3\u00a3o 5 - ANALIZAR A DOC pipeline = Pipeline( steps = [ steps.cell_replace(field_name = \u0027neighbor_id\u0027, pattern=\u002722\u0027, replace=\u00272\u0027), steps.cell_replace(field_name = \u0027population\u0027, pattern=\u0027n/a\u0027, replace=\u002767\u0027), steps.row_filter(formula=\u0027population\u0027), steps.field_update(name=\u0027neighbor_id\u0027, descriptor={\"type\": \"integer\"}), steps.table_normalize(), steps.table_write(path=\"data/countries-cleaned.csv\"), ]) source = Resource(\"data/countries.csv\") target = source.transform(pipeline) pprint(target.read_rows()) ``` Exibindo as informacoes da versao limpa dor arquivo tabular. ```python script with open(\u0027data/countries-cleaned.csv\u0027) as file: print(file.read()) ``` Listando o arquivo tabular limpo: ```python script import os files = [f for f in os.listdir(\u0027.\\\\data\u0027) if os.path.isfile(\u0027.\\\\data\\\\\u0027+f) and f.startswith(\u0027countries-cleaned\u0027)] print(files) ```",
       },
-          'pages/demonstracoes/python/frictionless/frictionless_extract': {
-          'name': 'FRICTIONLESS - EXTRACT',
-          'path': 'pages/demonstracoes/python/frictionless/frictionless_extract',
-          'relpath': 'frictionless_extract',
-          'text': "# FRICTIONLESS - EXTRACT Extrair dados significa ler os dados tabulares da sua fonte. ```python script # Exibindo informacoes do arquivo \"country-3.csv\" with open(\u0027data/country-3.csv\u0027) as file: print(file.read()) ``` ```python script # Exibindo informacoes do arquivo \"capital-3.csv\" with open(\u0027data/capital-3.csv\u0027) as file: print(file.read()) ``` ```python script # Extraindo dados de um resource from frictionless import extract from tabulate import tabulate rows = extract(\"data/country-3.csv\") print(tabulate(rows, headers=\"keys\", tablefmt=\"rst\")) ``` ## Funcoes extract ```python script from frictionless import extract rows = extract(\u0027data/capital-3.csv\u0027) resource = extract(\u0027data/capital-3.csv\u0027, type=\"resource\") package = extract(\u0027data/capital-3.csv\u0027, type=\"package\") ``` ## Extraindo um Resource ```python script from frictionless import extract from tabulate import tabulate resource = extract(\u0027data/capital-3.csv\u0027) print(tabulate(resource, headers=\"keys\", tablefmt=\"rst\")) ``` Segunda opcao: Extrair o resource de um arquivo descritor usando a funcao extract_resource. ```python script from frictionless import Resource resource = Resource(\u0027data/capital-3.csv\u0027) resource.infer() # Adicionando valor ao schema resource.schema.missing_values.append(\u00273\u0027) # Interpret 3 as a missing value resource.path=\"capital-3.csv\" resource.to_yaml(\u0027data/capital-3.resource.yaml\u0027) ``` ```python script # Visualizando o arquivo capital-3.resource.yaml with open(\u0027data/capital-3.resource.yaml\u0027) as file: print(file.read()) ``` ```python script \"\"\" A funcao describe atribui automaticamente o caminho relativo do arquivo tabular na propriedade path do arquivo resource.yaml Como este arquivo resource.yaml est\u00c3\u00a1 localizado na pasta data, o caminho \u0027data/countries.csv\u0027 n\u00c3\u00a3o ser\u00c3\u00a1 reconhecido pois n\u00c3\u00a3o h\u00c3\u00a1 uma pasta data dentro da pasta em que o arquivo countries.resource.yaml se encontra. Logo, \u00c3\u00a9 necess\u00c3\u00a1rio alerar a propriedade path no resource para a localizacao correta do arquivo .csv e isso pode ser feito por meio da classe Resource. Para mais informa\u00c3\u00a7\u00c3\u00b5es sobre a classe resoure acesse o link abaixo: https://v4.framework.frictionlessdata.io/docs/guides/framework/resource-guide \"\"\" # Extraindo o resource como descritor from frictionless import extract from tabulate import tabulate data = extract(\u0027data/capital-3.resource.yaml\u0027) print(tabulate(data, headers=\"keys\", tablefmt=\"rst\")) ``` ## Extraindo o package ```python script from frictionless import extract from tabulate import tabulate data = extract(\u0027data/*-3.csv\u0027) for path, rows in data.items(): print(\"#---\") print(\"# data:\", path) print(\"#---\") print(tabulate(rows, headers=\"keys\", tablefmt=\"rst\")) print(\"\\n\") ``` ```python script # from pprint import pprint from frictionless import Package package = Package(\u0027data/country-3.package.yaml\u0027) pprint(package) ``` ## Classe Resource A classe resource fornece metadados sobre um resource com as funcoes read e stream. A funcao extract sempre le linhas na memoria. Resource pode fazer a mesma coisa porem da opcoes a respeito da saida de dados que pode ser rows, data, text ou bytes. ```python script # Representacao dos conteudos em bytes from pprint import pprint from frictionless import Resource resource = Resource(\u0027data/country-3.csv\u0027) pprint(resource.read_bytes()) ``` ```python script # Representacao dos conteudos em texto from pprint import pprint from frictionless import Resource resource = Resource(\u0027data/country-3.csv\u0027) pprint(resource.read_text()) ``` ```python script # Representacao dos conteudos em forma de lista from pprint import pprint from frictionless import Resource resource = Resource(\u0027data/country-3.csv\u0027) pprint(resource.read_lists()) ``` ```python script # Representacao dos conteudos em forma de dicionario from pprint import pprint from frictionless import Resource resource = Resource(\u0027data/country-3.csv\u0027) pprint(resource.read_rows()) ``` ```python script # Imprimindo o nome das colunas from pprint import pprint from frictionless import Resource with Resource(\u0027data/country-3.csv\u0027) as resource: pprint(resource.header) ``` ```python script # Nem sempre \u00c3\u00a9 poss\u00c3\u00advel ler todos os dados na mem\u00c3\u00b3ria quando um arquivo \u00c3\u00a9 muito grande. Para essas situacoes, frictionless fornece funcoes streaming. from frictionless import Resource with Resource(\u0027data/country-3.csv\u0027) as resource: resource.byte_stream resource.text_stream resource.list_stream resource.row_stream ``` ## Classe Package A classe Package fornece funcoes para ler os conteudos de um pacote. ```python script from frictionless import describe package = describe(\u0027data/*-3.csv\u0027) package.to_json(\u0027data/country-3.package.json\u0027) ``` ```python script # Criando um package para os arquivos de dados capital-3 e country-3.csv e lendo seus resource from frictionless import package package = Package(\u0027data/*-3.csv\u0027) pprint(package.get_resource(\u0027country-3\u0027).read_rows()) pprint(package.get_resource(\u0027capital-3\u0027).read_rows()) ``` ## Classe Header O objeto resource.header descreve o resource em mais detalhes. ```python script from frictionless import Resource with Resource(\u0027data/capital-3.csv\u0027) as resource: print(f\u0027Header: {resource.header}\u0027) print(f\u0027Labels: {resource.header.labels}\u0027) print(f\u0027Fields: {resource.header.fields}\u0027) print(f\u0027Field Names: {resource.header.field_names}\u0027) print(f\u0027Field Positions: {resource.header.field_positions}\u0027) print(f\u0027Errors: {resource.header.errors}\u0027) print(f\u0027Valid: {resource.header.valid}\u0027) print(f\u0027As List: {resource.header.to_list()}\u0027) ``` ```python script # Quando o cabecalho contem erros na sua estrutura tabular, o trecho abaixo pode ser muito util para revelar discrepancias, valores duplicados ou informacoes na celula faltantes. from pprint import pprint from frictionless import Resource with Resource([[\u0027name\u0027, \u0027name\u0027], [\u0027value\u0027, \u0027value\u0027]]) as resource: pprint(resource.header.errors) ``` ## Classe Row ```python script from frictionless import Resource, Detector detector = Detector(schema_patch = {\u0027missingValues\u0027: [\u00271\u0027]}) with Resource(\u0027data/capital-3.csv\u0027, detector=detector) as resource: for row in resource: print(f\u0027Rows: {row}\u0027) print(f\u0027Cells: {row.cells}\u0027) print(f\u0027Fields: {row.fields}\u0027) print(f\u0027Field Names: {row.field_names}\u0027) print(f\u0027Field Positions: {row.field_positions}\u0027) print(f\u0027Value of field \"name\": {row[\"name\"]}\u0027) # accessed as a dict print(f\u0027Row Position: {row.row_position}\u0027) # physical line number starting from 1 print(f\u0027Row Number: {row.row_number}\u0027) # counted row number starting from 1 print(f\u0027Blank Cells: {row.blank_cells}\u0027) print(f\u0027Error Cells: {row.error_cells}\u0027) print(f\u0027Errors: {row.errors}\u0027) print(f\u0027Valid: {row.valid}\u0027) print(f\u0027As Dict: {row.to_dict(json=False)}\u0027) print(f\u0027As List: {row.to_list(json=True)}\u0027) # JSON compatible data types break ``` ```python script from pprint import pprint from frictionless import Resource with Resource([[\u0027name\u0027], [\u0027value\u0027, \u0027value\u0027]]) as resource: for row in resource.row_stream: pprint(row.errors) ```",
-      },
-          'pages/demonstracoes/python/frictionless/frictionless_resource': {
-          'name': 'FRICTIONLESS - GUIA SOBRE O RESOURCE',
-          'path': 'pages/demonstracoes/python/frictionless/frictionless_resource',
-          'relpath': 'frictionless_resource',
-          'text': "# FRICTIONLESS - GUIA SOBRE O RESOURCE O Resource descreve um recurso de dados como um arquivo individual ou tabela. A classe Resource \u00c3\u00a9 a classe mais importante do Framework Frictionless. ```python script # Criando o resource from frictionless import Resource # Criando o resource do arquivo csv resource = Resource(\u0027data/table.csv\u0027) # OUTROS EXEMPLOS #resource = Resource(\u0027data/resource.json\u0027) # Criando o resource do descriptor #resource = Resource({\u0027path\u0027: \u0027data/table.csv\u0027}) # Criando resource por meio do dicionario #resource = Resource(path=\u0027data/table.csv\u0027) # Criando resource utilizando parametro path #resource = Resource(descriptor=\u0027data/resource.json\u0027) # Criando resource utilizando parametro descriptor ``` ## Descrevendo resource ```python script from frictionless import Resource resource = Resource( path=\u0027data/table.csv\u0027, name=\u0027resource\u0027, # Nome do resource title=\u0027My Resource\u0027, # Titulo no resource description=\u0027My Resource for the Guide\u0027, # Descricao do resource ) # Salvando o resource resource.to_yaml(\u0027data/table.resource.yaml\u0027) # ALTERNATIVA - SALVAR NO FORMATO JSON # resource.to_json(\u0027data/table.resource.json\u0027) ``` Ao criar um resource voce pode acessar suas propriedades e tambem edita-las ```python script from frictionless import Resource resource = Resource(\u0027data/table.resource.yaml\u0027) print(f\u0027Nome do resource: {resource.name}\u0027) print(f\u0027Titulo do resource: {resource.title}\u0027) print(f\u0027Descricao do resource: {resource.description}\u0027) print(\"\") resource.name = \u0027new-name\u0027 resource.title = \u0027New Title\u0027 resource.description = \u0027New Description\u0027 print(resource) ``` Apos editar as propriedades, salve no formato yaml ou json ( se preferir ) Mais informacoes sobre propriedades da classe Resource [aqui](https://specs.frictionlessdata.io/data-resource/#metadata-properties) ## Ciclo de vida do Resource https://v4.framework.frictionlessdata.io/docs/guides/framework/resource-guide#resource-lifecycle O resource \u00c3\u00a9 uma interface de streaming, logo, uma vez lido voce ira precisar abri-lo novamente. Em contrapartida, voce pode ler dados de um resource sem abrir e fecha-lo explicitamente. ```python script from pprint import pprint from frictionless import resource resource = Resource(\u0027data/capital-3.csv\u0027) pprint(resource.read_rows()) ``` ## Lendo dados A classe Resource tambem e uma classe metadata que fornece varias funcoes de read e stream. A classe resource pode fazer a mesma atividade da funcao extract ( que sempre le linhas na memoria ), porem tambem oferece a escolha de exibir os dados. https://v4.framework.frictionlessdata.io/docs/guides/framework/resource-guide#reading-data",
+          'pages/demonstracoes/python/frictionless_V5/frictionless_v5_describe': {
+          'name': 'FRICITONLESS - DESCRIBE',
+          'path': 'pages/demonstracoes/python/frictionless_V5/frictionless_v5_describe',
+          'relpath': 'frictionless_v5_describe',
+          'text': "# FRICITONLESS - DESCRIBE Descrever os dados, se tratando de frictionless, significa criar metadados para seus arquivos de dados. Por si so, os arquivos de dados nao possuem informacoes adicionais que ajudem a compreender os dados. Um arquivo no formato CSV sem os metadados carece de informacoes criticas como significado dos campos, tipos de dados, restricoes, relacoes e etc... Existem 3 tipos de metadados no frictionles: - Resource - Schema - Package Descrevemos os dados utilizando a funcao describe() ## Descrevendo os dados ```python script from frictionless import describe package = describe(\"data/table.csv\", type=\"package\") print(package.to_yaml()) ``` ## Descrevendo um Schema Informa\u00c3\u00a7\u00c3\u00b5es do arquivo csv ```python script with open(\u0027data/country-1.csv\u0027) as file: print(file.read()) ``` Descrevendo o schema do arquivo country-1.csv ```python script from frictionless import Schema schema = Schema.describe(\"data/country-1.csv\") schema.to_yaml(\"data/country-1.schema.yaml\") ``` ```python script with open(\u0027data/country-1.schema.yaml\u0027) as file: print(file.read()) ``` ```python script from frictionless import Schema schema = Schema.describe(\"data/country-1.csv\") schema.get_field(\"id\").title = \"Identifier\" schema.get_field(\"neighbor_id\").title = \"Identifier of the neighbor\" schema.get_field(\"name\").title = \"Name of the country\" schema.get_field(\"population\").title = \"Population\" schema.get_field(\"population\").description = \"According to the year 2020\u0027s data\" # Descri\u00c3\u00a7\u00c3\u00a3o da coluna population schema.get_field(\"population\").constraints[\"minimum\"] = 0 schema.foreign_keys.append( {\"fields\": [\"neighbor_id\"], \"reference\": {\"resource\": \"\", \"fields\": [\"id\"]}} ) schema.to_yaml(\"data/country-1.schema-full.yaml\") ``` ```python script with open(\u0027data/country-1.schema-full.yaml\u0027) as file: print(file.read()) ``` ## Descrevendo um recurso Visualizando arquivo csv ```python script with open(\u0027data/country-2.csv\u0027) as file: print(file.read()) ``` Descrevendo o arquivo ```python script from frictionless import describe resource = describe(\u0027data/country-2.csv\u0027) print(resource.to_yaml()) ``` ```python script from frictionless import Schema, describe resource = describe(\"data/country-2.csv\") resource.dialect.header_rows = [2] resource.dialect.get_control(\u0027csv\u0027).delimiter = \";\" resource.schema = \"data/country-1.schema.yaml\" resource.to_yaml(\"data/country-2.resource-cleaned.yaml\") ``` ```python script with open(\u0027data/country-2.resource-cleaned.yaml\u0027) as file: print(file.read()) ``` ## Descrevendo um Pacote Visualizando o arquivo country-3.csv e capital-3.csv ```python script with open(\u0027data/country-3.csv\u0027) as file: print(file.read()) ``` ```python script with open(\u0027data/capital-3.csv\u0027) as file: print(file.read()) ``` Descrevendo o pacote que ir\u00c3\u00a1 conter metadados dos arquivos countries-3.csv e capital-3.csv ```python script ```",
       },
           'pages/demonstracoes/jinja/jinja': {
           'name': 'Jinja',
@@ -2373,12 +2485,6 @@ document.addEventListener("DOMContentLoaded", function () {
           'path': 'pages/demonstracoes/json/json',
           'relpath': '../../json/json',
           'text': "# JSON - BASICO ```json chart { \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\", \"description\": \"A simple pie chart with embedded data.\", \"data\": { \"values\": [ {\"fabricantes\": 1, \"value\": 4}, {\"fabricantes\": 2, \"value\": 6}, {\"fabricantes\": 3, \"value\": 10}, {\"fabricantes\": 4, \"value\": 3}, {\"fabricantes\": 5, \"value\": 7}, {\"fabricantes\": 6, \"value\": 8} ] }, \"mark\": \"arc\", \"encoding\": { \"theta\": {\"field\": \"value\", \"type\": \"quantitative\"}, \"color\": {\"field\": \"fabricantes\", \"type\": \"nominal\"} } } ```",
-      },
-          'pages/demonstracoes/yaml/yaml': {
-          'name': 'YAML - BASICO',
-          'path': 'pages/demonstracoes/yaml/yaml',
-          'relpath': '../../yaml/yaml',
-          'text': "# YAML - BASICO # Codigo Para essa demonstra\u00c3\u00a7\u00c3\u00a3o foi utilizado o conjunto de dados fornecido pela Ag\u00c3\u00aancia Nacional de Avia\u00c3\u00a7\u00c3\u00a3o Civil ( ANAC ) referente a produtos aeron\u00c3\u00a1uticos certificados no Brasil. ## Tabelas ```yaml table data: data/produtos-aeronauticos-fabricantes.csv width: 100% #colocar essa informa\u00c3\u00a7\u00c3\u00a3o ap\u00c3\u00b3s #tratar os dados #columns: # - data: # - data: # ... #\u0027\u0027\u0027 order: - [5, \u0027desc\u0027] # 6a coluna filters: true dropdownmenu: true ``` ## Graficos ```yaml chart data: url: data/cars.csv mark: circle selection: brush: type: interval encoding: x: type: quantitative field: kmpl scale: domain: [12,25] y: type: quantitative field: price scale: domain: [100,900] color: condition: selection: brush field: type type: nominal value: grey size: type: quantitative field: bhp width: 500 height: 300 ```",
       },
       };
   const searchIndex = lunr(function () {

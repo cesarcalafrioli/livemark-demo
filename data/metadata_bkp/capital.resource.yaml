@@ -1,5 +1,5 @@
-path: capital-3.csv
-name: capital-3
+path: capital-invalid.csv
+name: capital-invalid
 profile: tabular-data-resource
 scheme: file
 format: csv
@@ -11,6 +11,7 @@ schema:
       name: id
     - type: string
       name: name
-  missingValues:
-    - ''
-    - '3'
+    - type: string
+      name: name2
+bytes: 100
+hash: ae23c74693ca2d3f0e38b9ba3570775b

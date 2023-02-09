@@ -1,0 +1,30 @@
+resources:
+  - path: capital-invalid.csv
+    name: capital-invalid
+    profile: tabular-data-resource
+    scheme: file
+    format: csv
+    hashing: md5
+    encoding: utf-8
+    schema:
+      fields:
+        - type: integer
+          name: id
+        - type: string
+          name: name
+        - type: string
+          name: name2
+  - path: capital-invalid.csv
+    name: capital-valid
+    profile: tabular-data-resource
+    scheme: file
+    format: csv
+    hashing: md5
+    encoding: utf-8
+    schema:
+      fields:
+        - type: integer
+          name: id
+        - type: string
+          name: name
+profile: data-package
