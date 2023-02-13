@@ -1,0 +1,3 @@
+tasks:
+  - path: data/capital-valid.csv
+  - resource: data/capital.resource.yaml

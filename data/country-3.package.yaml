@@ -25,12 +25,16 @@ resources:
       fields:
         - name: id
           type: integer
+          title: Identifier
         - name: capital_id
           type: integer
         - name: name
           type: string
+          title: Name of the country
         - name: population
           type: integer
+          title: Population
+          description: According to the year 2020's data
       foreignKeys:
         - fields:
             - capital_id
