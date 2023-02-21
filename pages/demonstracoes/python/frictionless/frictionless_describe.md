@@ -133,7 +133,7 @@ from frictionless import describe
 package = describe("data/*-3.csv") # Criando os metadados dos arquivos csv capital-3 e country-3
 package.title = "Countries and their capitals" # Adicionando título ao descriptor
 package.description = "The data was collected as a research project" # Adicionando descrição do package ao descriptor
-package.get_resource("country-3").path = "capital-3.csv" # Alterando o caminho do arquivo capital-3.csv
+package.get_resource("country-3").path = "country-3.csv" # Alterando o caminho do arquivo capital-3.csv
 package.get_resource("country-3").name = "country" # Alterando o nome do resource no descriptor
 
 

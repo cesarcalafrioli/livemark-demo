@@ -1,0 +1,1002 @@
+name: catalog
+packages:
+  - name: boletim-oficial
+    title: Boletim oficial
+    description: "Boletins oficiais da Universidade Federal de Pernambuco (UFPE) publicados\
+      \ pela Pró-Reitoria de Gestão de Pessoas e Qualidade de Vida (PROGEPE).\r\n\r\
+      \nA PROGEPE é o órgão responsável pelo planejamento, execução e avaliação das\
+      \ ações de administração e desenvolvimento de recursos humanos. Compete a essa\
+      \ Pró-Reitoria realizar ações e projetos voltados à melhoria da qualidade de\
+      \ vida dos servidores, à saúde e o bem-estar social de todos os servidores da\
+      \ UFPE.\r\n\r\nAbrange as atividades referentes à capacitação e qualificação\
+      \ de pessoal; planejamento da força de trabalho de técnico-administrativo, acompanhar\
+      \ a execução da folha de pagamento, provimentos, vacâncias, bem como as demais\
+      \ atividades na área de pessoal, acompanhamento e controle de cargos e funções,\
+      \ do Banco de Professor Equivalente e Quadro de Referência dos Servidores Técnico-Administrativos\
+      \ da UFPE.\r\n\r\n __Dados disponíveis__\r\n   \r\nEsse conjunto de dados possui\
+      \ os boletins oficiais da UFPE a partir de 30 jun. 2022.\r\n   \r\n__Mais informações__\r\
+      \n\r\nhttps://www.ufpe.br/progepe/boletim-oficial"
+    homepage: ''
+    licenses:
+      - name: cc-zero
+        title: Creative Commons CCZero
+        path: http://www.opendefinition.org/licenses/cc-zero
+    contributors:
+      - title: PROGEPE - Pró-Reitoria de Gestão de Pessoas e Qualidade de Vida
+        role: author
+        email: progepe@ufpe.br
+      - title: STI - Superintendência de Tecnologia da Informação
+        role: maintainer
+        email: dadosabertos@ufpe.br
+    version: ''
+    resources:
+      - name: boletim_oficial_2020_ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/ccb371f3-c353-4c96-bf62-68658cfc2598/download/boletim_oficial_2020_ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 2324
+        hash: ''
+        metadata_modified: '2022-09-21T17:17:20.751563'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2022-09-21T17:17:20.828328'
+        last_modified: '2022-09-21T17:17:20.660803'
+        url_type: upload
+        id: ccb371f3-c353-4c96-bf62-68658cfc2598
+      - name: boletim_oficial_2021_ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/5e35c9c5-c3fb-459a-abb7-550996def631/download/boletim_oficial_2021_ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 19967
+        hash: ''
+        metadata_modified: '2022-09-21T17:17:27.598581'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2022-09-21T17:17:27.715273'
+        last_modified: '2022-09-21T17:17:27.396373'
+        url_type: upload
+        id: 5e35c9c5-c3fb-459a-abb7-550996def631
+      - name: boletim_oficial_2022_ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/e321592d-99b2-4f64-8738-d9b57fec7f2c/download/boletim_oficial_2022_ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 24130
+        hash: ''
+        metadata_modified: '2023-01-04T17:32:41.075716'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2022-09-21T17:18:09.494004'
+        last_modified: '2023-01-04T17:32:41.029896'
+        url_type: upload
+        id: e321592d-99b2-4f64-8738-d9b57fec7f2c
+      - name: boletins-oficiais-julho-2022.zip
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/acaecea7-7692-4dcc-9be7-db194924683a/download/boletins-oficiais-julho-2022.zip
+        format: ZIP
+        mediatype: application/zip
+        stats:
+          bytes: 613536
+        hash: ''
+        metadata_modified: '2022-08-29T13:50:05.007035'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2022-08-25T18:48:15.131440'
+        last_modified: '2022-08-25T18:48:14.738605'
+        url_type: upload
+        id: acaecea7-7692-4dcc-9be7-db194924683a
+      - name: boletins-oficiais-agosto-2022.zip
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/69195c33-3d8f-40e7-a867-d2b3dc470886/download/boletins-oficiais-agosto-2022.zip
+        format: ZIP
+        mediatype: application/zip
+        stats:
+          bytes: 702754
+        hash: ''
+        metadata_modified: '2022-09-01T11:54:15.865564'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2022-09-01T11:47:12.320628'
+        last_modified: '2022-09-01T11:47:12.194152'
+        url_type: upload
+        id: 69195c33-3d8f-40e7-a867-d2b3dc470886
+      - name: boletins-oficiais-setembro-2022.zip
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/c5be103b-b856-4a85-a21c-9b6bf4f93099/download/boletins-oficiais-setembro-2022.zip
+        format: ZIP
+        mediatype: application/zip
+        stats:
+          bytes: 724230
+        hash: ''
+        metadata_modified: '2022-10-03T10:32:33.738822'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2022-10-03T10:31:21.638283'
+        last_modified: '2022-10-03T10:31:21.457810'
+        url_type: upload
+        id: c5be103b-b856-4a85-a21c-9b6bf4f93099
+      - name: boletins-oficiais-outubro-2022.zip
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/14757362-71fa-4c0c-b768-b8c2e7197ca2/download/boletins-oficiais-outubro-2022.zip
+        format: ZIP
+        mediatype: application/zip
+        stats:
+          bytes: 489506
+        hash: ''
+        metadata_modified: '2022-11-03T10:01:34.935614'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2022-11-03T10:00:44.874944'
+        last_modified: '2022-11-03T10:00:44.684763'
+        url_type: upload
+        id: 14757362-71fa-4c0c-b768-b8c2e7197ca2
+      - name: boletins-oficiais-novembro-2022.zip
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/6bfc97b8-1bfc-4664-8f1f-9aaa802b795a/download/boletins-oficiais-novembro-2022.zip
+        format: ZIP
+        mediatype: application/zip
+        stats:
+          bytes: 398139
+        hash: ''
+        metadata_modified: '2022-12-01T10:37:11.614955'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2022-12-01T10:36:38.839715'
+        last_modified: '2022-12-01T10:36:38.547856'
+        url_type: upload
+        id: 6bfc97b8-1bfc-4664-8f1f-9aaa802b795a
+      - name: boletins-oficiais-dezembro-2022.zip
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/b51e4244-fba9-4214-882d-0868be196ff1/download/boletins-oficiais-dezembro-2022.zip
+        format: ZIP
+        mediatype: application/zip
+        stats:
+          bytes: 452390
+        hash: ''
+        metadata_modified: '2023-01-04T17:32:41.077492'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2023-01-04T15:50:56.912284'
+        last_modified: '2023-01-04T15:50:56.472587'
+        url_type: upload
+        id: b51e4244-fba9-4214-882d-0868be196ff1
+      - name: boletins-oficiais-janeiro-2023.rar
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/80bc60a7-107b-45c1-af11-87e56b0b7dd7/download/boletins-oficiais-janeiro-2023.rar
+        format: RAR
+        mediatype: application/rar
+        stats:
+          bytes: 259002
+        hash: ''
+        metadata_modified: '2023-01-31T21:22:16.205075'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2023-01-31T21:21:42.263415'
+        last_modified: '2023-01-31T21:21:41.922476'
+        url_type: upload
+        id: 80bc60a7-107b-45c1-af11-87e56b0b7dd7
+      - name: bo_21-2023.txt
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/82ec1e54-f6b7-44ac-975a-3ebdbb15e13a/download/bo_21-2023.txt
+        format: TXT
+        mediatype: text/plain
+        stats:
+          bytes: 23600
+        hash: ''
+        metadata_modified: '2023-02-09T15:37:41.293073'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2023-02-02T11:20:55.181559'
+        last_modified: '2023-02-02T11:20:54.932674'
+        url_type: upload
+        id: 82ec1e54-f6b7-44ac-975a-3ebdbb15e13a
+      - name: bo_22-2023.txt
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/4d5f9eef-4aa0-4d51-b056-9e4161ef8203/download/bo_22-2023.txt
+        format: TXT
+        mediatype: text/plain
+        stats:
+          bytes: 28063
+        hash: ''
+        metadata_modified: '2023-02-09T15:37:46.580635'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2023-02-09T15:37:41.478681'
+        last_modified: '2023-02-09T15:37:41.220067'
+        url_type: upload
+        id: 4d5f9eef-4aa0-4d51-b056-9e4161ef8203
+      - name: bo_23-2023.txt
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/f0479f89-4330-4920-b807-5d8e443d2556/download/bo_23-2023.txt
+        format: TXT
+        mediatype: text/plain
+        stats:
+          bytes: 10481
+        hash: ''
+        metadata_modified: '2023-02-09T15:37:52.997238'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2023-02-09T15:37:46.680904'
+        last_modified: '2023-02-09T15:37:46.520009'
+        url_type: upload
+        id: f0479f89-4330-4920-b807-5d8e443d2556
+      - name: bo_24-2023.txt
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/245fb451-9229-4ca1-990a-3bb0f0c49ff1/download/bo_24-2023.txt
+        format: TXT
+        mediatype: text/plain
+        stats:
+          bytes: 89697
+        hash: ''
+        metadata_modified: '2023-02-09T15:37:59.063277'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2023-02-09T15:37:53.119496'
+        last_modified: '2023-02-09T15:37:52.693819'
+        url_type: upload
+        id: 245fb451-9229-4ca1-990a-3bb0f0c49ff1
+      - name: bo_25-2023.txt
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/20d2a3db-69cd-4c1a-944a-d2eba47096bb/download/bo_25-2023.txt
+        format: TXT
+        mediatype: text/plain
+        stats:
+          bytes: 82648
+        hash: ''
+        metadata_modified: '2023-02-09T15:37:59.063902'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2023-02-09T15:37:59.177581'
+        last_modified: '2023-02-09T15:37:58.993529'
+        url_type: upload
+        id: 20d2a3db-69cd-4c1a-944a-d2eba47096bb
+    relationships_as_object: []
+    private: false
+    id: 03344230-8523-443f-a724-fb68a53177fe
+    metadata_created: '2022-08-23T16:03:11.624768'
+    metadata_modified: '2023-02-09T15:37:59.044209'
+    creator_user_id: e6fd9a30-b109-4d0f-b600-cea14d0145ad
+    type: dataset
+    groups:
+      - display_name: Comunicados e Documentos
+        description: Documentos, normativos e boletins oficiais produzidos pela instituição.
+        image_display_url: https://dados.ufpe.br/uploads/group/2022-08-23-150815.670957comunicados-documentos.png
+        title: Comunicados e Documentos
+        id: e090ce50-dcf8-4153-ae17-e3deba9402eb
+        name: comunicados-e-documentos
+    relationships_as_subject: []
+    owner_org: 60b3dc3f-4793-4f46-a5d4-e529d5b761b3
+    Frequência de atualização: Diária
+  - name: cursos-de-graduacao
+    title: Cursos de graduação
+    description: "Dados dos cursos da graduação advindos da Pró-Reitoria de Graduação\
+      \ (PROGRAD).\r\n\r\nA PROGRAD tem como responsabilidade junto com os coordenadores\
+      \ dos cursos da graduação garantir o funcionamento, organização e a política\
+      \ didático-pedagógica da graduação. Assim como, assegurar a qualidade do ensino\
+      \ e controle acadêmico, gerenciar programas e ações de assistência e permanência\
+      \ estudantil.\r\n\r\n__Dados disponíveis__\r\n\r\nO conjunto de dados trás informações\
+      \ a cerca dos cursos de graduação existentes na Universidade Federal de Pernambuco,\
+      \ como exemplo, informações sobre o campus em que o curso se encontra e código\
+      \ do INEP.\r\n\r\n__Mais informações__\r\n\r\nhttps://www.ufpe.br/prograd"
+    homepage: ''
+    licenses:
+      - name: cc-zero
+        title: Creative Commons CCZero
+        path: http://www.opendefinition.org/licenses/cc-zero
+    contributors:
+      - title: PROGRAD - Pró-Reitoria de Graduação
+        role: author
+        email: prograd@ufpe.br
+      - title: STI - Superintendência de Tecnologia da Informação
+        role: maintainer
+        email: dadosabertos@ufpe.br
+    version: ''
+    resources:
+      - name: cursos-graduacao-2022-ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/9c29d608-2299-4b44-a2fc-8f9ced1e930e/resource/b154f463-c04d-4556-b2fe-a83f8418b080/download/cursos-graduacao-2022-ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 12435
+        hash: ''
+        metadata_modified: '2022-08-23T17:20:14.762073'
+        package_id: 9c29d608-2299-4b44-a2fc-8f9ced1e930e
+        created: '2022-08-23T17:20:14.228339'
+        last_modified: '2022-08-23T17:20:14.153030'
+        url_type: upload
+        id: b154f463-c04d-4556-b2fe-a83f8418b080
+      - name: cursos-graduacao-2023-ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/9c29d608-2299-4b44-a2fc-8f9ced1e930e/resource/29bc7c28-0c74-46ac-8151-d9e39245f7ff/download/cursos-graduacao-2023-ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 12739
+        hash: ''
+        metadata_modified: '2023-02-07T19:15:57.470720'
+        package_id: 9c29d608-2299-4b44-a2fc-8f9ced1e930e
+        created: '2023-02-07T19:15:57.535973'
+        last_modified: '2023-02-07T19:15:57.385009'
+        url_type: upload
+        id: 29bc7c28-0c74-46ac-8151-d9e39245f7ff
+    relationships_as_object: []
+    private: false
+    id: 9c29d608-2299-4b44-a2fc-8f9ced1e930e
+    metadata_created: '2022-08-23T17:19:42.939024'
+    metadata_modified: '2023-02-07T19:15:57.447525'
+    creator_user_id: e6fd9a30-b109-4d0f-b600-cea14d0145ad
+    type: dataset
+    groups:
+      - display_name: Ensino
+        description: 'Conjuntos relativos aos cursos de graduação e pós-graduação,
+          exemplo: plano de curso, acervo da biblioteca, avaliação dos cursos, componentes
+          curriculares, matrículas em componentes.'
+        image_display_url: https://dados.ufpe.br/uploads/group/2022-08-23-151126.910011ensino.png
+        title: Ensino
+        id: bef4f073-9f6c-4e9e-a8b1-b0bd2a56d1af
+        name: ensino
+      - display_name: Institucional
+        description: 'Itens pertinentes a caracterização da universidade, exemplo:
+          unidades acadêmicas, unidades administrativas, organigrama, telefones, quadro
+          de referência, cursos.'
+        image_display_url: https://dados.ufpe.br/uploads/group/2022-08-23-151256.154225ufpe.png
+        title: Institucional
+        id: 8f588250-0371-47fc-acae-f46b31c0082d
+        name: institucional
+    relationships_as_subject: []
+    owner_org: 60b3dc3f-4793-4f46-a5d4-e529d5b761b3
+    Frequência de atualização: Anual
+  - name: cursos-de-pos-graduacao
+    title: Cursos de pós-graduação
+    description: "Dados referentes aos cursos de pós-graduação stricto sensu (mestrado\
+      \ e doutorado) e lato sensu (especialização) advindos da Pró-Reitoria de Pós-graduação\
+      \ (PROPG).\r\n\r\nA PROPG tem por finalidade o planejamento, a gestão, a supervisão\
+      \ e a avaliação das políticas de pós-graduação, garantindo a qualidade do ensino\
+      \ de forma articulada com a graduação, a pesquisa e a extensão. É de sua competência,\
+      \ ainda, zelar pela qualidade de sua estrutura acadêmica, dando suporte ao seu\
+      \ corpo técnico, docente e discente, exercendo assim um forte impacto na formação\
+      \ de recursos humanos competente para a atuação diversificada em Ciência, Tecnologia\
+      \ e Inovação.\r\n\r\n__Dados disponíveis__\r\n\r\nEsse conjunto de dados possui\
+      \ a totalidade dos cursos de pós-graduação stricto sensu (mestrado e doutorado),\
+      \ no entanto apenas uma parcela dos cursos de pós-graduação lato sensu (especialização).\r\
+      \n\r\n__Mais informações__\r\n\r\nhttps://www.ufpe.br/propg\r\n"
+    homepage: ''
+    licenses:
+      - name: cc-zero
+        title: Creative Commons CCZero
+        path: http://www.opendefinition.org/licenses/cc-zero
+    contributors:
+      - title: PROPG - Pró-Reitoria de Pós-Graduação
+        role: author
+        email: propg@ufpe.br
+      - title: STI - Superintendência de Tecnologia da Informação
+        role: maintainer
+        email: dadosabertos@ufpe.br
+    version: ''
+    resources:
+      - name: cursos-pos-graduacao-2022-ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/eeab943c-d3d8-4e01-8223-9aa5ad49ce53/resource/8cd3e483-3cab-4948-9bd7-3f7b6786318a/download/cursos-pos-graduacao-2022-ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 28841
+        hash: ''
+        metadata_modified: '2022-08-23T17:23:50.655399'
+        package_id: eeab943c-d3d8-4e01-8223-9aa5ad49ce53
+        created: '2022-08-23T17:23:50.107248'
+        last_modified: '2022-08-23T17:23:50.039548'
+        url_type: upload
+        id: 8cd3e483-3cab-4948-9bd7-3f7b6786318a
+      - name: cursos-pos-graduacao-2023-ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/eeab943c-d3d8-4e01-8223-9aa5ad49ce53/resource/456390c4-68fa-4a29-ade7-25d93c5bd3ba/download/cursos-pos-graduacao-2023-ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 29126
+        hash: ''
+        metadata_modified: '2023-02-06T12:50:11.556040'
+        package_id: eeab943c-d3d8-4e01-8223-9aa5ad49ce53
+        created: '2023-02-06T12:50:11.564778'
+        last_modified: '2023-02-06T12:50:11.498907'
+        url_type: upload
+        id: 456390c4-68fa-4a29-ade7-25d93c5bd3ba
+    relationships_as_object: []
+    private: false
+    id: eeab943c-d3d8-4e01-8223-9aa5ad49ce53
+    metadata_created: '2022-08-23T17:23:13.177494'
+    metadata_modified: '2023-02-06T12:50:11.550281'
+    creator_user_id: e6fd9a30-b109-4d0f-b600-cea14d0145ad
+    type: dataset
+    groups:
+      - display_name: Ensino
+        description: 'Conjuntos relativos aos cursos de graduação e pós-graduação,
+          exemplo: plano de curso, acervo da biblioteca, avaliação dos cursos, componentes
+          curriculares, matrículas em componentes.'
+        image_display_url: https://dados.ufpe.br/uploads/group/2022-08-23-151126.910011ensino.png
+        title: Ensino
+        id: bef4f073-9f6c-4e9e-a8b1-b0bd2a56d1af
+        name: ensino
+      - display_name: Institucional
+        description: 'Itens pertinentes a caracterização da universidade, exemplo:
+          unidades acadêmicas, unidades administrativas, organigrama, telefones, quadro
+          de referência, cursos.'
+        image_display_url: https://dados.ufpe.br/uploads/group/2022-08-23-151256.154225ufpe.png
+        title: Institucional
+        id: 8f588250-0371-47fc-acae-f46b31c0082d
+        name: institucional
+    relationships_as_subject: []
+    owner_org: 60b3dc3f-4793-4f46-a5d4-e529d5b761b3
+    Frequência de atualização: Semestral
+  - name: licitacoes
+    title: Licitações
+    description: "Dados sobre as licitações de compras realizadas a fim de atender\
+      \ necessidades de serviços e materiais da Universidade Federal de Pernambuco,\
+      \ advindos da Pró-reitoria de Gestão Administrativa (PROGEST).\r\n\r\nA PROGEST\
+      \ é responsável pela gestão das áreas estruturantes, como: Licitações e contratos,\
+      \ Logística de contratações comuns, importação e materiais de consumo, gestão\
+      \ patrimonial, arquivística e protocolo de serviços.\r\n\r\nA base de dados\
+      \ de licitações permite o  acompanhamento dos processos licitatórios de materiais\
+      \ e serviços prestados para a Universidade.\r\n\r\n\r\n__Dados disponíveis__\r\
+      \n\r\nO conjunto de dados traz informações a respeito das licitações realizadas\
+      \ pela instituição. Nele estão contidas informações acerca dos detalhes do processo,\
+      \ dados das licitações, modalidades, requisições e itens .\r\n\r\n__Mais informações__\r\
+      \n\r\nhttps://www.ufpe.br/progest"
+    homepage: ''
+    licenses:
+      - name: cc-zero
+        title: Creative Commons CCZero
+        path: http://www.opendefinition.org/licenses/cc-zero
+    contributors:
+      - title: PROGEST - Pró-Reitoria de Gestão Administrativa
+        role: author
+        email: licitacoes@ufpe.br
+      - title: STI - Superintendência de Tecnologia da Informação
+        role: maintainer
+        email: dadosabertos@ufpe.br
+    version: ''
+    resources:
+      - name: licitacoes-itens-2022-ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/d405501c-de88-484b-9f15-b720f1cd46f0/resource/77f3a319-5c68-48b5-871b-580587f8fd16/download/licitacoes-itens-2022-ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 1824037
+        hash: ''
+        metadata_modified: '2022-12-05T12:19:16.548179'
+        package_id: d405501c-de88-484b-9f15-b720f1cd46f0
+        created: '2022-09-02T14:05:08.784603'
+        last_modified: '2022-12-05T12:19:16.505693'
+        url_type: upload
+        id: 77f3a319-5c68-48b5-871b-580587f8fd16
+      - name: licitacoes-processos-2022-ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/d405501c-de88-484b-9f15-b720f1cd46f0/resource/7b7d83f8-ac92-4bd5-8c1f-82a73727d628/download/licitacoes-processos-2022-ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 290805
+        hash: ''
+        metadata_modified: '2022-12-05T12:34:29.520773'
+        package_id: d405501c-de88-484b-9f15-b720f1cd46f0
+        created: '2022-09-02T14:05:18.972146'
+        last_modified: '2022-12-05T12:34:29.499336'
+        url_type: upload
+        id: 7b7d83f8-ac92-4bd5-8c1f-82a73727d628
+      - name: licitacoes-itens-2023-ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/d405501c-de88-484b-9f15-b720f1cd46f0/resource/0803b28a-9864-49b2-af80-ae8a4b4cfa49/download/licitacoes-itens-2023-ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 1896523
+        hash: ''
+        metadata_modified: '2023-02-06T12:12:31.939701'
+        package_id: d405501c-de88-484b-9f15-b720f1cd46f0
+        created: '2023-01-05T21:44:38.656311'
+        last_modified: '2023-02-06T12:12:31.894095'
+        url_type: upload
+        id: 0803b28a-9864-49b2-af80-ae8a4b4cfa49
+      - name: licitacoes-processos-2023-ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/d405501c-de88-484b-9f15-b720f1cd46f0/resource/5aeb34f5-d7f3-4b3e-9716-4acf3f645bd2/download/licitacoes-processos-2023-ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 159738
+        hash: ''
+        metadata_modified: '2023-02-06T12:22:02.381663'
+        package_id: d405501c-de88-484b-9f15-b720f1cd46f0
+        created: '2023-01-05T21:45:04.274182'
+        last_modified: '2023-02-06T12:22:02.337422'
+        url_type: upload
+        id: 5aeb34f5-d7f3-4b3e-9716-4acf3f645bd2
+    relationships_as_object: []
+    private: false
+    id: d405501c-de88-484b-9f15-b720f1cd46f0
+    metadata_created: '2022-09-02T14:03:19.099275'
+    metadata_modified: '2023-02-06T12:22:02.368878'
+    creator_user_id: 1e55b605-509f-4381-a056-1acfed7fe6b1
+    type: dataset
+    groups:
+      - display_name: Gestão financeira
+        description: Relativo a orçamento, despesas e licitações.
+        image_display_url: https://dados.ufpe.br/uploads/group/2022-08-23-151225.470070gestao-financeira.png
+        title: Gestão financeira
+        id: 8bbf75b2-0a6b-45c4-9ebe-9ce1d6666f07
+        name: gestao-financeira
+    relationships_as_subject: []
+    owner_org: 60b3dc3f-4793-4f46-a5d4-e529d5b761b3
+    Frequência de atualização: Mensal
+  - name: contratos
+    title: Contratos
+    description: "Dados sobre contratos celebrados a fim de atender necessidades de\
+      \ serviços e materiais da Universidade Federal de Pernambuco, advindos da Pró-reitoria\
+      \ de Gestão Administrativa (PROGEST).\r\n\r\nA PROGEST é responsável pela gestão\
+      \ das áreas estruturantes, como: Licitações e contratos, Logística de contratações\
+      \ comuns, importação e materiais de consumo, gestão patrimonial, arquivística\
+      \ e protocolo de serviços.\r\n\r\nA base de dados de contratos permite o  acompanhamento\
+      \ dos contratos celebrados pela Universidade.\r\n\r\n\r\n__Dados disponíveis__\r\
+      \n\r\nO conjunto de dados traz informações a respeito dos contratos celebrados\
+      \ pela instituição. Nele estão contidas informações acerca dos detalhes do contrato,\
+      \ dados dos serviços adquiridos, modalidade de licitação, fornecedora, valor,\
+      \ entre outros dados.\r\n\r\n__Mais informações__\r\n\r\nhttps://www.ufpe.br/progest\r\
+      \n"
+    homepage: ''
+    licenses:
+      - name: cc-zero
+        title: Creative Commons CCZero
+        path: http://www.opendefinition.org/licenses/cc-zero
+    contributors:
+      - title: PROGEST - Pró-Reitoria de Gestão Administrativa
+        role: author
+        email: diretoria.dlc@ufpe.br
+      - title: STI - Superintendência de Tecnologia da Informação
+        role: maintainer
+        email: dadosabertos@ufpe.br
+    version: ''
+    resources:
+      - name: contratos-ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/18c8207c-02e8-44d5-b4fd-88aab9bbbfed/resource/6731796f-e0eb-4f61-89c4-18ba2ee19ba2/download/contratos-ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 134175
+        hash: ''
+        metadata_modified: '2023-02-06T10:56:35.696480'
+        package_id: 18c8207c-02e8-44d5-b4fd-88aab9bbbfed
+        created: '2022-11-21T14:13:49.938283'
+        last_modified: '2023-02-06T10:56:35.647648'
+        url_type: upload
+        id: 6731796f-e0eb-4f61-89c4-18ba2ee19ba2
+    relationships_as_object: []
+    private: false
+    id: 18c8207c-02e8-44d5-b4fd-88aab9bbbfed
+    metadata_created: '2022-09-15T14:39:07.022387'
+    metadata_modified: '2023-02-06T10:56:35.674035'
+    creator_user_id: 1e55b605-509f-4381-a056-1acfed7fe6b1
+    type: dataset
+    groups: []
+    relationships_as_subject: []
+    owner_org: 60b3dc3f-4793-4f46-a5d4-e529d5b761b3
+    Frequência de atualização: Mensal
+  - name: funcoes-gratificadas
+    title: Funções gratificadas
+    description: "Dados sobre as funções gratificadas da UFPE, advindos da Pró-Reitoria\
+      \ de Gestão e Pessoas (PROGEPE).\r\n\r\nA PROGEPE corresponde ao órgão responsável\
+      \ pelo planejamento, execução e avaliação das ações de administração e desenvolvimento\
+      \ de recursos humanos. Compete a essa Pró-Reitoria realizar ações e projetos\
+      \ voltados à melhoria da qualidade de vida dos servidores, à saúde e o bem-estar\
+      \ social de todos os servidores da UFPE.\r\n\r\n__Dados disponíveis__\r\n\r\n\
+      Este conjunto possui dados sobre funções gratificadas a partir de 2021. Alguns\
+      \ dados disponíveis são: nível, unidade de origem e pessoas servidoras ocupantes.\r\
+      \n\r\n\r\n__Mais informações__\r\n\r\nhttps://www.ufpe.br/progepe\r\n"
+    homepage: ''
+    licenses:
+      - name: cc-zero
+        title: Creative Commons CCZero
+        path: http://www.opendefinition.org/licenses/cc-zero
+    contributors:
+      - title: PROGEPE - Pró-Reitoria de Gestão de Pessoas
+        role: author
+        email: progepe@ufpe.br
+      - title: STI - Superintendência de Tecnologia da Informação
+        role: maintainer
+        email: dadosabertos@ufpe.br
+    version: ''
+    resources:
+      - name: funcoes-gratificadas-ufpe-2022.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/3a4267c8-265e-49fe-9361-cf3c47d422c0/resource/9636f7aa-629f-4716-a000-5aace1a10328/download/funcoes-gratificadas-ufpe-2022.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 1531602
+        hash: ''
+        metadata_modified: '2023-01-04T18:19:11.192834'
+        package_id: 3a4267c8-265e-49fe-9361-cf3c47d422c0
+        created: '2022-08-23T17:02:31.502531'
+        last_modified: '2023-01-04T18:19:11.142675'
+        url_type: upload
+        id: 9636f7aa-629f-4716-a000-5aace1a10328
+      - name: funcoes-gratificadas-ufpe-2023.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/3a4267c8-265e-49fe-9361-cf3c47d422c0/resource/44b71a4e-ff7b-4359-ae74-586fa932b6a7/download/funcoes-gratificadas-ufpe-2023.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 372429
+        hash: ''
+        metadata_modified: '2023-01-25T11:01:17.627657'
+        package_id: 3a4267c8-265e-49fe-9361-cf3c47d422c0
+        created: '2023-01-25T11:01:17.645357'
+        last_modified: '2023-01-25T11:01:17.552160'
+        url_type: upload
+        id: 44b71a4e-ff7b-4359-ae74-586fa932b6a7
+    relationships_as_object: []
+    private: false
+    id: 3a4267c8-265e-49fe-9361-cf3c47d422c0
+    metadata_created: '2022-08-23T17:00:46.209061'
+    metadata_modified: '2023-01-25T11:01:17.613887'
+    creator_user_id: e6fd9a30-b109-4d0f-b600-cea14d0145ad
+    type: dataset
+    groups:
+      - display_name: Institucional
+        description: 'Itens pertinentes a caracterização da universidade, exemplo:
+          unidades acadêmicas, unidades administrativas, organigrama, telefones, quadro
+          de referência, cursos.'
+        image_display_url: https://dados.ufpe.br/uploads/group/2022-08-23-151256.154225ufpe.png
+        title: Institucional
+        id: 8f588250-0371-47fc-acae-f46b31c0082d
+        name: institucional
+      - display_name: Pessoas
+        description: 'Dados relativos a pessoas que compõe a comunidade acadêmcia,
+          exemplo: quadro funcional, discentes, docentes.'
+        image_display_url: https://dados.ufpe.br/uploads/group/2022-08-23-151429.313452pessoas.png
+        title: Pessoas
+        id: 10a1ea05-764f-4506-8198-7ab49f444a01
+        name: pessoas
+    relationships_as_subject: []
+    owner_org: 60b3dc3f-4793-4f46-a5d4-e529d5b761b3
+    Frequência de atualização: Mensal
+  - name: concursos
+    title: Concursos
+    description: "Dados sobre concursos realizados para professor substituto e cargo\
+      \ de magistério superior, fornecidos pela Pró-Reitoria de Gestão de Pessoas\
+      \ (PROGEPE).\r\n\r\nA PROGEPE é o órgão responsável pelo planejamento, execução\
+      \ e avaliação das ações de administração e desenvolvimento de recursos humanos.\
+      \ Compete a essa Pró-Reitoria realizar ações e projetos voltados à melhoria\
+      \ da qualidade de vida dos servidores, à saúde e o bem-estar social de todos\
+      \ os servidores da UFPE. \r\n\r\nAbrange as atividades referentes à capacitação\
+      \ e qualificação de pessoal; planejamento da força de trabalho de técnico-administrativo,\
+      \ acompanhar a execução da folha de pagamento, provimentos, vacâncias, bem como\
+      \ as demais atividades na área de pessoal, acompanhamento e controle de cargos\
+      \ e funções, do Banco de Professor Equivalente e Quadro de Referência dos Servidores\
+      \ Técnico-Administrativos da UFPE. \r\n\r\n__Dados disponíveis__\r\n\r\nDados\
+      \ referentes a concursos de professor substituto e cargo de magistério superior.\r\
+      \n\r\n__Mais informações__\r\n\r\nhttps://www.ufpe.br/progepe"
+    homepage: ''
+    licenses:
+      - name: cc-zero
+        title: Creative Commons CCZero
+        path: http://www.opendefinition.org/licenses/cc-zero
+    contributors:
+      - title: PROGEPE - Pró-Reitoria de Gestão de Pessoas
+        role: author
+        email: progepe@ufpe.br
+      - title: STI - Superintendência de Tecnologia da Informação
+        role: maintainer
+        email: dadosabertos@ufpe.br
+    version: ''
+    resources:
+      - name: concursos-ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/4d0dd6f6-6761-4ea7-b166-8b6e936cebca/resource/c3249571-f594-491c-95ca-df16e0fe08ec/download/concursos-ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 6355
+        hash: ''
+        metadata_modified: '2023-01-04T18:00:22.750670'
+        package_id: 4d0dd6f6-6761-4ea7-b166-8b6e936cebca
+        created: '2022-08-23T16:58:42.117984'
+        last_modified: '2023-01-04T18:00:22.728404'
+        url_type: upload
+        id: c3249571-f594-491c-95ca-df16e0fe08ec
+      - name: concursos-2023-ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/4d0dd6f6-6761-4ea7-b166-8b6e936cebca/resource/cd9e4b1b-b1bc-47a5-9055-7ccdf31a072a/download/concursos-2023-ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 6526
+        hash: ''
+        metadata_modified: '2023-01-25T10:36:40.001402'
+        package_id: 4d0dd6f6-6761-4ea7-b166-8b6e936cebca
+        created: '2023-01-25T10:35:42.322444'
+        last_modified: '2023-01-25T10:36:32.237474'
+        url_type: upload
+        id: cd9e4b1b-b1bc-47a5-9055-7ccdf31a072a
+    relationships_as_object: []
+    private: false
+    id: 4d0dd6f6-6761-4ea7-b166-8b6e936cebca
+    metadata_created: '2022-08-23T16:57:38.900060'
+    metadata_modified: '2023-01-25T10:36:39.987898'
+    creator_user_id: e6fd9a30-b109-4d0f-b600-cea14d0145ad
+    type: dataset
+    groups:
+      - display_name: Institucional
+        description: 'Itens pertinentes a caracterização da universidade, exemplo:
+          unidades acadêmicas, unidades administrativas, organigrama, telefones, quadro
+          de referência, cursos.'
+        image_display_url: https://dados.ufpe.br/uploads/group/2022-08-23-151256.154225ufpe.png
+        title: Institucional
+        id: 8f588250-0371-47fc-acae-f46b31c0082d
+        name: institucional
+    relationships_as_subject: []
+    owner_org: 60b3dc3f-4793-4f46-a5d4-e529d5b761b3
+    Frequência de atualização: Mensal
+  - name: beneficios-em-assistencia-estudantil
+    title: Benefícios em assistência estudantil
+    description: "Dados sobre os auxílios oferecidos aos discentes da graduação, advindos\
+      \ da Pró-Reitoria para Assuntos Estudantis (PROAES).\r\n\r\nA PROAES tem como\
+      \ responsabilidade promover e consolidar políticas de gestão da vida acadêmica,\
+      \ oferecer aos discentes condições materiais e psicológicas para assegurar o\
+      \ processo de formação acadêmica e ao desenvolvimento de capacidade profissional\
+      \ e de cidadania. Além disso, coordenar programas de inclusão social para garantir\
+      \ a permanência dos alunos na Universidade e minimizar os efeitos das desigualdades.\r\
+      \n\r\n__Dados disponíveis__\r\n\r\nO conjunto de dados trás informações gerais\
+      \ a respeito dos auxílios oferecidos aos discentes de graduação. Esse conjunto\
+      \ de dados aborda o tipo de bolsa, unidade acadêmica que o discente está inserido,\
+      \ período do benefício e valor da bolsa.\r\n\r\n__Mais informações__\r\n\r\n\
+      www.ufpe.br/proaes"
+    homepage: ''
+    licenses:
+      - name: cc-zero
+        title: Creative Commons CCZero
+        path: http://www.opendefinition.org/licenses/cc-zero
+    contributors:
+      - title: PROAES - Pró-Reitoria para Assuntos Estudantis
+        role: author
+        email: proaes@ufpe.br
+      - title: STI - Superintendência de Tecnologia da Informação
+        role: maintainer
+        email: dadosabertos@ufpe.br
+    version: ''
+    resources:
+      - name: beneficio-assistencia-estudantil-2022-proaes-ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/1836ea98-2347-4de3-98ce-d56de6ff7abf/resource/46c0156a-ddfe-4ba0-8a64-0a3e552bde0e/download/beneficio-assistencia-estudantil-2022-proaes-ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 12071810
+        hash: ''
+        metadata_modified: '2023-01-04T18:44:02.312721'
+        package_id: 1836ea98-2347-4de3-98ce-d56de6ff7abf
+        created: '2022-09-08T14:38:26.617472'
+        last_modified: '2023-01-04T18:44:02.283530'
+        url_type: upload
+        id: 46c0156a-ddfe-4ba0-8a64-0a3e552bde0e
+      - name: beneficios-assistencia-estudantil-jan-jun-2021-proaes-ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/1836ea98-2347-4de3-98ce-d56de6ff7abf/resource/175a987c-3fbd-427e-9419-7e4b46d479bc/download/beneficios-assistencia-estudantil-jan-jun-2021-proaes-ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 6590096
+        hash: ''
+        metadata_modified: '2022-09-08T14:38:57.699117'
+        package_id: 1836ea98-2347-4de3-98ce-d56de6ff7abf
+        created: '2022-09-08T14:38:57.717676'
+        last_modified: '2022-09-08T14:38:57.656150'
+        url_type: upload
+        id: 175a987c-3fbd-427e-9419-7e4b46d479bc
+      - name: beneficios-assistencia-estudantil-jul-dez-2021-proaes-ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/1836ea98-2347-4de3-98ce-d56de6ff7abf/resource/13e198d5-dc35-42b5-b69d-fbd386fd8041/download/beneficios-assistencia-estudantil-jul-dez-2021-proaes-ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 5487997
+        hash: ''
+        metadata_modified: '2022-09-08T14:39:11.494640'
+        package_id: 1836ea98-2347-4de3-98ce-d56de6ff7abf
+        created: '2022-09-08T14:39:11.518468'
+        last_modified: '2022-09-08T14:39:11.449040'
+        url_type: upload
+        id: 13e198d5-dc35-42b5-b69d-fbd386fd8041
+      - name: beneficios-assistencia-estudantil-2020-proaes-ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/1836ea98-2347-4de3-98ce-d56de6ff7abf/resource/77b48840-13d2-4e2d-82a7-825bd727730b/download/beneficios-assistencia-estudantil-2020-proaes-ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 8061567
+        hash: ''
+        metadata_modified: '2022-09-08T14:38:44.298536'
+        package_id: 1836ea98-2347-4de3-98ce-d56de6ff7abf
+        created: '2022-09-08T14:38:44.315966'
+        last_modified: '2022-09-08T14:38:44.258687'
+        url_type: upload
+        id: 77b48840-13d2-4e2d-82a7-825bd727730b
+      - name: beneficio-assistencia-estudantil-2023-proaes-ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/1836ea98-2347-4de3-98ce-d56de6ff7abf/resource/e410024a-07f4-477e-bc26-6736fd4fb552/download/beneficio-assistencia-estudantil-2023-proaes-ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 930957
+        hash: ''
+        metadata_modified: '2023-01-25T10:24:16.791037'
+        package_id: 1836ea98-2347-4de3-98ce-d56de6ff7abf
+        created: '2023-01-25T10:24:16.818069'
+        last_modified: '2023-01-25T10:24:16.712049'
+        url_type: upload
+        id: e410024a-07f4-477e-bc26-6736fd4fb552
+    relationships_as_object: []
+    private: false
+    id: 1836ea98-2347-4de3-98ce-d56de6ff7abf
+    metadata_created: '2022-08-23T17:04:51.191523'
+    metadata_modified: '2023-01-25T10:24:16.774761'
+    creator_user_id: e6fd9a30-b109-4d0f-b600-cea14d0145ad
+    type: dataset
+    groups:
+      - display_name: Assistência estudantil
+        description: 'Benefícios de assistência estudantil e para pesquisa, exemplo:
+          bolsas de pesquisa, bolsa de assistẽncia estudantil, benefício do restaurante
+          universitário.'
+        image_display_url: https://dados.ufpe.br/uploads/group/2022-08-23-150735.248183assistencia-estudantil.png
+        title: Assistência estudantil
+        id: d7a14b9d-11f2-4abf-9341-028817b54164
+        name: assistencia-estudantil
+    relationships_as_subject: []
+    owner_org: 60b3dc3f-4793-4f46-a5d4-e529d5b761b3
+    Frequência de atualização: Mensal
+  - name: unidades-academicas
+    title: Unidades acadêmicas
+    description: "Dados sobre as unidades acadêmicas (Centro, Coordenação acadêmica,\
+      \ Coordenação de área básica, Coordenação de licenciaturas, Departamento e Setor)\
+      \ da UFPE, advindos da Pró-Reitoria de Graduação (PROGRAD).\r\n\r\nA PROGRAD\
+      \ tem como responsabilidade junto com os coordenadores dos cursos da graduação\
+      \ garantir o funcionamento, organização e a política didático-pedagógica da\
+      \ graduação. Assim como, assegurar a qualidade do ensino e controle acadêmico,\
+      \ o gerenciar programas e ações de assistência e permanência estudantil.\r\n\
+      \r\n__Dados disponíveis__\r\n\r\nO conjunto de dados trás informações sobre\
+      \ as unidades acadêmicas da UFPE. Esse conjunto de dados aborda o nome da unidade,\
+      \ código de hierarquia superior, tipo de unidade, entre outros.\r\n\r\n__Mais\
+      \ informações__\r\n\r\nhttps://www.ufpe.br/prograd"
+    homepage: ''
+    licenses:
+      - name: cc-zero
+        title: Creative Commons CCZero
+        path: http://www.opendefinition.org/licenses/cc-zero
+    contributors:
+      - title: PROGRAD - Pró-Reitoria de Graduação
+        role: author
+        email: prograd@ufpe.br
+      - title: STI - Superintendência de Tecnologia da Informação
+        role: maintainer
+        email: dadosabertos@ufpe.br
+    version: ''
+    resources:
+      - name: unidades-academicas-2022-ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/efa21b3d-a8ce-438e-8015-cd5e19c441d8/resource/04fc6ada-0654-4efd-95d3-2f1c1838958f/download/unidades-academicas-2022-ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 52812
+        hash: ''
+        metadata_modified: '2022-08-23T17:08:29.762256'
+        package_id: efa21b3d-a8ce-438e-8015-cd5e19c441d8
+        created: '2022-08-23T17:08:29.301692'
+        last_modified: '2022-08-23T17:08:29.233109'
+        url_type: upload
+        id: 04fc6ada-0654-4efd-95d3-2f1c1838958f
+      - name: unidades-academicas-2023-ufpe.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/efa21b3d-a8ce-438e-8015-cd5e19c441d8/resource/db9d2479-745a-4842-9ee8-f016ac7487a3/download/unidades-academicas-2023-ufpe.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 26261
+        hash: ''
+        metadata_modified: '2023-01-24T15:27:22.258095'
+        package_id: efa21b3d-a8ce-438e-8015-cd5e19c441d8
+        created: '2023-01-24T15:27:22.275159'
+        last_modified: '2023-01-24T15:27:22.187926'
+        url_type: upload
+        id: db9d2479-745a-4842-9ee8-f016ac7487a3
+    relationships_as_object: []
+    private: false
+    id: efa21b3d-a8ce-438e-8015-cd5e19c441d8
+    metadata_created: '2022-08-23T17:08:03.235035'
+    metadata_modified: '2023-01-24T15:27:22.243121'
+    creator_user_id: e6fd9a30-b109-4d0f-b600-cea14d0145ad
+    type: dataset
+    groups:
+      - display_name: Institucional
+        description: 'Itens pertinentes a caracterização da universidade, exemplo:
+          unidades acadêmicas, unidades administrativas, organigrama, telefones, quadro
+          de referência, cursos.'
+        image_display_url: https://dados.ufpe.br/uploads/group/2022-08-23-151256.154225ufpe.png
+        title: Institucional
+        id: 8f588250-0371-47fc-acae-f46b31c0082d
+        name: institucional
+    relationships_as_subject: []
+    owner_org: 60b3dc3f-4793-4f46-a5d4-e529d5b761b3
+    Frequência de atualização: Anual
+  - name: servidores
+    title: Servidores
+    description: "Dados gerais sobre concursos públicos de provimento de cargos e\
+      \ relação dos servidores públicos lotados ou em exercício na UFPE, advindos\
+      \ da Pró-Reitoria de Gestão de Pessoas e Qualidade de Vida (PROGEPE).\r\n\r\n\
+      A PROGEPE é o órgão responsável pelo planejamento, execução e avaliação das\
+      \ ações de administração e desenvolvimento de recursos humanos. Compete a essa\
+      \ Pró-Reitoria realizar ações e projetos voltados à melhoria da qualidade de\
+      \ vida dos servidores, à saúde e o bem-estar social de todos os servidores da\
+      \ UFPE. \r\n\r\nAbrange as atividades referentes à capacitação e qualificação\
+      \ de pessoal; planejamento da força de trabalho de técnico-administrativo, acompanhar\
+      \ a execução da folha de pagamento, provimentos, vacâncias, bem como as demais\
+      \ atividades na área de pessoal, acompanhamento e controle de cargos e funções,\
+      \ do Banco de Professor Equivalente e Quadro de Referência dos Servidores Técnico-Administrativos\
+      \ da UFPE.\r\n\r\n__Dados disponíveis__\r\n\r\nEsse conjunto possui dados gerais\
+      \ de todas as pessoas em cargo \"técnico em assuntos educacionais\" lotadas\
+      \ e em exercício na UFPE. O arquivo \"Servidores geral\" refere-se a dados de\
+      \ vínculo funcional e o arquivo \"Servidores perfil\" refere-se ao perfil social\
+      \ e lotação anonimizado.\r\n\r\n__Mais informações__\r\n\r\nhttps://www.ufpe.br/progepe"
+    homepage: ''
+    licenses:
+      - name: cc-zero
+        title: Creative Commons CCZero
+        path: http://www.opendefinition.org/licenses/cc-zero
+    contributors:
+      - title: PROGEPE - Pró-Reitoria de Gestão de Pessoas
+        role: author
+        email: progepe@ufpe.br
+      - title: STI - Superintendência de Tecnologia da Informação
+        role: maintainer
+        email: dadosabertos@ufpe.br
+    version: ''
+    resources:
+      - name: servidores-geral-ufpe-2022.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/99933c2f-3a70-4c2d-906c-d6b3b85d6f69/resource/c33186b9-ee0a-4e4f-a294-45b7e93d6742/download/servidores-geral-ufpe-2022.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 1659658
+        hash: ''
+        metadata_modified: '2023-01-05T20:39:28.962847'
+        package_id: 99933c2f-3a70-4c2d-906c-d6b3b85d6f69
+        created: '2022-08-23T16:53:22.125917'
+        last_modified: '2023-01-05T20:39:28.939803'
+        url_type: upload
+        id: c33186b9-ee0a-4e4f-a294-45b7e93d6742
+      - name: servidores-perfil-ufpe-2022.csv
+        description: ''
+        path: https://dados.ufpe.br/dataset/99933c2f-3a70-4c2d-906c-d6b3b85d6f69/resource/77d77724-6331-43b4-8e72-5fb55bf81224/download/servidores-perfil-ufpe-2022.csv
+        format: CSV
+        mediatype: text/csv
+        stats:
+          bytes: 952576
+        hash: ''
+        metadata_modified: '2023-01-05T20:48:32.569709'
+        package_id: 99933c2f-3a70-4c2d-906c-d6b3b85d6f69
+        created: '2022-08-23T16:53:30.398222'
+        last_modified: '2023-01-05T20:48:32.544855'
+        url_type: upload
+        id: 77d77724-6331-43b4-8e72-5fb55bf81224
+    relationships_as_object: []
+    private: false
+    id: 99933c2f-3a70-4c2d-906c-d6b3b85d6f69
+    metadata_created: '2022-08-23T16:51:39.191797'
+    metadata_modified: '2023-01-05T20:48:32.560738'
+    creator_user_id: e6fd9a30-b109-4d0f-b600-cea14d0145ad
+    type: dataset
+    groups:
+      - display_name: Pessoas
+        description: 'Dados relativos a pessoas que compõe a comunidade acadêmcia,
+          exemplo: quadro funcional, discentes, docentes.'
+        image_display_url: https://dados.ufpe.br/uploads/group/2022-08-23-151429.313452pessoas.png
+        title: Pessoas
+        id: 10a1ea05-764f-4506-8198-7ab49f444a01
+        name: pessoas
+    relationships_as_subject: []
+    owner_org: 60b3dc3f-4793-4f46-a5d4-e529d5b761b3
+    Frequência de atualização: Semestral

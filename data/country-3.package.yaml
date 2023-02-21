@@ -1,7 +1,5 @@
-title: Countries and their capitals
-description: The data was collected as a research project
 resources:
-  - name: capital
+  - name: capital-3
     type: table
     path: capital-3.csv
     scheme: file
@@ -14,9 +12,9 @@ resources:
           type: integer
         - name: name
           type: string
-  - name: country
+  - name: country-3
     type: table
-    path: capital-3.csv
+    path: country-3.csv
     scheme: file
     format: csv
     encoding: utf-8
@@ -25,20 +23,9 @@ resources:
       fields:
         - name: id
           type: integer
-          title: Identifier
         - name: capital_id
           type: integer
         - name: name
           type: string
-          title: Name of the country
         - name: population
           type: integer
-          title: Population
-          description: According to the year 2020's data
-      foreignKeys:
-        - fields:
-            - capital_id
-          reference:
-            resource: capital
-            fields:
-              - id

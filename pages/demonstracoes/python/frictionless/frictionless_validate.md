@@ -17,7 +17,19 @@ report = validate('data/capital-invalid.csv')
 print(report)
 ```
 
+TESTE: Validando arquivo licitacoes-itens-2023-ufpe.csv
+
+```python script
+from pprint import pprint
+from frictionless import validate
+
+report = validate('data/licitacoes-itens-2023-ufpe.csv')
+print(report)
+```
+
 ## Validando um Schema
+
+Criando um schema de tabela inválido.
 
 ```python script
 import yaml
@@ -48,9 +60,9 @@ O trecho abaixo cria um descritor resource:
 ```python script
 from frictionless import describe
 
-resource = describe('data/capital-invalid.csv')
-resource.path = "capital-invalid.csv"
-resource.to_yaml('data/capital.resource.yaml')
+resource = describe('data/capital-invalid.csv') # Criando os metadados do arquivo
+resource.path = "capital-invalid.csv" # Alterando o caminho do resource
+resource.to_yaml('data/capital.resource.yaml') # Salvando no disco
 ```
 
 Validando o resource criado
@@ -59,10 +71,38 @@ Validando o resource criado
 from frictionless import validate
 
 report = validate('data/capital.resource.yaml')
+print(report.to_dict()['tasks'][0]['errors'][0]['type']) # Informando somente o tipo de erro
+print(report.to_dict()['tasks'][0]['errors'][0]['message']) # Informando a mensagem de erro
+print(report)
+```
+
+Editando e validando os metadados
+
+```python script
+
+
+from frictionless import describe
+
+resource = describe('data/capital-invalid.csv')
+resource.add_defined('stats')  # TODO: fix and remove this line
+resource.stats.md5 = 'ae23c74693ca2d3f0e38b9ba3570775b' # this is a made up incorrect
+resource.stats.bytes = 100 # this is wrong
+resource.path = "capital-invalid.csv"
+resource.to_yaml('data/capital.resource-bad.yaml')
+```
+
+Visualizando o resource modificado
+
+```python script
+from frictionless import validate
+
+report = validate('data/capital.resource-bad.yaml')
 print(report)
 ```
 
 ## Validando um pacote
+
+Lembrando que um pacote é um conjunto de resource mais metadados adicionais.
 
 ```python script
 with open('data/capital-valid.csv') as file:
@@ -82,7 +122,11 @@ report = validate("data/capital.package.yaml")
 print(report)
 ```
 
-## Validando um Inquerito
+## Validando um Inquerito ( Inquiry )
+
+Inquiry é uma representação declarativa do trabalho de validação. 
+
+Criando um Inquiry que inclua a validação de um arquivo individual e uma validação de resource. O inquiry pode fornecer muita flexibilidade e poder quando o fluxo de validação se torna complexo.
 
 ```python script
 from frictionless import Inquiry, InquiryTask
@@ -191,12 +235,14 @@ pprint(report.flatten(["rowNumber", "fieldNumber", "code", "note"]))
 
 ## Pick/Skip errors
 
+ É possível pegar erros específicos ou pulá-los(Skip)
+
 ```python script
 from pprint import pprint
 from frictionless import validate
 
 report1 = validate("data/capital-invalid.csv", pick_errors=["duplicate-label"])
-report2 = validate("data/capital-invalid.csv", skip_errors=["duplicate-label"])
+report2 = validate("data/capital-invalid.csv", skip_errors=["duplicate-label"]) # Ignora erros específicos
 pprint(report1.flatten(["rowNumber", "fieldNumber", "type"]))
 pprint(report2.flatten(["rowNumber", "fieldNumber", "type"]))
 ```

@@ -145,6 +145,11 @@ pprint(package.extract())
 
 Fornece metadados sobre um resource com funções de ler e transmitir. A função extract sempre lê linhas na memória. Resource pode fazer a mesma coisa porém oferece uma escolha a respeito da saída de dados que pode ser rows, data, text ou bytes.
 
+- rows: read_rows() # Retorna uma lista com dicionário, onde cada um representa uma linha do arquivo
+- data: read_cells() # Retorna uma lista
+- **text:** read_text() # Retorna uma representação textual
+- bytes: read_bytes() # Retorna a leitura do arquivo em bytes
+
 Lendo bytes
 
 ```python script
@@ -153,6 +158,7 @@ from frictionless import Resource
 
 resource = Resource('data/country-3.csv')
 pprint(resource.read_bytes())
+pprint(type(resource.read_bytes()))
 ```
 
 Lendo texto
@@ -162,6 +168,7 @@ from frictionless import Resource
 
 resource = Resource('data/country-3.csv')
 pprint(resource.read_text())
+pprint(type(resource.read_text()))
 ```
 
 Lendo células
@@ -171,6 +178,7 @@ from frictionless import Resource
 
 resource = Resource('data/country-3.csv')
 pprint(resource.read_cells())
+pprint(type(resource.read_cells()))
 ```
 
 Lendo linhas
@@ -180,9 +188,10 @@ from frictionless import Resource
 
 resource = Resource('data/country-3.csv')
 pprint(resource.read_rows())
+pprint(type(resource.read_rows()))
 ```
 
-Lendo um cabeçalho
+Lendo somente o cabeçalho das colunas
 
 ```python script
 from frictionless import Resource
@@ -201,11 +210,15 @@ from frictionless import Resource
 with Resource('data/country-3.csv') as resource:
     resource.byte_stream
     resource.text_stream
-   # resource.list_stream
+    resource.cell_stream
     resource.row_stream
+
+print(resource)
 ```
 
 ## Classe Package
+
+Classe para criação de metadados de conjuntos de dados e leitura de dados
 
 Fornece funções para ler os conteúdos de um pacote.
 
@@ -213,7 +226,9 @@ Fornece funções para ler os conteúdos de um pacote.
 from frictionless import describe
 
 package = describe('data/*-3.csv')
-package.to_json('data/country-3.package.json')
+package.get_resource("country-3").path = "country-3.csv"
+package.get_resource("capital-3").path = "capital-3.csv"
+package.to_yaml('data/country-3.package.yaml')
 ```
 
 Criando um pacote dos arquivos de dados e lendo os resources de cada um
@@ -225,4 +240,7 @@ package = Package('data/*-3.csv')
 package.infer(sample=False)
 pprint(package.get_resource('country-3').read_rows())
 pprint(package.get_resource('capital-3').read_rows())
+pprint("Imprimindo as linhas em forma de célula")
+pprint(package.get_resource('country-3').read_cells())
+pprint(package.get_resource('capital-3').read_cells())
 ```

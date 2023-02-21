@@ -30,6 +30,20 @@ pages:
           name: Frictionless - Extract
         - path: pages/demonstracoes/python/frictionless/frictionless_validate
           name: Frictionless - Validate
+        - path: pages/demonstracoes/python/frictionless/frictionless_transform
+          name: Frictionless - Transform
+        - path: pages/demonstracoes/python/frictionless/frictionless_actions
+          name: Frictionless - Classe Catalog
+        - path: pages/demonstracoes/python/frictionless/frictionless_package
+          name: Frictionless - Classe Package
+        - path: pages/demonstracoes/python/frictionless/frictionless_resource
+          name: Frictionless - Classe Resource
+        - path: pages/demonstracoes/python/frictionless/frictionless_dialect
+          name: Frictionless - Classe Dialect
+        - path: pages/demonstracoes/python/frictionless/frictionless_schema
+          name: Frictionless - Classe Schema
+        - path: pages/demonstracoes/python/frictionless/frictionless_checklist
+          name: Frictionless - Classe Checklist
     - name: Demo - Jinja
       items:
         - path: pages/demonstracoes/jinja/jinja
