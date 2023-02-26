@@ -234,17 +234,115 @@ packages:
         stats:
           bytes: 82648
         hash: ''
-        metadata_modified: '2023-02-09T15:37:59.063902'
+        metadata_modified: '2023-02-24T10:38:32.103455'
         package_id: 03344230-8523-443f-a724-fb68a53177fe
         created: '2023-02-09T15:37:59.177581'
         last_modified: '2023-02-09T15:37:58.993529'
         url_type: upload
         id: 20d2a3db-69cd-4c1a-944a-d2eba47096bb
+      - name: bo_26-2023.txt
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/8ef2ebef-03e9-4d31-93e3-a8c38c828e75/download/bo_26-2023.txt
+        format: TXT
+        mediatype: text/plain
+        stats:
+          bytes: 236080
+        hash: ''
+        metadata_modified: '2023-02-24T10:38:39.774328'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2023-02-24T10:38:32.349963'
+        last_modified: '2023-02-24T10:38:31.972264'
+        url_type: upload
+        id: 8ef2ebef-03e9-4d31-93e3-a8c38c828e75
+      - name: bo_27-2023.txt
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/930f77a0-828d-4d57-9b72-c7015d0c1a32/download/bo_27-2023.txt
+        format: TXT
+        mediatype: text/plain
+        stats:
+          bytes: 16863
+        hash: ''
+        metadata_modified: '2023-02-24T10:38:45.997328'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2023-02-24T10:38:40.044351'
+        last_modified: '2023-02-24T10:38:39.640911'
+        url_type: upload
+        id: 930f77a0-828d-4d57-9b72-c7015d0c1a32
+      - name: bo_28-2023.txt
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/453a0482-33ac-499d-a40b-01f4efd3cd28/download/bo_28-2023.txt
+        format: TXT
+        mediatype: text/plain
+        stats:
+          bytes: 84913
+        hash: ''
+        metadata_modified: '2023-02-24T10:38:58.527936'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2023-02-24T10:38:46.141668'
+        last_modified: '2023-02-24T10:38:45.861909'
+        url_type: upload
+        id: 453a0482-33ac-499d-a40b-01f4efd3cd28
+      - name: bo_29-2023.txt
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/3c0ad57f-cb9f-4cec-9ebb-796fb2bba8f3/download/bo_29-2023.txt
+        format: TXT
+        mediatype: text/plain
+        stats:
+          bytes: 364895
+        hash: ''
+        metadata_modified: '2023-02-24T10:39:09.579849'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2023-02-24T10:38:58.642415'
+        last_modified: '2023-02-24T10:38:58.451333'
+        url_type: upload
+        id: 3c0ad57f-cb9f-4cec-9ebb-796fb2bba8f3
+      - name: bo_30-2023.txt
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/2165aeeb-93d6-4343-b1ac-ec54a5386eb8/download/bo_30-2023.txt
+        format: TXT
+        mediatype: text/plain
+        stats:
+          bytes: 163422
+        hash: ''
+        metadata_modified: '2023-02-24T10:39:15.655756'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2023-02-24T10:39:09.700301'
+        last_modified: '2023-02-24T10:39:09.435241'
+        url_type: upload
+        id: 2165aeeb-93d6-4343-b1ac-ec54a5386eb8
+      - name: bo_31-2023.txt
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/da1aef71-c3ab-4971-80cd-fb4d39b1e18a/download/bo_31-2023.txt
+        format: TXT
+        mediatype: text/plain
+        stats:
+          bytes: 43633
+        hash: ''
+        metadata_modified: '2023-02-24T10:42:14.488432'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2023-02-24T10:39:15.862848'
+        last_modified: '2023-02-24T10:39:15.477912'
+        url_type: upload
+        id: da1aef71-c3ab-4971-80cd-fb4d39b1e18a
+      - name: bo_32-2023.txt
+        description: ''
+        path: https://dados.ufpe.br/dataset/03344230-8523-443f-a724-fb68a53177fe/resource/1c1652af-3339-4722-a706-0c2cf98bf02b/download/bo_32-2023.txt
+        format: TXT
+        mediatype: text/plain
+        stats:
+          bytes: 107121
+        hash: ''
+        metadata_modified: '2023-02-24T10:42:14.489494'
+        package_id: 03344230-8523-443f-a724-fb68a53177fe
+        created: '2023-02-24T10:42:14.570283'
+        last_modified: '2023-02-24T10:42:14.347008'
+        url_type: upload
+        id: 1c1652af-3339-4722-a706-0c2cf98bf02b
     relationships_as_object: []
     private: false
     id: 03344230-8523-443f-a724-fb68a53177fe
     metadata_created: '2022-08-23T16:03:11.624768'
-    metadata_modified: '2023-02-09T15:37:59.044209'
+    metadata_modified: '2023-02-24T10:42:14.451181'
     creator_user_id: e6fd9a30-b109-4d0f-b600-cea14d0145ad
     type: dataset
     groups:

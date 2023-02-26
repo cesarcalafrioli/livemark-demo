@@ -32,7 +32,7 @@ pages:
           name: Frictionless - Validate
         - path: pages/demonstracoes/python/frictionless/frictionless_transform
           name: Frictionless - Transform
-        - path: pages/demonstracoes/python/frictionless/frictionless_actions
+        - path: pages/demonstracoes/python/frictionless/frictionless_catalog
           name: Frictionless - Classe Catalog
         - path: pages/demonstracoes/python/frictionless/frictionless_package
           name: Frictionless - Classe Package
@@ -44,6 +44,10 @@ pages:
           name: Frictionless - Classe Schema
         - path: pages/demonstracoes/python/frictionless/frictionless_checklist
           name: Frictionless - Classe Checklist
+        - path: pages/demonstracoes/python/frictionless/frictionless_pipeline
+          name: Frictionless - Classe Pipeline
+        - path: pages/demonstracoes/python/frictionless/frictionless_detector
+          name: Frictionless - Classe Detector
     - name: Demo - Jinja
       items:
         - path: pages/demonstracoes/jinja/jinja

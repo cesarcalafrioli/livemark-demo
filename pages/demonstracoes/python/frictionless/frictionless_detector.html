@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="ValidaÃ§Ã£o de dados tabulares Ã© o processo de identificaÃ§Ã£o de problemas que ocorreram nos dados e que precisam ser corrigidos.">
-<meta name="keywords" content="python,-,validate">
+<meta name="description" content="O detector pode ser utilizado em vÃ¡rios lugares dentro do framework.">
+<meta name="keywords" content="frictionless,-,detector">
 <link rel="icon" href="../../../../assets/github-logo.png">
 <title>César Calafrioli - GitHub | Menu</title>
 <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
@@ -1839,7 +1839,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
             Frictionless - Extract
           </a>
         </li>
-                <li class="secondary active">
+                <li class="secondary ">
           <a href="frictionless_validate.html" class="secondary">
             Frictionless - Validate
           </a>
@@ -1884,7 +1884,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
             Frictionless - Classe Pipeline
           </a>
         </li>
-                <li class="secondary ">
+                <li class="secondary active">
           <a href="frictionless_detector.html" class="secondary">
             Frictionless - Classe Detector
           </a>
@@ -1932,795 +1932,89 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </div>
 <div id="livemark-main">
 <div id="livemark-notes">
-      <a href="https://github.com/cesarcalafrioli/livemark-demo/edit/main/pages/demonstracoes/python/frictionless/frictionless_validate.md" target="_blank">Edit page </a> in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-    (2023-02-14 10:54)
+      <a href="https://github.com/cesarcalafrioli/livemark-demo/edit/main/pages/demonstracoes/python/frictionless/frictionless_detector.md" target="_blank">Edit page </a> in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
+    (2023-02-26 20:26)
 </div>
 
-<h1>PYTHON - VALIDATE</h1>
-<p>ValidaÃ§Ã£o de dados tabulares Ã© o processo de identificaÃ§Ã£o de problemas que ocorreram nos dados e que precisam ser corrigidos.</p>
-<div><pre><code class="language-python">with open('data/capital-invalid.csv') as file:
-    print(file.read())
+<h1>Frictionless - Detector</h1>
+<p>O detector pode ser utilizado em vÃ¡rios lugares dentro do framework.</p>
+<div><pre><code class="language-python">from frictionless import Detector, Resource
+
+detector = Detector(field_missing_values=['1','2'])
+resource = Resource('data/table.csv', detector=detector)
+print(resource.read_rows())
 </code></pre>
 
-<pre><code class="language-markup">id,name,name
-1,London,Britain
-2,Berlin,Germany
-3,Paris,France
-4,Madrid,Spain
-5,Rome,Italy
-6,Zagreb,Croatia
-7,Athens,Greece
-8,Vienna,Austria
-8,Warsaw
+<pre><code class="language-markup">[{'id': None, 'name': 'english'}, {'id': None, 'name': '中国人'}]</code></pre>
+</div><h2>Uso do Detector</h2>
+<p>As instancias de classe do detector sÃ£o aceitas por muitas classes e funÃ§Ãµes:</p>
+<ul>
+<li>Package</li>
+<li>Resource</li>
+<li>Describe</li>
+<li>Extract</li>
+<li>Validate</li>
+<li>Etc...</li>
+</ul>
+<p>Basta criar uma instÃ¢ncia do detector usando opÃ§Ãµes desejadas e passar para a classe e funÃ§Ã£o.</p>
+<h2>Tamanho do Buffer</h2>
+<p>Por padrÃ£o, o frictionless irÃ¡ utilizar os primeiros 10.000 bytes para detectar codificaÃ§Ã£o. Incluir mais bytes aumentando o tamanho do buffer pode melhorar a inferÃªncia. Entretanto, o processo ficarÃ¡ mais lento, mas a detecÃ§Ã£o da codificaÃ§Ã£o serÃ¡ mais preciso.</p>
+<div><pre><code class="language-python">from frictionless import Detector, describe
 
-x,Tokio,Japan,review</code></pre>
-</div><p>Validando o arquivo capital-invalid.csv</p>
-<div><pre><code class="language-python">from pprint import pprint
-from frictionless import validate
-
-report = validate('data/capital-invalid.csv')
-print(report)
+detector = Detector(buffer_size=100000)
+resource = describe("data/country-1.csv", detector=detector)
+print(resource.encoding)
 </code></pre>
 
-<pre><code class="language-markup">{'valid': False,
- 'stats': {'tasks': 1, 'warnings': 0, 'errors': 5, 'seconds': 0.006},
- 'warnings': [],
- 'errors': [],
- 'tasks': [{'valid': False,
-            'name': 'capital-invalid',
-            'type': 'table',
-            'place': 'data/capital-invalid.csv',
-            'labels': ['id', 'name', 'name'],
-            'stats': {'md5': 'dcdeae358cfd50860c18d953e021f836',
-                      'sha256': '95cc611e3b2457447ce62721a9b79d1a063d82058fc144d6d2a8dda53f30c3a6',
-                      'bytes': 171,
-                      'fields': 3,
-                      'rows': 11,
-                      'warnings': 0,
-                      'errors': 5,
-                      'seconds': 0.006},
-            'warnings': [],
-            'errors': [{'type': 'duplicate-label',
-                        'title': 'Duplicate Label',
-                        'description': 'Two columns in the header row have the '
-                                       'same value. Column names should be '
-                                       'unique.',
-                        'message': 'Label "name" in the header at position "3" '
-                                   'is duplicated to a label: at position "2"',
-                        'tags': ['#table', '#header', '#label'],
-                        'note': 'at position "2"',
-                        'labels': ['id', 'name', 'name'],
-                        'rowNumbers': [1],
-                        'label': 'name',
-                        'fieldName': 'name2',
-                        'fieldNumber': 3},
-                       {'type': 'missing-cell',
-                        'title': 'Missing Cell',
-                        'description': 'This row has less values compared to '
-                                       'the header row (the first row in the '
-                                       'data source). A key concept is that '
-                                       'all the rows in tabular data must have '
-                                       'the same number of columns.',
-                        'message': 'Row at position "10" has a missing cell in '
-                                   'field "name2" at position "3"',
-                        'tags': ['#table', '#row', '#cell'],
-                        'note': '',
-                        'cells': ['8', 'Warsaw'],
-                        'rowNumber': 10,
-                        'cell': '',
-                        'fieldName': 'name2',
-                        'fieldNumber': 3},
-                       {'type': 'blank-row',
-                        'title': 'Blank Row',
-                        'description': 'This row is empty. A row should '
-                                       'contain at least one value.',
-                        'message': 'Row at position "11" is completely blank',
-                        'tags': ['#table', '#row'],
-                        'note': '',
-                        'cells': [],
-                        'rowNumber': 11},
-                       {'type': 'type-error',
-                        'title': 'Type Error',
-                        'description': 'The value does not match the schema '
-                                       'type and format for this field.',
-                        'message': 'Type error in the cell "x" in row "12" and '
-                                   'field "id" at position "1": type is '
-                                   '"integer/default"',
-                        'tags': ['#table', '#row', '#cell'],
-                        'note': 'type is "integer/default"',
-                        'cells': ['x', 'Tokio', 'Japan', 'review'],
-                        'rowNumber': 12,
-                        'cell': 'x',
-                        'fieldName': 'id',
-                        'fieldNumber': 1},
-                       {'type': 'extra-cell',
-                        'title': 'Extra Cell',
-                        'description': 'This row has more values compared to '
-                                       'the header row (the first row in the '
-                                       'data source). A key concept is that '
-                                       'all the rows in tabular data must have '
-                                       'the same number of columns.',
-                        'message': 'Row at position "12" has an extra value in '
-                                   'field at position "4"',
-                        'tags': ['#table', '#row', '#cell'],
-                        'note': '',
-                        'cells': ['x', 'Tokio', 'Japan', 'review'],
-                        'rowNumber': 12,
-                        'cell': 'review',
-                        'fieldName': '',
-                        'fieldNumber': 4}]}]}</code></pre>
-</div><p>TESTE: Validando arquivo licitacoes-itens-2023-ufpe.csv</p>
-<div><pre><code class="language-python">from pprint import pprint
-from frictionless import validate
+<pre><code class="language-markup">utf-8</code></pre>
+</div><h2>Tamanho da amostra</h2>
+<p>Por padrÃ£o, o Frictionless irÃ¡ utilizar as primeiras 100 linhas para detectar o tipo de campo. Assim como o buffer, aumentando o tamanho da amostra irÃ¡ melhorar a inferÃªncia, mas o processo irÃ¡ ficar mais lento, embora o resultado se torne mais preciso.</p>
+<div><pre><code class="language-python">from frictionless import Detector, describe
 
-report = validate('data/licitacoes-itens-2023-ufpe.csv')
-print(report)
+detector = Detector(sample_size=1000)
+resource = describe("data/country-1.csv", detector=detector)
+print(resource.schema)
 </code></pre>
 
-<pre><code class="language-markup">{'valid': True,
- 'stats': {'tasks': 1, 'warnings': 0, 'errors': 0, 'seconds': 0.197},
- 'warnings': [],
- 'errors': [],
- 'tasks': [{'valid': True,
-            'name': 'licitacoes-itens-2023-ufpe',
-            'type': 'table',
-            'place': 'data/licitacoes-itens-2023-ufpe.csv',
-            'labels': ['id_proc_compra',
-                       'processo_sipac',
-                       'id_material',
-                       'denominacao',
-                       'id_item_proc_compra',
-                       'valor_pre_compra',
-                       'quantidade',
-                       'qtd_recebida',
-                       'id_situacao',
-                       'situacao'],
-            'stats': {'md5': '988d9e218c14dd7188f4c335f2153e22',
-                      'sha256': 'e910687d3e531ddf58ccb64d857d643927c03a4731afb83b56a1558fb6021ce3',
-                      'bytes': 1896523,
-                      'fields': 10,
-                      'rows': 13770,
-                      'warnings': 0,
-                      'errors': 0,
-                      'seconds': 0.197},
-            'warnings': [],
-            'errors': []}]}</code></pre>
-</div><h2>Validando um Schema</h2>
-<p>Criando um schema de tabela invÃ¡lido.</p>
-<div><pre><code class="language-python">import yaml
-from frictionless import Schema
+<pre><code class="language-markup">{'fields': [{'name': 'id', 'type': 'integer'},
+            {'name': 'neighbor_id', 'type': 'integer'},
+            {'name': 'name', 'type': 'string'},
+            {'name': 'population', 'type': 'integer'}]}</code></pre>
+</div><h2>A funÃ§Ã£o encoding</h2>
+<p>Por padrÃ£o, a funÃ§Ã£o encoding_function do frictionless Ã© None e o usuÃ¡rio pode usar para funÃ§Ãµes encoding prontas. O usuÃ¡rio, porÃ©m, possui opÃ§Ã£o para implementar sua prÃ³pria decodificaÃ§Ã£o utilizando este recurso.</p>
+<div><pre><code class="language-python">from frictionless import Detector, Resource
 
-descriptor = {}
-descriptor['fields'] = 'bad' # must be a list
-with open('data/bad.schema.yaml', 'w') as file:
-    yaml.dump(descriptor, file)
-</code></pre>
-</div><p>Validando o schema bad.schema.yaml</p>
-<div><pre><code class="language-python">from pprint import pprint
-from frictionless import validate
-
-report = validate('data/bad.schema.yaml')
-pprint(report)
+detector = Detector(encoding_function=lambda sample: "utf-8")
+with Resource("data/table.csv", detector=detector) as resource:
+    print(resource.encoding)
 </code></pre>
 
-<pre><code class="language-markup">{'valid': False,
- 'stats': {'tasks': 0, 'warnings': 0, 'errors': 1, 'seconds': 0.001},
- 'warnings': [],
- 'errors': [{'type': 'schema-error',
-             'title': 'Schema Error',
-             'description': 'Provided schema is not valid.',
-             'message': "Schema is not valid: 'bad' is not of type 'array' at "
-                        "property 'fields'",
-             'tags': [],
-             'note': "'bad' is not of type 'array' at property 'fields'"}],
- 'tasks': []}</code></pre>
-</div><h2>Validando um Resource</h2>
-<p>Lembrando que um resource Ã© um container contendo ambos os dados e metadados.</p>
-<p>O trecho abaixo cria um descritor resource:</p>
-<div><pre><code class="language-python">from frictionless import describe
+<pre><code class="language-markup">utf-8</code></pre>
+</div><h2>Tipo de campo</h2>
+<p>Permite configurar manualmente todos os tipos de campos a um tipo dado. Ã‰ Ãºtil quando precisa pular o lanÃ§amento dos dados ( atribuindo tipo "any" ) ou ter tudo como um string( atribuindo tipo "string" )</p>
+<div><pre><code class="language-python">from frictionless import Detector, describe
 
-resource = describe('data/capital-invalid.csv') # Criando os metadados do arquivo
-resource.path = "capital-invalid.csv" # Alterando o caminho do resource
-resource.to_yaml('data/capital.resource.yaml') # Salvando no disco
-</code></pre>
-</div><p>Validando o resource criado</p>
-<div><pre><code class="language-python">from frictionless import validate
-
-report = validate('data/capital.resource.yaml')
-print(report.to_dict()['tasks'][0]['errors'][0]['type']) # Informando somente o tipo de erro
-print(report.to_dict()['tasks'][0]['errors'][0]['message']) # Informando a mensagem de erro
-print(report)
+detector = Detector(field_type='any')
+resource = describe("data/country-1.csv", detector=detector)
+print(resource.schema)
 </code></pre>
 
-<pre><code class="language-markup">duplicate-label
-Label "name" in the header at position "3" is duplicated to a label: at position "2"
-{'valid': False,
- 'stats': {'tasks': 1, 'warnings': 0, 'errors': 5, 'seconds': 0.004},
- 'warnings': [],
- 'errors': [],
- 'tasks': [{'valid': False,
-            'name': 'capital-invalid',
-            'type': 'table',
-            'place': 'capital-invalid.csv',
-            'labels': ['id', 'name', 'name'],
-            'stats': {'md5': 'dcdeae358cfd50860c18d953e021f836',
-                      'sha256': '95cc611e3b2457447ce62721a9b79d1a063d82058fc144d6d2a8dda53f30c3a6',
-                      'bytes': 171,
-                      'fields': 3,
-                      'rows': 11,
-                      'warnings': 0,
-                      'errors': 5,
-                      'seconds': 0.004},
-            'warnings': [],
-            'errors': [{'type': 'duplicate-label',
-                        'title': 'Duplicate Label',
-                        'description': 'Two columns in the header row have the '
-                                       'same value. Column names should be '
-                                       'unique.',
-                        'message': 'Label "name" in the header at position "3" '
-                                   'is duplicated to a label: at position "2"',
-                        'tags': ['#table', '#header', '#label'],
-                        'note': 'at position "2"',
-                        'labels': ['id', 'name', 'name'],
-                        'rowNumbers': [1],
-                        'label': 'name',
-                        'fieldName': 'name2',
-                        'fieldNumber': 3},
-                       {'type': 'missing-cell',
-                        'title': 'Missing Cell',
-                        'description': 'This row has less values compared to '
-                                       'the header row (the first row in the '
-                                       'data source). A key concept is that '
-                                       'all the rows in tabular data must have '
-                                       'the same number of columns.',
-                        'message': 'Row at position "10" has a missing cell in '
-                                   'field "name2" at position "3"',
-                        'tags': ['#table', '#row', '#cell'],
-                        'note': '',
-                        'cells': ['8', 'Warsaw'],
-                        'rowNumber': 10,
-                        'cell': '',
-                        'fieldName': 'name2',
-                        'fieldNumber': 3},
-                       {'type': 'blank-row',
-                        'title': 'Blank Row',
-                        'description': 'This row is empty. A row should '
-                                       'contain at least one value.',
-                        'message': 'Row at position "11" is completely blank',
-                        'tags': ['#table', '#row'],
-                        'note': '',
-                        'cells': [],
-                        'rowNumber': 11},
-                       {'type': 'type-error',
-                        'title': 'Type Error',
-                        'description': 'The value does not match the schema '
-                                       'type and format for this field.',
-                        'message': 'Type error in the cell "x" in row "12" and '
-                                   'field "id" at position "1": type is '
-                                   '"integer/default"',
-                        'tags': ['#table', '#row', '#cell'],
-                        'note': 'type is "integer/default"',
-                        'cells': ['x', 'Tokio', 'Japan', 'review'],
-                        'rowNumber': 12,
-                        'cell': 'x',
-                        'fieldName': 'id',
-                        'fieldNumber': 1},
-                       {'type': 'extra-cell',
-                        'title': 'Extra Cell',
-                        'description': 'This row has more values compared to '
-                                       'the header row (the first row in the '
-                                       'data source). A key concept is that '
-                                       'all the rows in tabular data must have '
-                                       'the same number of columns.',
-                        'message': 'Row at position "12" has an extra value in '
-                                   'field at position "4"',
-                        'tags': ['#table', '#row', '#cell'],
-                        'note': '',
-                        'cells': ['x', 'Tokio', 'Japan', 'review'],
-                        'rowNumber': 12,
-                        'cell': 'review',
-                        'fieldName': '',
-                        'fieldNumber': 4}]}]}</code></pre>
-</div><p>Editando e validando os metadados</p>
-<div><pre><code class="language-python">
-
-from frictionless import describe
-
-resource = describe('data/capital-invalid.csv')
-resource.add_defined('stats')  # TODO: fix and remove this line
-resource.stats.md5 = 'ae23c74693ca2d3f0e38b9ba3570775b' # this is a made up incorrect
-resource.stats.bytes = 100 # this is wrong
-resource.path = "capital-invalid.csv"
-resource.to_yaml('data/capital.resource-bad.yaml')
-</code></pre>
-</div><p>Visualizando o resource modificado</p>
-<div><pre><code class="language-python">from frictionless import validate
-
-report = validate('data/capital.resource-bad.yaml')
-print(report)
-</code></pre>
-
-<pre><code class="language-markup">{'valid': False,
- 'stats': {'tasks': 1, 'warnings': 0, 'errors': 7, 'seconds': 0.005},
- 'warnings': [],
- 'errors': [],
- 'tasks': [{'valid': False,
-            'name': 'capital-invalid',
-            'type': 'table',
-            'place': 'capital-invalid.csv',
-            'labels': ['id', 'name', 'name'],
-            'stats': {'md5': 'dcdeae358cfd50860c18d953e021f836',
-                      'sha256': '95cc611e3b2457447ce62721a9b79d1a063d82058fc144d6d2a8dda53f30c3a6',
-                      'bytes': 171,
-                      'fields': 3,
-                      'rows': 11,
-                      'warnings': 0,
-                      'errors': 7,
-                      'seconds': 0.005},
-            'warnings': [],
-            'errors': [{'type': 'duplicate-label',
-                        'title': 'Duplicate Label',
-                        'description': 'Two columns in the header row have the '
-                                       'same value. Column names should be '
-                                       'unique.',
-                        'message': 'Label "name" in the header at position "3" '
-                                   'is duplicated to a label: at position "2"',
-                        'tags': ['#table', '#header', '#label'],
-                        'note': 'at position "2"',
-                        'labels': ['id', 'name', 'name'],
-                        'rowNumbers': [1],
-                        'label': 'name',
-                        'fieldName': 'name2',
-                        'fieldNumber': 3},
-                       {'type': 'missing-cell',
-                        'title': 'Missing Cell',
-                        'description': 'This row has less values compared to '
-                                       'the header row (the first row in the '
-                                       'data source). A key concept is that '
-                                       'all the rows in tabular data must have '
-                                       'the same number of columns.',
-                        'message': 'Row at position "10" has a missing cell in '
-                                   'field "name2" at position "3"',
-                        'tags': ['#table', '#row', '#cell'],
-                        'note': '',
-                        'cells': ['8', 'Warsaw'],
-                        'rowNumber': 10,
-                        'cell': '',
-                        'fieldName': 'name2',
-                        'fieldNumber': 3},
-                       {'type': 'blank-row',
-                        'title': 'Blank Row',
-                        'description': 'This row is empty. A row should '
-                                       'contain at least one value.',
-                        'message': 'Row at position "11" is completely blank',
-                        'tags': ['#table', '#row'],
-                        'note': '',
-                        'cells': [],
-                        'rowNumber': 11},
-                       {'type': 'type-error',
-                        'title': 'Type Error',
-                        'description': 'The value does not match the schema '
-                                       'type and format for this field.',
-                        'message': 'Type error in the cell "x" in row "12" and '
-                                   'field "id" at position "1": type is '
-                                   '"integer/default"',
-                        'tags': ['#table', '#row', '#cell'],
-                        'note': 'type is "integer/default"',
-                        'cells': ['x', 'Tokio', 'Japan', 'review'],
-                        'rowNumber': 12,
-                        'cell': 'x',
-                        'fieldName': 'id',
-                        'fieldNumber': 1},
-                       {'type': 'extra-cell',
-                        'title': 'Extra Cell',
-                        'description': 'This row has more values compared to '
-                                       'the header row (the first row in the '
-                                       'data source). A key concept is that '
-                                       'all the rows in tabular data must have '
-                                       'the same number of columns.',
-                        'message': 'Row at position "12" has an extra value in '
-                                   'field at position "4"',
-                        'tags': ['#table', '#row', '#cell'],
-                        'note': '',
-                        'cells': ['x', 'Tokio', 'Japan', 'review'],
-                        'rowNumber': 12,
-                        'cell': 'review',
-                        'fieldName': '',
-                        'fieldNumber': 4},
-                       {'type': 'md5-count',
-                        'title': 'Md5 Count Error',
-                        'description': 'This error can happen if the data is '
-                                       'corrupted.',
-                        'message': 'The data source does not match the '
-                                   'expected md5 count: expected is '
-                                   '"ae23c74693ca2d3f0e38b9ba3570775b" and '
-                                   'actual is '
-                                   '"dcdeae358cfd50860c18d953e021f836"',
-                        'tags': ['#file'],
-                        'note': 'expected is '
-                                '"ae23c74693ca2d3f0e38b9ba3570775b" and actual '
-                                'is "dcdeae358cfd50860c18d953e021f836"'},
-                       {'type': 'byte-count',
-                        'title': 'Byte Count Error',
-                        'description': 'This error can happen if the data is '
-                                       'corrupted.',
-                        'message': 'The data source does not match the '
-                                   'expected byte count: expected is "100" and '
-                                   'actual is "171"',
-                        'tags': ['#file'],
-                        'note': 'expected is "100" and actual is "171"'}]}]}</code></pre>
-</div><h2>Validando um pacote</h2>
-<p>Lembrando que um pacote Ã© um conjunto de resource mais metadados adicionais.</p>
-<div><pre><code class="language-python">with open('data/capital-valid.csv') as file:
-    print(file.read())
-</code></pre>
-
-<pre><code class="language-markup">id,name
-1,London
-2,Berlin
-3,Paris
-4,Madrid
-5,Rome</code></pre>
-</div><p>Descrevendo e validando um pacote</p>
-<div><pre><code class="language-python">from frictionless import describe, validate
-
-# create package descriptor
-package = describe("data/capital-*id.csv")
-package.to_yaml("data/capital.package.yaml")
-# validate
-report = validate("data/capital.package.yaml")
-print(report)
-</code></pre>
-
-<pre><code class="language-markup">{'valid': False,
- 'stats': {'tasks': 2, 'warnings': 0, 'errors': 2, 'seconds': 0.007},
- 'warnings': [],
- 'errors': [],
- 'tasks': [{'valid': False,
-            'name': 'capital-invalid',
-            'type': 'table',
-            'place': 'data\\capital-invalid.csv',
-            'labels': [],
-            'stats': {'warnings': 0, 'errors': 1, 'seconds': 0.003},
-            'warnings': [],
-            'errors': [{'type': 'scheme-error',
-                        'title': 'Scheme Error',
-                        'description': 'Data reading error because of '
-                                       'incorrect scheme.',
-                        'message': 'The data source could not be successfully '
-                                   'loaded: [Errno 2] No such file or '
-                                   'directory: '
-                                   "'data\\\\data\\\\capital-invalid.csv'",
-                        'tags': [],
-                        'note': '[Errno 2] No such file or directory: '
-                                "'data\\\\data\\\\capital-invalid.csv'"}]},
-           {'valid': False,
-            'name': 'capital-valid',
-            'type': 'table',
-            'place': 'data\\capital-valid.csv',
-            'labels': [],
-            'stats': {'warnings': 0, 'errors': 1, 'seconds': 0.001},
-            'warnings': [],
-            'errors': [{'type': 'scheme-error',
-                        'title': 'Scheme Error',
-                        'description': 'Data reading error because of '
-                                       'incorrect scheme.',
-                        'message': 'The data source could not be successfully '
-                                   'loaded: [Errno 2] No such file or '
-                                   'directory: '
-                                   "'data\\\\data\\\\capital-valid.csv'",
-                        'tags': [],
-                        'note': '[Errno 2] No such file or directory: '
-                                "'data\\\\data\\\\capital-valid.csv'"}]}]}</code></pre>
-</div><h2>Validando um Inquerito ( Inquiry )</h2>
-<p>Inquiry Ã© uma representaÃ§Ã£o declarativa do trabalho de validaÃ§Ã£o. </p>
-<p>Criando um Inquiry que inclua a validaÃ§Ã£o de um arquivo individual e uma validaÃ§Ã£o de resource. O inquiry pode fornecer muita flexibilidade e poder quando o fluxo de validaÃ§Ã£o se torna complexo.</p>
-<div><pre><code class="language-python">from frictionless import Inquiry, InquiryTask
-
-inquiry = Inquiry(tasks=[
-    InquiryTask(path='data/capital-valid.csv'),
-    InquiryTask(resource='data/capital.resource.yaml'),
-])
-inquiry.to_yaml('data/capital.inquiry.yaml')
-</code></pre>
-</div><p>Validando</p>
-<div><pre><code class="language-python">from frictionless import validate
-
-report = validate("data/capital.inquiry.yaml")
-print(report)
-</code></pre>
-
-<pre><code class="language-markup">{'valid': False,
- 'stats': {'tasks': 2, 'warnings': 0, 'errors': 5, 'seconds': 0.014},
- 'warnings': [],
- 'errors': [],
- 'tasks': [{'valid': True,
-            'name': 'capital-valid',
-            'type': 'table',
-            'place': 'data/capital-valid.csv',
-            'labels': ['id', 'name'],
-            'stats': {'md5': 'e7b6592a0a4356ba834e4bf1c8e8c7f8',
-                      'sha256': '04202244cbb3662b0f97bfa65adfad045724cbc8d798a7c0eb85533e9da40a5b',
-                      'bytes': 50,
-                      'fields': 2,
-                      'rows': 5,
-                      'warnings': 0,
-                      'errors': 0,
-                      'seconds': 0.006},
-            'warnings': [],
-            'errors': []},
-           {'valid': False,
-            'name': 'capital-invalid',
-            'type': 'table',
-            'place': 'capital-invalid.csv',
-            'labels': ['id', 'name', 'name'],
-            'stats': {'md5': 'dcdeae358cfd50860c18d953e021f836',
-                      'sha256': '95cc611e3b2457447ce62721a9b79d1a063d82058fc144d6d2a8dda53f30c3a6',
-                      'bytes': 171,
-                      'fields': 3,
-                      'rows': 11,
-                      'warnings': 0,
-                      'errors': 5,
-                      'seconds': 0.006},
-            'warnings': [],
-            'errors': [{'type': 'duplicate-label',
-                        'title': 'Duplicate Label',
-                        'description': 'Two columns in the header row have the '
-                                       'same value. Column names should be '
-                                       'unique.',
-                        'message': 'Label "name" in the header at position "3" '
-                                   'is duplicated to a label: at position "2"',
-                        'tags': ['#table', '#header', '#label'],
-                        'note': 'at position "2"',
-                        'labels': ['id', 'name', 'name'],
-                        'rowNumbers': [1],
-                        'label': 'name',
-                        'fieldName': 'name2',
-                        'fieldNumber': 3},
-                       {'type': 'missing-cell',
-                        'title': 'Missing Cell',
-                        'description': 'This row has less values compared to '
-                                       'the header row (the first row in the '
-                                       'data source). A key concept is that '
-                                       'all the rows in tabular data must have '
-                                       'the same number of columns.',
-                        'message': 'Row at position "10" has a missing cell in '
-                                   'field "name2" at position "3"',
-                        'tags': ['#table', '#row', '#cell'],
-                        'note': '',
-                        'cells': ['8', 'Warsaw'],
-                        'rowNumber': 10,
-                        'cell': '',
-                        'fieldName': 'name2',
-                        'fieldNumber': 3},
-                       {'type': 'blank-row',
-                        'title': 'Blank Row',
-                        'description': 'This row is empty. A row should '
-                                       'contain at least one value.',
-                        'message': 'Row at position "11" is completely blank',
-                        'tags': ['#table', '#row'],
-                        'note': '',
-                        'cells': [],
-                        'rowNumber': 11},
-                       {'type': 'type-error',
-                        'title': 'Type Error',
-                        'description': 'The value does not match the schema '
-                                       'type and format for this field.',
-                        'message': 'Type error in the cell "x" in row "12" and '
-                                   'field "id" at position "1": type is '
-                                   '"integer/default"',
-                        'tags': ['#table', '#row', '#cell'],
-                        'note': 'type is "integer/default"',
-                        'cells': ['x', 'Tokio', 'Japan', 'review'],
-                        'rowNumber': 12,
-                        'cell': 'x',
-                        'fieldName': 'id',
-                        'fieldNumber': 1},
-                       {'type': 'extra-cell',
-                        'title': 'Extra Cell',
-                        'description': 'This row has more values compared to '
-                                       'the header row (the first row in the '
-                                       'data source). A key concept is that '
-                                       'all the rows in tabular data must have '
-                                       'the same number of columns.',
-                        'message': 'Row at position "12" has an extra value in '
-                                   'field at position "4"',
-                        'tags': ['#table', '#row', '#cell'],
-                        'note': '',
-                        'cells': ['x', 'Tokio', 'Japan', 'review'],
-                        'rowNumber': 12,
-                        'cell': 'review',
-                        'fieldName': '',
-                        'fieldNumber': 4}]}]}</code></pre>
-</div><h2>RelatÃ³rio de validaÃ§Ã£o</h2>
-<p>todas as funÃ§Ãµes validate retornam um relatÃ³rio de validaÃ§Ã£o.</p>
-<div><pre><code class="language-python">from frictionless import validate
-
-report = validate('data/capital-invalid.csv', pick_errors=['duplicate-label'])
-print(report)
-
-</code></pre>
-
-<pre><code class="language-markup">{'valid': False,
- 'stats': {'tasks': 1, 'warnings': 0, 'errors': 1, 'seconds': 0.007},
- 'warnings': [],
- 'errors': [],
- 'tasks': [{'valid': False,
-            'name': 'capital-invalid',
-            'type': 'table',
-            'place': 'data/capital-invalid.csv',
-            'labels': ['id', 'name', 'name'],
-            'stats': {'md5': 'dcdeae358cfd50860c18d953e021f836',
-                      'sha256': '95cc611e3b2457447ce62721a9b79d1a063d82058fc144d6d2a8dda53f30c3a6',
-                      'bytes': 171,
-                      'fields': 3,
-                      'rows': 11,
-                      'warnings': 0,
-                      'errors': 1,
-                      'seconds': 0.007},
-            'warnings': [],
-            'errors': [{'type': 'duplicate-label',
-                        'title': 'Duplicate Label',
-                        'description': 'Two columns in the header row have the '
-                                       'same value. Column names should be '
-                                       'unique.',
-                        'message': 'Label "name" in the header at position "3" '
-                                   'is duplicated to a label: at position "2"',
-                        'tags': ['#table', '#header', '#label'],
-                        'note': 'at position "2"',
-                        'labels': ['id', 'name', 'name'],
-                        'rowNumbers': [1],
-                        'label': 'name',
-                        'fieldName': 'name2',
-                        'fieldNumber': 3}]}]}</code></pre>
-</div><p>A funÃ§Ã£o report.flatten representa os erros:</p>
-<div><pre><code class="language-python">from pprint import pprint
-from frictionless import validate
-
-report = validate("data/capital-invalid.csv", pick_errors=["duplicate-label"])
-pprint(report.flatten(["rowNumber", "fieldNumber", "code", "message"]))
-</code></pre>
-
-<pre><code class="language-markup">[[None,
-  3,
-  None,
-  'Label "name" in the header at position "3" is duplicated to a label: at '
-  'position "2"']]</code></pre>
-</div><div><pre><code class="language-python">from frictionless import validate
-
-report = validate("data/bad.json", type='schema')
-print(report)
-</code></pre>
-
-<pre><code class="language-markup">{'valid': False,
- 'stats': {'tasks': 0, 'warnings': 0, 'errors': 1, 'seconds': 0.0},
- 'warnings': [],
- 'errors': [{'type': 'schema-error',
-             'title': 'Schema Error',
-             'description': 'Provided schema is not valid.',
-             'message': 'Schema is not valid: cannot retrieve metadata '
-                        '"data/bad.json" because "[Errno 2] No such file or '
-                        'directory: \'data/bad.json\'"',
-             'tags': [],
-             'note': 'cannot retrieve metadata "data/bad.json" because "[Errno '
-                     '2] No such file or directory: \'data/bad.json\'"'}],
- 'tasks': []}</code></pre>
-</div><h2>ValidaÃ§Ã£o de erros</h2>
-<div><pre><code class="language-python">from frictionless import validate
-
-report = validate("data/capital-invalid.csv", pick_errors=["duplicate-label"])
-error = report.error  # this is only available for one table / one error sitution
-print(f'Type: "{error.type}"')
-print(f'Title: "{error.title}"')
-print(f'Tags: "{error.tags}"')
-print(f'Note: "{error.note}"')
-print(f'Message: "{error.message}"')
-print(f'Description: "{error.description}"')
-</code></pre>
-</div><div><pre><code class="language-python">from frictionless import validate
-
-report = validate("data/capital-invalid.csv", pick_errors=["duplicate-label"])
-error = report.error  # this is only available for one table / one error sitution
-print(error)
-</code></pre>
-
-<pre><code class="language-markup">{'type': 'duplicate-label',
- 'title': 'Duplicate Label',
- 'description': 'Two columns in the header row have the same value. Column '
-                'names should be unique.',
- 'message': 'Label "name" in the header at position "3" is duplicated to a '
-            'label: at position "2"',
- 'tags': ['#table', '#header', '#label'],
- 'note': 'at position "2"',
- 'labels': ['id', 'name', 'name'],
- 'rowNumbers': [1],
- 'label': 'name',
- 'fieldName': 'name2',
- 'fieldNumber': 3}</code></pre>
-</div><h2>Checks disponÃ­veis</h2>
-<p>HÃ¡ vÃ¡rios checks de validaÃ§Ã£o incluÃ­dos no framework.</p>
-<div><pre><code class="language-python">from pprint import pprint
-from frictionless import validate, checks
-
-checks = [checks.sequential_value(field_name='id')]
-report = validate('capital-invalid.csv', checks=checks)
-pprint(report.flatten(["rowNumber", "fieldNumber", "type", "note"]))
-</code></pre>
-
-<pre><code class="language-markup">[[None,
-  None,
-  'scheme-error',
-  "[Errno 2] No such file or directory: 'capital-invalid.csv'"]]</code></pre>
-</div><h2>Checks customisÃ¡veis</h2>
-<div><pre><code class="language-python">from pprint import pprint
-from frictionless import Check, validate, errors
-
-# Create check
-class forbidden_two(Check):
-    Errors = [errors.CellError]
-    def validate_row(self, row):
-        if row['header'] == 2:
-            note = '2 is forbidden!'
-            yield errors.CellError.from_row(row, note=note, field_name='header')
-
-# Validate table
-source = b'header\n1\n2\n3'
-report = validate(source,  format='csv', checks=[forbidden_two()])
-pprint(report.flatten(["rowNumber", "fieldNumber", "code", "note"]))
-
-</code></pre>
-
-<pre><code class="language-markup">[[3, 1, None, '2 is forbidden!']]</code></pre>
-</div><h2>Pick/Skip errors</h2>
-<p>Ã‰ possÃ­vel pegar erros especÃ­ficos ou pulÃ¡-los(Skip)</p>
-<div><pre><code class="language-python">from pprint import pprint
-from frictionless import validate
-
-report1 = validate("data/capital-invalid.csv", pick_errors=["duplicate-label"])
-report2 = validate("data/capital-invalid.csv", skip_errors=["duplicate-label"]) # Ignora erros especÃ­ficos
-pprint(report1.flatten(["rowNumber", "fieldNumber", "type"]))
-pprint(report2.flatten(["rowNumber", "fieldNumber", "type"]))
-</code></pre>
-
-<pre><code class="language-markup">[[None, 3, 'duplicate-label']]
-[[10, 3, 'missing-cell'],
- [11, None, 'blank-row'],
- [12, 1, 'type-error'],
- [12, 4, 'extra-cell']]</code></pre>
-</div><p>Error tags</p>
-<div><pre><code class="language-python">from pprint import pprint
-from frictionless import validate
-
-report1 = validate("capital-invalid.csv", pick_errors=["#header"])
-report2 = validate("capital-invalid.csv", skip_errors=["#row"])
-pprint(report1.flatten(["rowNumber", "fieldNumber", "type"]))
-pprint(report2.flatten(["rowNumber", "fieldNumber", "type"]))
-</code></pre>
-
-<pre><code class="language-markup">[[None, None, 'scheme-error']]
-[[None, None, 'scheme-error']]</code></pre>
-</div><h2>Limitar erros</h2>
-<div><pre><code class="language-python">from pprint import pprint
-from frictionless import validate
-
-report = validate("data/capital-invalid.csv", limit_errors=1)
-pprint(report.flatten(["rowNumber", "fieldNumber", "type"]))
-
-</code></pre>
-
-<pre><code class="language-markup">[[None, 3, 'duplicate-label']]</code></pre>
-</div>
+<pre><code class="language-markup">{'fields': [{'name': 'id', 'type': 'any'},
+            {'name': 'neighbor_id', 'type': 'any'},
+            {'name': 'name', 'type': 'any'},
+            {'name': 'population', 'type': 'any'}]}</code></pre>
+</div><h2>Nomes dos campos</h2>
 
 <div id="livemark-signs">
   <div>
         <div class="next">
-      <a href="frictionless_transform.html">
-        FRICTIONLESS - TRANSFORM »
+      <a href="../../jinja/jinja.html">
+        Jinja »
       </a>
     </div>
             <div class="prev">
-      <a href="frictionless_extract.html">
-        « Python - Extract
+      <a href="frictionless_pipeline.html">
+        « Frictionless - Pipeline
       </a>
     </div>
       </div>
@@ -3203,13 +2497,13 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Frictionless - Detector',
           'path': 'pages/demonstracoes/python/frictionless/frictionless_detector',
           'relpath': 'frictionless_detector',
-          'text': "# Frictionless - Detector",
+          'text': "# Frictionless - Detector O detector pode ser utilizado em v\u00c3\u00a1rios lugares dentro do framework. ```python script from frictionless import Detector, Resource detector = Detector(field_missing_values=[\u00271\u0027,\u00272\u0027]) resource = Resource(\u0027data/table.csv\u0027, detector=detector) print(resource.read_rows()) ``` ## Uso do Detector As instancias de classe do detector s\u00c3\u00a3o aceitas por muitas classes e fun\u00c3\u00a7\u00c3\u00b5es: - Package - Resource - Describe - Extract - Validate - Etc... Basta criar uma inst\u00c3\u00a2ncia do detector usando op\u00c3\u00a7\u00c3\u00b5es desejadas e passar para a classe e fun\u00c3\u00a7\u00c3\u00a3o. ## Tamanho do Buffer Por padr\u00c3\u00a3o, o frictionless ir\u00c3\u00a1 utilizar os primeiros 10.000 bytes para detectar codifica\u00c3\u00a7\u00c3\u00a3o. Incluir mais bytes aumentando o tamanho do buffer pode melhorar a infer\u00c3\u00aancia. Entretanto, o processo ficar\u00c3\u00a1 mais lento, mas a detec\u00c3\u00a7\u00c3\u00a3o da codifica\u00c3\u00a7\u00c3\u00a3o ser\u00c3\u00a1 mais preciso. ```python script from frictionless import Detector, describe detector = Detector(buffer_size=100000) resource = describe(\"data/country-1.csv\", detector=detector) print(resource.encoding) ``` ## Tamanho da amostra Por padr\u00c3\u00a3o, o Frictionless ir\u00c3\u00a1 utilizar as primeiras 100 linhas para detectar o tipo de campo. Assim como o buffer, aumentando o tamanho da amostra ir\u00c3\u00a1 melhorar a infer\u00c3\u00aancia, mas o processo ir\u00c3\u00a1 ficar mais lento, embora o resultado se torne mais preciso. ```python script from frictionless import Detector, describe detector = Detector(sample_size=1000) resource = describe(\"data/country-1.csv\", detector=detector) print(resource.schema) ``` ## A fun\u00c3\u00a7\u00c3\u00a3o encoding Por padr\u00c3\u00a3o, a fun\u00c3\u00a7\u00c3\u00a3o encoding_function do frictionless \u00c3\u00a9 None e o usu\u00c3\u00a1rio pode usar para fun\u00c3\u00a7\u00c3\u00b5es encoding prontas. O usu\u00c3\u00a1rio, por\u00c3\u00a9m, possui op\u00c3\u00a7\u00c3\u00a3o para implementar sua pr\u00c3\u00b3pria decodifica\u00c3\u00a7\u00c3\u00a3o utilizando este recurso. ```python script from frictionless import Detector, Resource detector = Detector(encoding_function=lambda sample: \"utf-8\") with Resource(\"data/table.csv\", detector=detector) as resource: print(resource.encoding) ``` ## Tipo de campo Permite configurar manualmente todos os tipos de campos a um tipo dado. \u00c3\u2030 \u00c3\u00batil quando precisa pular o lan\u00c3\u00a7amento dos dados ( atribuindo tipo \"any\" ) ou ter tudo como um string( atribuindo tipo \"string\" ) ```python script from frictionless import Detector, describe detector = Detector(field_type=\u0027any\u0027) resource = describe(\"data/country-1.csv\", detector=detector) print(resource.schema) ``` ## Nomes dos campos",
       },
           'pages/demonstracoes/jinja/jinja': {
           'name': 'Jinja',
           'path': 'pages/demonstracoes/jinja/jinja',
           'relpath': '../../jinja/jinja',
-          'text': "# Jinja Demonstracoes utilizando o template Jinja Demonstracao 1 -------------- {% for item in range(4) %} {{ item }} {% endfor %}",
+          'text': "# Jinja Demonstracoes utilizando o template Jinja Demonstracao 1 -------------- 0 1 2 3",
       },
           'pages/demonstracoes/bash/bash': {
           'name': 'BASH - BASICO',

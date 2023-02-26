@@ -5,6 +5,18 @@
 Formas distintas de criar um schema.
 
 ```python script
+# Descrevendo e extraindo um schema de um dicionário
+from frictionless import Schema, fields, describe, extract
+
+teste = [{'a':1, 'b': 2}]
+schema = describe(teste, type='schema')
+
+schema_ext = extract(teste)
+print(schema_ext[0]['a'])
+```
+
+
+```python script
 from frictionless import Schema, fields, describe
 
 #schema = describe('data/table.csv', type='schema') # from a resource path

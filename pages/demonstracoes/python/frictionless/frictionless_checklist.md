@@ -43,4 +43,4 @@ class duplicate_row(Check):
     }
 ```
 
-É comum criar um erro customizado ao lado do check de cumstomização
+É comum criar um erro customizado ao lado do check de cumstomização.

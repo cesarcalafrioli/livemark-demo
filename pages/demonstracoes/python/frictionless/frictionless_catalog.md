@@ -1,5 +1,6 @@
 # Frictionless - Classe Catálogo
 
+O Catálogo é um conjunto de pacote de dados.
 
 ## Criando um catalogo
 
@@ -16,9 +17,9 @@ print(catalog)
 
 ```python script
 # AVISO : INSTALEM pacote frictionless[ckan]
-from frictionless import Catalog
+#from frictionless import Catalog
 
-catalog = Catalog('https://dados.ufpe.br/dataset/')
+#catalog = Catalog('https://dados.ufpe.br/dataset/')
 #print(type(catalog))
 #print(catalog) # COMENTADO PORQUE É MUITO GRANDE
 ```
@@ -28,8 +29,8 @@ catalog = Catalog('https://dados.ufpe.br/dataset/')
 ```python script
 from frictionless import Catalog
 
-catalog = Catalog('https://dados.ufpe.br/dataset/')
-print(catalog.package_names)
+#catalog = Catalog('https://dados.ufpe.br/dataset/')
+#print(catalog.package_names)
 #print(catalog.has_package) # COMENTADO PORQUE É MUITO GRANDE
 #print(catalog.add_package)
 #print(catalog.get_package)
@@ -39,8 +40,8 @@ print(catalog.package_names)
 ## Salvando descritor
 
 ```python script
-from frictionless import Package
+#from frictionless import Package
 
-catalog = Catalog('https://dados.ufpe.br/dataset/')
-catalog.to_yaml('data/datacatalog-portalufpe.yaml') # Save as YAML
+#catalog = Catalog('https://dados.ufpe.br/dataset/')
+#catalog.to_yaml('data/datacatalog-portalufpe.yaml') # Save as YAML
 ```
