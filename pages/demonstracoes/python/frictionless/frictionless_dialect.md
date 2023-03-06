@@ -25,7 +25,7 @@ with Resource('data/capital-3.csv', dialect=dialect) as resource:
 
 ### Header Rows
 
-Caso o header seja True por padrão, seus parâmetros indicam onde encontrar a linha de cabeçalho ou linhas de cabeçalho para um cabeçalho mutilinha.
+Caso o header seja True por padrão, seus parâmetros indicam onde encontrar a linha de cabeçalho ou linhas de cabeçalho para um cabeçalho multilinha.
 
 ```python script
 from frictionless import Resource, Dialect
@@ -33,10 +33,12 @@ from frictionless import Resource, Dialect
 dialect = Dialect(header_rows=[1, 2, 3])
 with Resource('data/capital-3.csv', dialect=dialect) as resource:
     print(resource.header)
-    print(resource.to_view())
+    #print(resource.to_view())
 ```
 
 ### Header Join
+
+Atualiza o separador para a o operação de junção das células do cabeçalho. Útil para planilhas.
 
 ```python script
 from frictionless import Resource, Dialect
@@ -58,18 +60,18 @@ dialect = Dialect(header_case=False) ## Desativa o case sensitive
 schema = Schema(fields=[fields.StringField(name="ID"), fields.StringField(name="NAME")])
 with Resource('data/capital-3.csv', dialect=dialect, schema=schema) as resource:
   print(f'Header: {resource.header}')
-  print(f'Valid: {resource.header.valid}')  # without "header_case" it will have 2 errors
+  print(f'Valid: {resource.header.valid}')  # Sem a propriedade header_case, dois erros aparecerão, por conta dos campos
 ```
 
 ### Comment Char
 
-Especifica os caracteres usados para comentar as linhas.
+Especifica os caracteres usados para comentar as linhas. ( OBS: É até uma forma de ignorar uma linha )
 
 ```python script
 from frictionless import Resource, Dialect
 
-dialect = Dialect(comment_char="#")
-with Resource(b'name\n#row1\nrow2', format="csv", dialect=dialect) as resource:
+dialect = Dialect(comment_char=";")
+with Resource(b'name\n;row1\nrow2', format="csv", dialect=dialect) as resource:
     print(resource.read_rows())
 ```
 

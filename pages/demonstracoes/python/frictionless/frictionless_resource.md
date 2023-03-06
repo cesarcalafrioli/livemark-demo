@@ -1,12 +1,18 @@
 # Frictionless - Resource
 
-```python script
-""" from frictionless import Resource
+Resource é um formato simples de descrever e empacotar um metadados de um único arquivo de dados ou tabela.
 
-resource = Resource('table.csv') # from a resource path
-resource = Resource('resource.json') # from a descriptor path
-resource = Resource({'path': 'table.csv'}) # from a descriptor
-resource = Resource(path='table.csv') # from arguments """
+## Criando um resource
+
+```python script
+from frictionless import Resource
+
+resource = Resource('data/table.csv') # from a resource path
+#resource = Resource('resource.json') # from a descriptor path
+#resource = Resource({'path': 'table.csv'}) # from a descriptor
+#resource = Resource(path='table.csv') # from arguments
+
+print(resource.open())
 ```
 
 ## Ciclo de vida do resource
@@ -123,16 +129,4 @@ from frictionless import Resource
 resource = Resource('data/country-1.csv')
 resource.infer(stats=True)
 print(resource.stats)
-```
-
-```python script
-
-```
-
-```python script
-
-```
-
-```python script
-
 ```

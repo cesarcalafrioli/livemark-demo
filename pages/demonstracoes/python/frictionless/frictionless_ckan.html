@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="O Pipeline Ã© um objeto contendo uma lista dos passos de transformaÃ§Ã£o">
-<meta name="keywords" content="frictionless,-,pipeline">
+<meta name="description" content="pip install frictionless[ckan] --pre">
+<meta name="keywords" content="frictionless,-,ckan">
 <link rel="icon" href="../../../../assets/github-logo.png">
 <title>César Calafrioli - GitHub | Menu</title>
 <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
@@ -1884,7 +1884,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
             Frictionless - Classe Checklist
           </a>
         </li>
-                <li class="secondary active">
+                <li class="secondary ">
           <a href="frictionless_pipeline.html" class="secondary">
             Frictionless - Classe Pipeline
           </a>
@@ -1894,7 +1894,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
             Frictionless - Classe Detector
           </a>
         </li>
-                <li class="secondary ">
+                <li class="secondary active">
           <a href="frictionless_ckan.html" class="secondary">
             Frictionless - Ckan
           </a>
@@ -1942,67 +1942,162 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </div>
 <div id="livemark-main">
 <div id="livemark-notes">
-      <a href="https://github.com/cesarcalafrioli/livemark-demo/edit/main/pages/demonstracoes/python/frictionless/frictionless_pipeline.md" target="_blank">Edit page </a> in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-    (2023-02-24 09:46)
+      <a href="https://github.com/cesarcalafrioli/livemark-demo/edit/main/pages/demonstracoes/python/frictionless/frictionless_ckan.md" target="_blank">Edit page </a> in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
+    (2023-02-28 16:10)
 </div>
 
-<h1>Frictionless - Pipeline</h1>
-<p>O Pipeline Ã© um objeto contendo uma lista dos passos de transformaÃ§Ã£o</p>
-<h2>Criando Pipeline</h2>
-<p>Criando pipeline utilizando interface Python:</p>
-<div><pre><code class="language-python">from frictionless import Pipeline, transform, steps
+<h1>Frictionless - CKAN</h1>
+<h2>InstalaÃ§Ã£o do pacote</h2>
+<p>pip install frictionless[ckan] --pre<br>
+pip install 'frictionless[ckan]' --pre # Para shel zsh</p>
+<h2>Lendo um pacote</h2>
+<p>Os passos abaixo importam o conjunto de dados da instÃ¢ncia CKAN como um pacote Frictionless.</p>
+<div><pre><code class="language-python">from frictionless.portals import CkanControl
+from frictionless import Package
 
-pipeline = Pipeline(steps=[steps.table_normalize(), steps.table_melt(field_name='name')])
-print(pipeline)
+ckan_control = CkanControl()
+package = Package('https://legado.dados.gov.br/dataset/bolsa-familia-pagamentos', control=ckan_control) # Cria objeto pacote utilizando a URL do conjunto de dados do CKAN.
+</code></pre>
+</div><p>A segunda opÃ§Ã£o abaixo consiste em fazer a mesma coisa do cÃ³digo anterior, porÃ©m passando parÃ¢metros para o controle CKAN para configurÃ¡-lo.</p>
+<div><pre><code class="language-python">from frictionless import Package
+import inspect
+
+src = inspect.getsource(Package.get_resource)
+print(src)
+
 </code></pre>
 
-<pre><code class="language-markup">{'steps': [{'type': 'table-normalize'},
-           {'type': 'table-melt', 'fieldName': 'name'}]}</code></pre>
-</div><h2>Executando pipeline</h2>
-<p>Para executar o pipeline vocÃª precisa utilizar a funÃ§Ã£o ou mÃ©todo transform</p>
-<div><pre><code class="language-python">from frictionless import Pipeline, transform, steps
+<pre><code class="language-markup">def get_resource(self, name: str) -&gt; Resource:
+        """Get resource by name"""
+        for resource in self.resources:
+            if resource.name == name:
+                return resource
+        error = errors.PackageError(note=f'resource "{name}" does not exist')
+        raise FrictionlessException(error)</code></pre>
+</div><div><pre><code class="language-python"># OpÃ§Ã£o mais explÃ­cita
+from frictionless.portals import CkanControl
+from frictionless import Package
 
-pipeline = Pipeline(steps=[steps.table_normalize(), steps.table_melt(field_name='name')])
-resource = transform('data/country-1.csv', pipeline=pipeline)
+ckan_control = CkanControl(baseurl='https://legado.dados.gov.br', dataset='bolsa-familia-pagamentos') # Coloca a URL e conjunto de dados em seus respectivos parÃ¢metros.
+package = Package(control=ckan_control)
+</code></pre>
+</div><p>ou </p>
+<div><pre><code class="language-python">from frictionless.portals import CkanControl
+from frictionless import Package
 
-print(resource.schema)
-print(resource.read_rows())
+ckan_control = CkanControl(baseurl='https://legado.dados.gov.br')
+package = Package('bolsa-familia-pagamentos', control=ckan_control)
+</code></pre>
+</div><h2>Ignorando um schema do resource.</h2>
+<p>Ã‰ possÃ­vel utilizar o parÃ¢metro ignore_schema=True no Controle Ckan. Isso Ã© Ãºtil em casos que o conjunto de dados do CKAN possua um resource cujo schemas contenham erros.</p>
+<div><pre><code class="language-python">from frictionless.portals import CkanControl
+from frictionless import Package
+
+ckan_control = CkanControl(baseurl='https://legado.dados.gov.br', ignore_schema=True)
+package = Package('bolsa-familia-pagamentos', control=ckan_control)
+
+print(package.resource_names) # Listando todos os resources do package ( Conjunto de dados bolsa-familia-pagamentos)
 </code></pre>
 
-<pre><code class="language-markup">{'fields': [{'name': 'name', 'type': 'string'},
-            {'name': 'variable', 'type': 'string'},
-            {'name': 'value', 'type': 'any'}]}
-[{'name': 'Britain', 'variable': 'id', 'value': 1}, {'name': 'Britain', 'variable': 'neighbor_id', 'value': None}, {'name': 'Britain', 'variable': 'population', 'value': 67}, {'name': 'France', 'variable': 'id', 'value': 2}, {'name': 'France', 'variable': 'neighbor_id', 'value': 3}, {'name': 'France', 'variable': 'population', 'value': 67}, {'name': 'Germany', 'variable': 'id', 'value': 3}, {'name': 'Germany', 'variable': 'neighbor_id', 'value': 2}, {'name': 'Germany', 'variable': 'population', 'value': 83}, {'name': 'Italy', 'variable': 'id', 'value': 4}, {'name': 'Italy', 'variable': 'neighbor_id', 'value': 5}, {'name': 'Italy', 'variable': 'population', 'value': 60}, {'name': 'Spain', 'variable': 'id', 'value': 5}, {'name': 'Spain', 'variable': 'neighbor_id', 'value': 4}, {'name': 'Spain', 'variable': 'population', 'value': 47}]</code></pre>
-</div><h2>Transform steps</h2>
-<p>VocÃª pode criar step customizado para ser usado como parte da transformaÃ§Ã£o do resource ou package:</p>
-<div><pre><code class="language-python"># Este step usa PETL
-from frictionless import Step
+<pre><code class="language-markup">['dicionario-de-dados', 'pagamentos-outubro-2021', 'pagamentos-setembro-2021', 'pagamentos-agosto-2021', 'pagamentos-julho-2021', 'pagamentos-junho-2021', 'pagamentos-maio-2021', 'pagamentos-abril-2021', 'pagamentos-marco-2021', 'pagamentos-fevereiro-2021', 'pagamentos-janeiro-2021', 'pagamentos-dezembro-2020', 'pagamentos-novembro-2020', 'pagamentos-outubro-2020', 'pagamentos-setembro-2020', 'pagamentos-agosto-2020', 'pagamentos-julho-2020', 'pagamentos-junho-2020', 'pagamentos-maio-2020', 'pagamentos-abril-2020', 'pagamentos-marco-2020', 'pagamentos-fevereiro-2020', 'pagamentos-janeiro-2020', 'pagamentos-dezembro-2019', 'pagamentos-novembro-2019', 'pagamentos-outubro-2019', 'pagamentos-setembro-2019', 'pagamentos-agosto-2019', 'pagamentos-julho-2019', 'pagamentos-junho-2019', 'pagamentos-maio-2019', 'pagamentos-abril-2019', 'pagamentos-marco-2019', 'pagamentos-fevereiro-2019', 'pagamentos-janeiro-2019', 'pagamentos-dezembro-2018', 'pagamentos-novembro-2018', 'pagamentos-outubro-2018', 'pagamentos-setembro-2018', 'pagamentos-agosto-2018', 'pagamentos-julho-2018', 'pagamentos-junho-2018', 'pagamentos-maio-2018', 'pagamentos-abril-2018', 'pagamentos-marco-2018', 'pagamentos-fevereiro-2018', 'pagamentos-janeiro-2018', 'pagamentos-dezembro-2017', 'pagamentos-novembro-2017', 'pagamentos-outubro-2017', 'pagamentos-setembro-2017', 'pagamentos-agosto-2017', 'pagamentos-julho-2017', 'pagamentos-junho-2017', 'pagamentos-maio-2017', 'pagamentos-abril-2017', 'pagamentos-marco-2017', 'pagamentos-fevereiro-2017', 'pagamentos-janeiro-2017']</code></pre>
+</div><h2>Publicando um pacote</h2>
+<p>Para publicar um pacote a uma instÃ¢ncia CKAN Ã© necessÃ¡ria uma chave da API de um usuÃ¡rio do CKAN que possua permissÃ£o para criar os conjuntos de dados abertos. Essa chave Ã© passsada ao controle CKAN por meio do parÃ¢metro apikey.</p>
+<div><pre><code class="language-python">""" from frictionless.portals import CkanControl
+from frictionless import Package
 
-class cell_set(Step):
-    code = "cell-set"
+ckan_control = CkanControl(baseurl='https://legado.dados.gov.br', apikey='YOUR-SECRET-API-KEY')
+package = Package(...) # Create your package
+package.publish(control=ckan_control) """
+</code></pre>
+</div><h2>Lendo um catÃ¡logo</h2>
+<p>TambÃ©m Ã© possÃ­vel baixar uma lista de conjunto de dados do CKAN usando o catÃ¡logo.</p>
+<p>AVISO: A classe Catalog ainda estÃ¡ em fase experimental e, portanto, a API pode mudar sem aviso prÃ©vio.</p>
+<div><pre><code class="language-python">import frictionless
+from frictionless import portals, Catalog
+    
+ckan_control = portals.CkanControl(baseurl='https://legado.dados.gov.br')
+c = Catalog(control=ckan_control)
+#print(c)
+</code></pre>
 
-    def __init__(self, descriptor=None, *, value=None, field_name=None):
-        self.setinitial("value",value)
-        self.setinitial("fieldName", field_name)
-        super().__init__(descriptor)
+<pre><code class="language-markup">Total number of packages: 13786</code></pre>
+</div><p>Por padrÃ£o, o frictionless irÃ¡ baixar todos os conjuntos de dados ( Packages ) da instÃ¢ncia, limitado apenas pelo nÃºmero mÃ¡ximo de conjunto de dados retornado pela API da instÃ¢ncia CKAN. Assim, caso a instÃ¢ncia retorne apenas 10 conjuntos de dados por padrÃ£o, vocÃª pode solicitar mais pacotes passando o parÃ¢metro num_packages.</p>
+<div><pre><code class="language-python">import frictionless
+from frictionless import portals, Catalog
+    
+ckan_control = portals.CkanControl(baseurl='https://legado.dados.gov.br', num_packages=5, ignore_package_errors=True)
+c = Catalog(control=ckan_control)
+#print(c)
 
-    def transform_resource(self, resource):
-        value = self.get("Value")
-        field_name = self.get("fieldName")
-        yield from resource.to_petl().update(field_name, value)
+#ckan_control.to_yaml('teste.yaml')
+</code></pre>
+
+<pre><code class="language-markup">Total number of packages: 13786</code></pre>
+</div><p>Para ignorar erros individuais do pacote, utilize o parÃ¢metro ignore_package_erros=True</p>
+<div><pre><code class="language-python">import frictionless
+from frictionless import portals, Catalog
+    
+ckan_control = portals.CkanControl(baseurl='https://legado.dados.gov.br', ignore_package_errors=True, num_packages=1000)
+c = Catalog(control=ckan_control)
+</code></pre>
+
+<pre><code class="language-markup">Error in CKAN dataset 8d60eff7-1a46-42ef-be64-e8979117a378: [package-error] The data package has an error: descriptor is not valid (The data package has an error: property "contributors[].email" is not valid "email")
+Error in CKAN dataset 933d7164-8128-4e12-97e6-208bc4935bcb: [package-error] The data package has an error: descriptor is not valid (The data package has an error: property "contributors[].email" is not valid "email")
+Error in CKAN dataset 93114fec-01c2-4ef5-8dfe-67da5027d568: [package-error] The data package has an error: descriptor is not valid (The data package has an error: property "contributors[].email" is not valid "email") (The data package has an error: property "contributors[].email" is not valid "email")
+Total number of packages: 13786</code></pre>
+</div><p>Para baixar apenas 5 pacotes, utilize o parÃ¢metro result_offset</p>
+<div><pre><code class="language-python">import frictionless
+from frictionless import portals, Catalog
+    
+ckan_control = portals.CkanControl(baseurl='https://legado.dados.gov.br', ignore_package_errors=True, results_offset=5)
+c = Catalog(control=ckan_control)
+#print(c)
+print(c.package_names)
+</code></pre>
+
+<pre><code class="language-markup">Total number of packages: 13786
+['cadastro-nacional-da-pessoa-juridica-cnpj', 'codigos-de-vaga', 'projetos-de-pesquisa-ifg', 'contratos-ifg', 'programas-editais-de-iniciacao-cientifica', 'docentes-ifg', 'licitacoes-ifg', 'servidores-ifg', 'cursos-ifg', 'estagios-curriculares-ifg']</code></pre>
+</div><h2>Buscando os conjuntos de dados de uma organizaÃ§Ã£o ou grupo</h2>
+<p>Para buscar todos os pacotes de uma organizaÃ§Ã£o, utilize o parÃ¢metro organization_name.</p>
+<div><pre><code class="language-python">import frictionless
+from frictionless import portals, Catalog
+
+ckan_control = portals.CkanControl(baseurl='https://legado.dados.gov.br', organization_name='agencia-espacial-brasileira-aeb')
+c = Catalog(control=ckan_control)
+
+#print(c)
+</code></pre>
+
+<pre><code class="language-markup">Total number of packages: 6</code></pre>
+</div><p>para baixar todos os conjuntos de dados do grupo CKAN, utilize o parÃ¢metro group_id ao controle CKAN.</p>
+<div><pre><code class="language-python">import frictionless
+from frictionless import portals, Catalog
+    
+ckan_control = portals.CkanControl(baseurl='https://legado.dados.gov.br', group_id='ciencia-informacao-e-comunicacao')
+c = Catalog(control=ckan_control)
+</code></pre>
+</div><h2>Usando pesquisa CKAN</h2>
+<p>vocÃª tambÃ©m pode retornar apenas conjuntos de dados que sÃ£o retornado conforme o mÃ©todo de pesquisa do pacote ckan. Utilize o parÃ¢metro search.</p>
+<div><pre><code class="language-python">import frictionless
+from frictionless import portals, Catalog
+    
+ckan_control = portals.CkanControl(baseurl='https://legado.dados.gov.br', search={'q': 'name:bolsa*'})
+c = Catalog(control=ckan_control)
+
+print(c)
 </code></pre>
 </div>
 
 <div id="livemark-signs">
   <div>
         <div class="next">
-      <a href="frictionless_detector.html">
-        Frictionless - Detector »
+      <a href="../../jinja/jinja.html">
+        Jinja »
       </a>
     </div>
             <div class="prev">
-      <a href="frictionless_checklist.html">
-        « Frictionless - Checklist
+      <a href="frictionless_detector.html">
+        « Frictionless - Detector
       </a>
     </div>
       </div>

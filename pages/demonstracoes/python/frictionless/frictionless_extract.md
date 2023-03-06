@@ -26,6 +26,7 @@ from frictionless import extract
 
 #rows = extract('data/country-3.csv')
 rows = extract('data/*-3.csv')
+print(type(rows))
 pprint(rows)
 ```
 
@@ -83,6 +84,7 @@ from pprint import pprint
 from frictionless import extract
 
 rows = extract('data/countries.csv')
+print(type(rows))
 pprint(rows)
 ```
 

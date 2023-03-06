@@ -18,6 +18,8 @@ pages:
       items:
         - path: pages/demonstracoes/python/python_geral
           name: Python - Exemplos gerais
+        - path: pages/demonstracoes/python/frictionless_sandbox
+          name: Frictionless - sandbox
     - name: Demo - Frictionless
       items:
         - path: pages/demonstracoes/python/frictionless/frictionless_exemplo-inicial
@@ -48,6 +50,8 @@ pages:
           name: Frictionless - Classe Pipeline
         - path: pages/demonstracoes/python/frictionless/frictionless_detector
           name: Frictionless - Classe Detector
+        - path: pages/demonstracoes/python/frictionless/frictionless_ckan
+          name: Frictionless - Ckan
     - name: Demo - Jinja
       items:
         - path: pages/demonstracoes/jinja/jinja
